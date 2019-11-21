@@ -1,0 +1,35 @@
+<div class="print_header" >
+  <%= image_tag 'logo.png', :class => "print_header" %>
+	<p class="print_contact" >
+		<span>501-301-4963</span><br />
+		<span>info@KentWalkerCheese.com</span><br />
+		<span>www.KentWalkerCheese.com</span>
+	</p>
+</div>
+
+<div class='sort'>
+  <h1>Cheeses</h1>
+  <% Product.TYPES.each do |type| -%>
+    <div class="link">
+      <%= link_to type, products_path({:category => type}), :class => active_sort(type, @active) %>
+      <span class="arrow">
+        >
+      </span>
+    </div>
+  <% end -%>
+  <a class="print_button" href="#" onclick="window.print();return false;">Print this page</a> 
+</div>
+
+
+<ul class="cheese_list">
+<% @products.each do |product| %>
+  <li>
+    <%= image_tag(product.photo.url :small)  %>
+    <h2 class="title"><%= product.name %></h2>
+    <% unless product.in_production? -%>
+      <h5>Out of Stock</h5>
+    <% end -%>
+    <p class="desc"><%= product.desc.html_safe %></p>
+  </li>
+<% end %>
+</ul>

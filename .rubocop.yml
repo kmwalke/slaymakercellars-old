@@ -1,0 +1,49 @@
+AllCops:
+  Exclude:
+  - 'db/schema.rb'
+  - 'config/environments/*'
+  - 'bin/*'
+  - 'app/controllers/admin/orders_controller.rb'
+  - 'app/controllers/admin_controller.rb'
+  - 'config/initializers/mail.rb'
+  - 'spec/features/admin/contacts_spec.rb'
+  - 'spec/features/admin/fulfillment_spec.rb'
+  - 'spec/features/admin/orders_spec.rb'
+  - 'spec/features/admin/users_spec.rb'
+  - 'spec/features/user/users_spec.rb'
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Layout/ExtraSpacing:
+  ForceEqualSignAlignment: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/BlockLength:
+  Exclude:
+  - 'spec/features/*'
+  - 'spec/features/*/*'
+  - 'Guardfile'
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 20

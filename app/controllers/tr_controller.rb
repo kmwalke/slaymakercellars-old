@@ -1,0 +1,2 @@
+class TrController < ApplicationController
+end

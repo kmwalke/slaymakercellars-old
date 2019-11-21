@@ -1,0 +1,15 @@
+<table class="crud admin" cellpadding="0px" cellspacing="0px">
+  <tr class="title">
+    <th>Order ID</th>
+    <th>Cust PO Number</th>
+    <th>Business</th>
+    <th>
+    	<% if @show == "fulfilled" =%>
+    		Fulfilled On
+  		<% else =%>
+	    	Delivery Date
+    	<% end =%>
+  	</th>
+    <th>Invoice Status</th>
+  	<th></th>
+  </tr>

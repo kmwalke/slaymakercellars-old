@@ -1,0 +1,114 @@
+<h1><%= @title %></h1>
+
+
+<h3 style="float:right;">
+	Follow up on contacts with red links.
+</h3>
+
+<p>
+<%= link_to 'New Contact', new_admin_contact_path %>
+</p>
+
+<fieldset class="view_select">
+  <legend>
+    Select Contacts to View
+  </legend>
+  
+  <p class="main_options">
+    	<%= @show == "active" ? "Active" : link_to('Active', admin_contacts_path({:show => "active"}))%> |
+    	<%= @show == "target" ? "Target" : link_to('Target', admin_contacts_path({:show => "target"}))%> |
+    	<%= @show == "misc" ? "Misc." : link_to('Misc.', admin_contacts_path({:show => "misc"}))%> |
+    	<%= @show == "urgent" ? "Urgent" : link_to('Urgent', admin_contacts_path({:show => "urgent"}))%>
+  </p>
+  <hr />
+  <p>
+    	<%= @show == "inactive" ? "Deleted Contacts" : link_to('Deleted Contacts', admin_contacts_path({:show => "inactive"}))%>
+  </p>
+</fieldset>
+
+<%= form_tag admin_contacts_path, :method => 'get' do %>
+	<%= hidden_field_tag :direction, params[:direction] %>
+	<%= hidden_field_tag :sort, params[:sort] %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<%= will_paginate @contacts %>
+
+<div class="wide_wrapper">
+<table class="crud" cellpadding="0px" cellspacing="0px">
+  <tr class="title">
+    <th><%= sortable "name" %></th>
+    <th><%= sortable "business" %></th>
+    <th><%= sortable "town" %></th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Last Contact</th>
+    <th>Last Order</th>
+    <th></th>
+  </tr>
+
+<% @contacts.each do |contact| %>
+  <tr class="<%= cycle "even", "odd" %>">
+    <td>
+  		<% if contact.unresolved_notes? -%>
+	    	<%= link_to contact.name, edit_admin_contact_path(contact), :class => "unresolved" %>
+    	<% else -%>
+	    	<%= link_to contact.name, edit_admin_contact_path(contact) %>
+  		<% end -%>
+  	</td>
+    <td>
+  		<% if contact.unresolved_notes? -%>
+    		<%= link_to contact.business, edit_admin_contact_path(contact), :class => "unresolved" %>
+    	<% else -%>
+    		<%= link_to contact.business, edit_admin_contact_path(contact) %>
+  		<% end -%>
+  	</td>
+    <td>
+      <% if contact.town == nil -%>
+        &nbsp;
+      <% else -%> 
+        <%= contact.town.name %>
+      <% end -%>
+    </td>
+    <td>
+    	<% unless contact.phone == nil || contact.phone == "" -%>
+	    	<%= contact.phone %>
+    	<% end -%>
+  	</td>
+    <td>
+    	<% unless contact.email == nil || contact.email == "" -%>
+    		<%= link_to "Email", "mailto:#{contact.email}", :target => "_blank" %>
+    	<% end -%>
+  	</td>
+    <td nowrap>
+    	<% if contact.notes.empty? -%>
+    		&nbsp;
+    	<% else -%>
+    		<% if contact.unresolved_notes? -%>
+		    	<%= link_to "#{time_ago_in_words contact.notes.first.created_at} ago", edit_admin_contact_path(contact), :class => "unresolved" %>
+	    	<% else -%>
+		    	<%= time_ago_in_words contact.notes.first.created_at %> ago
+	    	<% end -%>
+  		<% end -%>
+  	</td>
+    <td nowrap>
+    	<% if contact.last_order -%>
+	    	<%= link_to "#{time_ago_in_words contact.last_order} ago", admin_orders_path({:show => contact.id}) %>
+    	<% else -%>
+    		&nbsp;
+  		<% end -%>
+  	</td>
+    <td><%= link_to 'X', admin_contact_path(contact), confirm: 'Are you sure?', method: :delete, :id => "delete_#{contact.id}" %>&nbsp;</td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<%= will_paginate @contacts %>
+
+<br />
+
+<%= link_to 'New Contact', new_admin_contact_path %>

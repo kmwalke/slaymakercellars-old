@@ -1,0 +1,31 @@
+@import 'variables';
+div.tr_left {
+  height: 20em;
+  width: 30%;
+  float: left;
+  margin-right: 1%;
+    
+  .large_map {
+    height: 20em;
+    width: 100%;
+  }
+  
+}
+
+div.tr_right {
+  float: left;
+  width: 65%;
+  margin-right: 1%;
+}
+
+h1 {
+  clear: both;
+}
+
+p {
+
+}
+
+.menu {
+  width: 45%;
+}

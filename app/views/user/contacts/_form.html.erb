@@ -1,0 +1,64 @@
+
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="actions">
+    <%= f.submit :disable_with => "Loading..."  %>
+  </div>
+  
+<div class="column">
+  <div class="field">
+    <%= f.label :name, "Contact Name" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :tax_id_number %>
+    <%= f.text_field :tax_id_number %>
+  </div>
+  <div class="field">
+    <%= f.label :address, "Shipping Address" %><br />
+    <%= f.text_area :address, :cols => 30, :rows => 10  %>
+  </div>
+  <div class="field">
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+  <div class="actions">
+    <%= f.submit :disable_with => "Loading..."  %>
+  </div>
+	<%= link_to 'Back', user_orders_path %>
+</div>
+
+
+<div class="column">
+  <div class="field">
+    <%= f.check_box :is_public %>
+    <%= f.label :is_public, "Show on 'Where to Buy' Page" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :paperless_billing %>
+    <%= f.label :paperless_billing, "Paperless Billing" %>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<h1>Sales Activity from this week:</h1>
+
+<h3>Contacts</h3>
+<table cellpadding=5 border=1>
+  <tr>
+    <td>Name</td>
+    <td>Action</td>
+    <td>Salesperson</td>
+    <td>Datetime</td>
+  </tr>
+  <% @contacts.each do |contact| -%>
+    <tr>
+      <td>
+        <%= link_to contact.business, edit_admin_contact_url(contact) %> 
+      </td>
+      <td>
+        <% if contact.updated_at == contact.created_at -%>
+          created
+        <% else -%>
+          updated
+        <% end -%>
+      </td>
+      <td>
+        <%= contact.updated_by.name %>
+      </td>
+      <td>
+        <%= contact.updated_at %>.
+      </td>
+    </tr>
+  <% end -%>
+</table>
+
+<h3>Order</h3>
+<table cellpadding=5 border=1>
+  <tr>
+    <td>Name</td>
+    <td>Action</td>
+    <td>Salesperson</td>
+    <td>Datetime</td>
+  </tr>
+  <% @orders.each do |order| -%>
+    <tr>
+      <td>
+        <%= link_to order.contact.business, edit_admin_order_url(order) %> was
+      </td>
+      
+      <% if order.fulfilled? -%>
+        <td>
+          delivered
+        </td>
+        <td>
+          <%= order.created_by.name %>
+        </td>
+        <td>
+          <%= order.fullfilled_on %>
+        </td>
+      <% else -%>
+        <% if order.updated_by_id -%>
+          <td>
+            updated
+          </td> 
+          <td>
+            <%= order.updated_by.name %>
+          </td>
+        <% else -%>
+          <td>
+            created
+          </td> 
+          <td>
+            <%= order.created_by.name %>
+          </td>
+        <% end -%>
+        <td>
+          <%= order.updated_at %>
+        </td>
+      <% end -%>
+    </tr>
+  <% end -%>
+</table>

@@ -1,0 +1,51 @@
+
+  <h1><%= @title %></h1>
+
+<% @posts.each do |post| -%>
+    
+  <div class=" blog_post <%= post['type'] %>">
+  <div class="post_header">
+    <h2><%= link_to post['summary'][0...25], post['post_url'], :target => "_blank", :class => "blog_post_link" %></h2>
+    <span class="datetime"><%= humanize_date(post['date'].to_date) %></span>
+  </div>
+    
+    <div class="post_body">
+      <% case post['type'] -%>
+        <% when "video" -%>
+          <%= render :partial => 'video', :locals => {:post => post} %>
+          
+        <% when "audio" -%>
+          <%= render :partial => 'audio', :locals => {:post => post} %>
+          
+        <% when "chat" -%>
+          <%= render :partial => 'chat', :locals => {:post => post} %>
+          
+        <% when "link" -%>
+          <%= render :partial => 'link', :locals => {:post => post} %>
+          
+        <% when "quote" -%>
+          <%= render :partial => 'quote', :locals => {:post => post} %>
+          
+        <% when "photo" -%>
+          <%= render :partial => 'photo', :locals => {:post => post} %>
+          
+        <% when "text" -%>
+          <%= render :partial => 'text', :locals => {:post => post} %>
+          
+        <% else -%>
+          hmmmmm
+          
+      <% end -%>
+      <p>
+        <%= link_to "Read the full story", post['post_url'], :target => "_blank" %>
+      </p>
+      <%= render :partial => 'tags', :locals => {:tags => post['tags']} %>
+      <%= render :partial => 'share', :locals => {:post => post} %>
+      
+    </div>  
+
+  </div>
+  
+ 
+<% end -%>
+

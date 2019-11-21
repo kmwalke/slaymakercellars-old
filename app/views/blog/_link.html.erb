@@ -1,0 +1,17 @@
+
+<% 
+
+  if post['excerpt']
+    desc = post['excerpt'] 
+  else 
+    desc = post['url']
+  end 
+
+-%>
+
+
+<%= link_to desc, post['url'] %>
+
+<p><%= post['description'].html_safe if post['description'] %></p>
+
+

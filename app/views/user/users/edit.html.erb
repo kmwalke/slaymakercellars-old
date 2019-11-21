@@ -1,0 +1,7 @@
+<h1>Editing user</h1>
+
+<%= form_for(@user, :url=>user_user_path(@user)) do |f| %>
+<%= render :partial => 'form', :locals => {:f => f} %>
+<% end -%>
+
+<%= link_to 'Back', user_orders_path %>

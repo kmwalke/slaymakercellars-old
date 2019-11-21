@@ -1,0 +1,10 @@
+@import 'variables';
+
+
+span.note {
+  display: block;
+  margin-left: 2em;
+  font-size: smaller;
+  line-height: 1em;
+  color: lighten($brown, 20%);
+}

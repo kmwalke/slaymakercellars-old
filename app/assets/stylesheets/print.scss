@@ -1,0 +1,74 @@
+@import 'variables';
+@media print{@page {size: portrait}}
+
+
+div.header, div.admin_header {
+	display: none;
+}
+
+div.print_header {
+	text-align: center;
+	width: 100%;
+
+	.print_header {
+		visibility: show;
+		width: 250px;
+	}
+}
+
+h1.title {
+	visibility: hidden;
+	display: none;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+.print_button {
+  visibility: hidden;
+  display: none;
+}
+
+.sort {
+	display: none;
+}
+
+ul.cheese_list {
+  display: block;
+  list-style: none;
+  
+  li {
+		page-break-inside: avoid;
+    display: block;
+    clear: both;
+    
+    img {
+      vertical-align: top;
+      float: left;
+      margin-right: 10px;
+    }
+    
+    .desc {
+    	display: inline-block;
+    	width: 60%;
+
+    }
+    
+    .title {
+    }
+  }
+}
+
+div#footer {
+	display: none;
+}
+
+table.crud {
+  border: 1px solid black;
+  
+  td, th {
+    border-bottom: 1px solid black;
+  }
+}

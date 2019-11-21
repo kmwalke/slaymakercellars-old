@@ -1,0 +1,20 @@
+<br />
+<br />
+<br />
+
+<h2><%= link_to "All News", articles_path %></h2>
+
+<div class="article">
+	<div class="header">
+		<span class="title">
+			<%= @article.title %>
+		</span>
+		<span class="date"><%= humanize_date @article.date%></span>
+		<% if @article.url&&!@article.url.empty? -%>
+			<span class="original"><%= link_to "Original Article", @article.url, :target=>"_blank" %></span>
+		<% end -%>
+	</div>
+	<div class="body">
+		<%= @article.body.html_safe %>
+	</div>
+</div>

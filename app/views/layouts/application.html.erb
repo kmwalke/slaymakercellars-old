@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kent Walker Artisan Cheese</title>
+  <%= stylesheet_link_tag    "application"%>
+  <%= stylesheet_link_tag    "print", :media => "print" %>
+  <%= javascript_include_tag "application" %>
+  <link rel="shortcut icon" href="/assets/favicon.ico" />
+  <link href='https://fonts.googleapis.com/css?family=Neucha|Carter+One|Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <%#= csrf_meta_tags %>
+  
+</head>
+
+
+
+<body id="<%= params[:controller].parameterize %>">
+
+  <div class="wrapper">
+    <% if logged_in_as_admin? -%>
+	    <div class="admin_header">
+	      <div class="content">
+			    <%= render :partial => 'layouts/admin_links' %>
+        </div>
+	    </div>
+	    
+    <% elsif logged_in? -%>
+	    <div class="header">
+	      <div class="content">
+      		<%= image_tag "logo.png", :class => :logo %>
+			    <%= render :partial => 'layouts/user_links' %>
+        </div>
+        <div class="stripe">&nbsp;</div>
+	    </div>
+	
+    <% else -%>
+	    <div class="header">
+	      <div class="content">
+      		<%= image_tag "logo_transparent.png", :class => :logo %>
+	      	<%= render :partial => 'layouts/links' %>
+        </div>
+        <div class="stripe">&nbsp;</div>
+	    </div>
+    <% end -%>
+
+
+    <div class="spacer">&nbsp;</div>
+    <% if logged_in? -%>
+      <div class="content admin">
+    <% else -%>
+      <div class="content">
+    <% end -%>
+      <% if flash[:notice] -%>
+        <div class="flash">
+          <%= flash[:notice] %>
+        </div>
+      <% end -%>
+      <%= yield %>
+    </div>
+
+    <% unless logged_in? -%>
+      <div class="footer">
+        <div class="spacer">&nbsp;</div>
+        <div class="spacer">&nbsp;</div>
+        <div class="content">
+          <a href="tel:5013014963" id="phone">(501) 301-4963</a>
+          <span>|</span>
+          <a href="mailto:info@kentwalkercheese.com" id="email">info@KentWalkerCheese.com</a>
+          <span>|</span>
+          <a href="http://goo.gl/N3d1wB" id="address" target="_blank">323 S Cross St, Suite C, Little Rock, AR</a>
+        </div>
+      </div>
+
+    <% end -%>
+
+  </div>
+</div>
+
+
+</body>
+
+</html>

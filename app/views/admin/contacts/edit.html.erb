@@ -1,0 +1,21 @@
+<h1>Editing <%= @contact.business %></h1>
+
+
+<div class="order_quick_links">
+	<%= link_to "View all orders", admin_orders_path({:show => @contact.id}) %>
+	<%= link_to "New order", new_admin_order_path({:contact => @contact.business}) %>
+	<%= link_to "Repeat last order", repeat_last_order_admin_contact_path(@contact) %>
+</div>
+<p>
+<% if @contact.deleted_at -%>
+	<%= link_to 'Activate Contact', undestroy_admin_contact_path(@contact), confirm: 'Are you sure?' %>
+<% else -%>
+	<%= link_to 'Delete Contact', admin_contact_path(@contact), confirm: 'Are you sure?', method: :delete %>&nbsp;</td>
+<% end -%>
+</p>
+
+<%= form_for(@contact, :url=>admin_contact_path(@contact)) do |f| %>
+<a name="notes"></a>
+<%= render :partial => 'form', :locals => {:f => f} %>
+<% end -%>
+

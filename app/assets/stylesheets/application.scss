@@ -1,0 +1,20 @@
+/*
+ *= require_self
+ *= require jquery-ui
+ *= require bootstrap-datetimepicker.min
+ *= require font-awesome
+*/
+
+@import 'variables';
+@import "layout.scss";
+@import "home.scss";
+@import "products.scss";
+@import "admin.scss";
+@import "accounts.scss";
+@import "admin_order.scss";
+@import "admin_contact.scss";
+@import "orders.scss";
+@import "order.scss";
+@import "tr.scss";
+@import "blog.scss";
+@import "contacts.scss";

@@ -1,0 +1,103 @@
+
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="actions">
+    <%= f.submit :disable_with => "Loading..."  %>
+  </div>
+  
+<div class="column">
+  <div class="field">
+    <%= f.label :business %>
+    <%= f.text_field :business %>
+  </div>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :tax_id_number %>
+    <%= f.text_field :tax_id_number %>
+  </div>
+  <div class="field">
+    <%= f.label :address, "Shipping Address" %><br />
+    <%= f.text_area :address, :cols => 30, :rows => 10  %>
+  </div>
+  <div class="field">
+    <%= f.label :town %>
+    <%= f.collection_select(:town_id, Town.all.order("name ASC"), :id, :full_name, {include_blank: 'None'}) %>
+    <%= link_to "New Town", new_admin_town_path %>
+    <%= link_to 'New State', new_admin_state_path %>
+  </div>
+  <div class="field">
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.select(:status, Contact.STATUSES) %>
+  </div>
+  <div class="field">
+    <%= f.label :price_point %>
+    <%= f.text_field :price_point %>
+  </div>
+  <div class="actions">
+    <%= f.submit :disable_with => "Loading..."  %>
+  </div>
+	<%= link_to 'Back', admin_contacts_path %>
+</div>
+
+
+<div class="column">
+  <div class="field">
+    <%= f.label :user_id, "Non-KWAC user" %>
+    <%= f.collection_select(:user_id, User.where(:admin => false).order("name ASC"), :id, :name, {include_blank: 'None'}) %>
+  </div>
+  <div class="field">
+    <%= f.check_box :is_public %>
+    <%= f.label :is_public, "Show on 'Where to Buy' Page" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :paperless_billing %>
+    <%= f.label :paperless_billing, "Paperless Billing" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :mark_retail %>
+    <%= f.label :mark_retail, "Mark with retail price" %>
+  </div>
+  <div class="field">
+    <%= f.label :price_per_ounce %>
+    <%= f.text_field :price_per_ounce %>
+  </div>
+  <div class="field">
+    <%= f.label :distribution_center_id, "Distributor" %>
+    <%= f.collection_select(:distribution_center_id, DistributionCenter.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br />
+    <%= f.text_area :comments, :cols => 40, :rows => 10 %>
+  </div>
+  <%= render :partial => "notes", :locals => {:notes => @notes} %>
+</div>

@@ -1,0 +1,198 @@
+@import 'variables';
+
+
+
+@mixin rounded-corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+body {
+  
+  background-image: none;
+}
+
+
+.admin_header {
+  color: $yellow;
+  background-color: $brown;
+  background: -webkit-linear-gradient($brown, $orange); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($brown, $orange); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($brown, $orange); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($brown, $orange); /* Standard syntax */
+   
+  height: 8em;
+  text-align: center;
+  padding-top: .1em;   
+  
+  a {
+  
+  font-family: 'Montserrat', sans-serif;
+  } 
+
+  a, a:visited {
+    text-decoration: none;
+    font-variant: small-caps;
+    color: $yellow;
+  }
+    
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a.active {
+    text-decoration: underline;
+    color: white;
+  }
+
+  .nav_links {
+    
+      
+      a, a:visited {
+        font-size: $header-font-size;
+        margin-left: .5em;
+      }
+    
+    
+  }
+}
+
+div.wide_wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+div.admin {
+  h1, h2, h3, h4, h5 {  
+    font-family: 'Montserrat', sans-serif ;
+  }
+}
+
+
+
+table.crud {
+  border: 1px solid black;
+
+  
+  a {
+    color: $orange;
+  }
+  
+  a.unresolved {
+    color: red;
+  }
+  
+  th {
+		background: darken($tr-bg,20);
+  	text-align: center;
+  	color: white;
+    a {
+      color: $yellow;
+    }
+  }
+  
+  td {
+    border-top: 1px solid black;
+	  padding: 0em 2.5em;
+    text-align: center;
+    height: 1.5em;
+    white-space: nowrap;
+  }
+  
+  tr {
+    background: white;
+  }
+
+  tr.odd {
+    background: lighten($tr-bg,50);
+  }
+  
+  tr:hover {
+		background: $tr-bg;
+    color: white;
+    a {
+      color: white;
+    }
+  }
+}
+
+.column {
+  width: 45%;
+  float: left;
+  margin-right: 2%;
+  margin-bottom: 5em;
+  border: 1px solid black;
+  padding: .2em;
+}
+
+div.c_panel {
+
+	a {
+		text-decoration: none;
+	}
+	
+	fieldset {
+		width: 25%;
+		display: inline-block;
+		height: 12em;
+		vertical-align: top;
+		border: 2px ridge #ccc;
+		margin-bottom: 2em;
+		color: black;
+		
+		legend {
+			font-weight: bold;
+			font-size: x-large;
+			border: 2px ridge #ccc;
+      color: $yellow;
+      background-color: $orange;
+      background: -webkit-linear-gradient($yellow, $orange); /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient($yellow, $orange); /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient($yellow, $orange); /* For Firefox 3.6 to 15 */
+      background: linear-gradient($yellow, $orange); /* Standard syntax */
+      
+      a {
+        color: white;
+      }
+      a:hover {
+        color: $brown;
+      }
+		}
+		
+		ul {
+			list-style: none;
+			line-height: 2em;
+			
+			li {
+			
+				a {
+					color: black;
+					border: 2px outset #ccc;
+					background: white;
+					padding: 2px;
+				}
+				
+				a:active {
+					border: 2px inset #ccc;
+				}
+				
+			}
+			
+			li.urgent {
+				a {
+					border: 2px outset #c00;
+					background: #d00;
+					color: white;
+				}
+			}
+		
+		}
+
+  
+		
+		
+		
+	}
+	
+}

@@ -1,0 +1,7 @@
+
+
+
+
+<%= post['body'][0..@POST_LENGTH].html_safe %>
+<%= "..." if post['body'].length > @POST_LENGTH %>
+

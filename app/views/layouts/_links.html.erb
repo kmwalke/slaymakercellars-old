@@ -1,0 +1,76 @@
+<div class="nav_links">
+  <div class="social">
+    <%= link_to(image_tag("f.png"), "http://www.facebook.com/pages/Kent-Walker-Artisan-Cheeses/144229549001556", :class => "img", :target => "_blank", :title => "Facebook") %>
+    <%= link_to(image_tag("instagram.png"), "http://www.instagram.com/thecheesecave", :class => "img", :target => "_blank", :title => "Instagram") %>
+    <%= link_to(image_tag("twitter.png"), "https://twitter.com/kentscheesecave?lang=en", :class => "img", :target => "_blank", :title => "Twitter") %>
+    <%= link_to(image_tag("mail.png"), root_path({:signup => true }), :class => "img", :title => "Email") %>
+  </div>
+
+    
+  <div class="links">
+    <ul class="menu">
+      <li>
+        <%= link_to "Home", root_path, :class => active("home") %>
+      </li>
+      <li>
+        <%= link_to "Cheese", "#",  :class => active("products") %>
+        <ul>
+          <li>
+            <span>Cheese Types</span>
+            <ul>
+              <% Product.TYPES.each do |type| -%>
+                <li>
+                  <%= link_to type, products_path({:category => type}) %>
+                </li>
+              <% end -%>
+            </ul>
+          </li>
+          <li>
+            <%= link_to "Where to Buy", accounts_path %>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <%= link_to "News", "#",  :class => active("articles") %>
+        <ul>
+          <li>
+            <%= link_to "Media Coverage", articles_path %>
+          </li>
+          <li>
+            <%= link_to "Blog", blog_path %>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <%= link_to "Visit", "#", :class => active("tr") %>
+        <ul>
+          <li>
+            <%= link_to "Directions", tr_path( anchor: "visit") %>
+          </li>
+          <li>
+            <%= link_to "Hours", tr_path( anchor: "visit") %>
+          </li>
+          <li>
+            <%= link_to "Food & Drink", tr_path( anchor: "menu") %>
+          </li>
+          <li>
+            <%= link_to "Menu", image_path("food.png") %>
+          </li>
+          <li>
+            <%= link_to "Food Truck", tr_path( anchor: "truck") %>
+          </li>
+          <li>
+            <%= link_to "Events", tr_path( anchor: "events") %>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <%= link_to "Order Online", "https://squareup.com/store/Kwac",  :class => "last_link", :target => "_blank" %>
+      </li>
+    </ul>
+    
+    
+
+    <% link_to "Recipes", accounts_path,  :class => active("trade_items") %>
+  </div>
+</div>
