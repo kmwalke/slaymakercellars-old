@@ -1,6 +1,4 @@
 class TradeItemsController < ApplicationController
-  # GET /trade_items
-  # GET /trade_items.json
   def index
     @trade_items = TradeItem.where(is_public: true)
 

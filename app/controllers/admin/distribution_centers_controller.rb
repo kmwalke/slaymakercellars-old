@@ -46,7 +46,10 @@ class Admin::DistributionCentersController < ApplicationController
 
     respond_to do |format|
       if @distribution_center.save
-        format.html { redirect_to edit_admin_distribution_center_path(@distribution_center), notice: 'Distribution center was successfully created.' }
+        format.html do
+          redirect_to edit_admin_distribution_center_path(@distribution_center),
+                      notice: 'Distribution center was successfully created.'
+        end
         format.json { render json: @distribution_center, status: :created, location: @distribution_center }
       else
         format.html { render action: 'new' }
@@ -62,7 +65,10 @@ class Admin::DistributionCentersController < ApplicationController
 
     respond_to do |format|
       if @distribution_center.update!(distribution_center_params)
-        format.html { redirect_to edit_admin_distribution_center_path(@distribution_center), notice: 'Distribution center was successfully updated.' }
+        format.html do
+          redirect_to edit_admin_distribution_center_path(@distribution_center),
+                      notice: 'Distribution center was successfully updated.'
+        end
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

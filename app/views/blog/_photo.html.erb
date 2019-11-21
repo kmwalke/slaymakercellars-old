@@ -12,7 +12,7 @@
   </div>
 
   <div class="post_body">
-    <%= post['caption'][0...@POST_LENGTH].html_safe %>
-    <%= "..." if post['caption'].length > @POST_LENGTH %>
+    <%= post['caption'][0...@post_length].html_safe %>
+    <%= "..." if post['caption'].length > @post_length %>
   </div>
 </div>

@@ -29,10 +29,9 @@ class Order < ActiveRecord::Base
   end
 
   def self.fulfillment
-    result        = {}
-    active_orders = Order.where(fullfilled_on: nil)
-    week          = Date.today...Date.today + 7
-    today         = true
+    result = {}
+    week   = Date.today...Date.today + 7
+    today  = true
 
     week.each do |day|
       result[day] = {}

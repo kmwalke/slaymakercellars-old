@@ -8,20 +8,27 @@ class ApplicationController < ActionController::Base
   end
 
   def xero
-    if Rails.env.production? || testing_xero
-      @xero ||= Xeroizer::PrivateApplication.new('KPTXBBJT7MY3WHJTGMJFHDX1HBPEEP', '4K7UZDW2WUR1DG6PRSPE88ND0JO8WP', "#{Rails.root}/xero/privatekey.pem")
-    else
-      #      @xero ||= Xeroizer::PrivateApplication.new("OKSGYSBMFCIPQVK6DPPCD8PRIWSIQ0", "IQFZ9B1N5WJYMB5CHHAU8ADN6NUA1V", "#{Rails.root}/xero/privatekey.pem")
-      nil
-    end
+    @xero ||= if Rails.env.production? || testing_xero
+                Xeroizer::PrivateApplication.new(
+                  'KPTXBBJT7MY3WHJTGMJFHDX1HBPEEP',
+                  '4K7UZDW2WUR1DG6PRSPE88ND0JO8WP',
+                  "#{Rails.root}/xero/privatekey.pem"
+                )
+              else
+                Xeroizer::PrivateApplication.new(
+                  'OKSGYSBMFCIPQVK6DPPCD8PRIWSIQ0',
+                  'IQFZ9B1N5WJYMB5CHHAU8ADN6NUA1V',
+                  "#{Rails.root}/xero/privatekey.pem"
+                )
+              end
   end
 
   def logged_in?
-    unless current_user&.active?
-      flash[:notice]             = 'You must log in to see this page.'
-      session[:orig_destination] = request.path
-      redirect_to login_path
-    end
+    return if current_user&.active?
+
+    flash[:notice]             = 'You must log in to see this page.'
+    session[:orig_destination] = request.path
+    redirect_to login_path
   end
 
   def logged_in_as_admin?
