@@ -1,13 +1,13 @@
 <div class="nav_links">
   <div class="social">
-    <%= link_to(image_tag("f.png"), "http://www.facebook.com/pages/Kent-Walker-Artisan-Cheeses/144229549001556", :class => "img", :target => "_blank", :title => "Facebook") %>
-    <%= link_to(image_tag("instagram.png"), "http://www.instagram.com/thecheesecave", :class => "img", :target => "_blank", :title => "Instagram") %>
-    <%= link_to(image_tag("twitter.png"), "https://twitter.com/kentscheesecave?lang=en", :class => "img", :target => "_blank", :title => "Twitter") %>
-    <%= link_to(image_tag("mail.png"), root_path({:signup => true }), :class => "img", :title => "Email") %>
+    <%= link_to(image_tag('f.png'), 'https://www.facebook.com/Slaymaker-Cellars-116480553057545', :class => "img", :target => "_blank", :title => "Facebook") %>
+    <%#= link_to(image_tag("instagram.png"), "http://www.instagram.com/thecheesecave", :class => "img", :target => "_blank", :title => "Instagram") %>
+    <%#= link_to(image_tag("twitter.png"), "https://twitter.com/kentscheesecave?lang=en", :class => "img", :target => "_blank", :title => "Twitter") %>
+    <%= link_to(image_tag('mail.png'), 'mailto:kent@slaymakercellars.com', :class => "img", :title => "Email") %>
   </div>
 
     
-  <div class="links">
+  <div class="links" style="display:none">
     <ul class="menu">
       <li>
         <%= link_to "Home", root_path, :class => active("home") %>
