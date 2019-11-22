@@ -13,7 +13,9 @@ class User::OrdersController < ApplicationController
       @show = params[:show] || 'active'
       case @show
       when 'late'
-        @orders = current_user.contact.orders.where('fullfilled_on is null and delivery_date < ?', Date.today).order('fullfilled_on DESC')
+        @orders = current_user.contact.orders.where(
+          'fullfilled_on is null and delivery_date < ?', Date.today
+        ).order('fullfilled_on DESC')
         @title  = 'Late Orders'
       when 'fulfilled'
         @orders = current_user.contact.orders.where('fullfilled_on is not null').order('fullfilled_on DESC')
@@ -82,7 +84,11 @@ class User::OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         OrderMailer.new_order(@order).deliver_now
-        format.html { redirect_to edit_user_order_path(@order), notice: 'Order was successfully created. <br /><br /> <a href="/user/orders/new">Add Another Order</a>'.html_safe }
+        format.html do
+          redirect_to edit_user_order_path(@order),
+                      notice: 'Order was successfully created. <br /><br /> ' +
+                              '<a href="/user/orders/new">Add Another Order</a>'.html_safe
+        end
         format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render action: 'new' }
@@ -132,17 +138,27 @@ class User::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:contact_business, :delivery_date, :distribution_center_id, :customer_po, :invoice_id, :comments, :created_by_id, :updated_by_id, line_items_attributes: [:fulfilled, :units, :size, :age, :product_id, :id, :_destroy])
+    params.require(:order).permit(
+      :contact_business,
+      :delivery_date,
+      :distribution_center_id,
+      :customer_po,
+      :invoice_id,
+      :comments,
+      :created_by_id,
+      :updated_by_id,
+      line_items_attributes: [:fulfilled, :units, :size, :age, :product_id, :id, :_destroy]
+    )
   end
 
   def only_access_self
-    if params[:id]
-      order = Order.find_by_id(params[:id])
-      if order.contact
-        redirect_to user_orders_path unless order.contact.user == current_user
-      else
-        redirect_to user_orders_path
-      end
+    return unless params[:id]
+
+    order = Order.find_by_id(params[:id])
+    if order.contact
+      redirect_to user_orders_path unless order.contact.user == current_user
+    else
+      redirect_to user_orders_path
     end
   end
 end

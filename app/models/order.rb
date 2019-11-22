@@ -4,7 +4,9 @@ class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
   belongs_to :created_by, class_name: 'User'
   belongs_to :updated_by, class_name: 'User'
-  accepts_nested_attributes_for :line_items, reject_if: proc { |attributes| attributes['units'].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :line_items,
+                                reject_if: proc { |attributes| attributes['units'].blank? },
+                                allow_destroy: true
 
   validates_presence_of :contact_id, :delivery_date
 
@@ -29,10 +31,9 @@ class Order < ActiveRecord::Base
   end
 
   def self.fulfillment
-    result        = {}
-    active_orders = Order.where(fullfilled_on: nil)
-    week          = Date.today...Date.today + 7
-    today         = true
+    result = {}
+    week   = Date.today...Date.today + 7
+    today  = true
 
     week.each do |day|
       result[day] = {}
@@ -40,7 +41,7 @@ class Order < ActiveRecord::Base
                       Order.where('fullfilled_on is NULL AND delivery_date <= ?', Date.today)
                     else
                       Order.where(fullfilled_on: nil, delivery_date: day)
-               end
+                    end
       today       = false
 
       Product.where(in_production: true).each do |product|

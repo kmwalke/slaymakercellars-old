@@ -1,8 +1,7 @@
 class Admin::ContactsController < ApplicationController
   before_action :logged_in_as_admin?
   helper_method :sort_column, :sort_direction
-  # GET /contacts
-  # GET /contacts.json
+
   def index
     @show = params[:show]
     case @show
@@ -16,7 +15,8 @@ class Admin::ContactsController < ApplicationController
       @contacts = Contact.urgent_contacts
       @title    = 'Urgent Contacts'
     when 'inactive'
-      @contacts = Contact.where('deleted_at is not null').search(params[:search]).order(sort_column + ' ' + sort_direction)
+      @contacts = Contact.where('deleted_at is not null')
+                         .search(params[:search]).order(sort_column + ' ' + sort_direction)
       @title    = 'Deleted Contacts'
     else
       @show     = 'active'
@@ -27,38 +27,31 @@ class Admin::ContactsController < ApplicationController
     @contacts = @contacts.paginate(per_page: 50, page: params[:page])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @contacts }
     end
   end
 
-  # GET /contacts/1
-  # GET /contacts/1.json
   def repeat_last_order
     contact   = Contact.find(params[:id])
     new_order = contact.repeat_last_order
     redirect_to edit_admin_order_path(new_order)
   end
 
-  # GET /contacts/new
-  # GET /contacts/new.json
   def new
     @contact = Contact.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @contact }
     end
   end
 
-  # GET /contacts/1/edit
   def edit
     @contact = Contact.find(params[:id])
     @notes   = @contact.notes.order('created_at desc')
   end
 
-  # POST /contacts
-  # POST /contacts.json
   def create
     @contact            = Contact.create(contact_params)
     @contact.updated_by = current_user
@@ -74,8 +67,6 @@ class Admin::ContactsController < ApplicationController
     end
   end
 
-  # PUT /contacts/1
-  # PUT /contacts/1.json
   def update
     @contact            = Contact.find(params[:id])
     @contact.updated_by = current_user
@@ -91,8 +82,6 @@ class Admin::ContactsController < ApplicationController
     end
   end
 
-  # DELETE /contacts/1
-  # DELETE /contacts/1.json
   def undestroy
     @contact            = Contact.find(params[:id])
     @contact.deleted_at = nil
@@ -101,8 +90,6 @@ class Admin::ContactsController < ApplicationController
     redirect_to admin_contacts_url
   end
 
-  # DELETE /contacts/1
-  # DELETE /contacts/1.json
   def destroy
     @contact            = Contact.find(params[:id])
     @contact.deleted_at = DateTime.now
@@ -122,12 +109,31 @@ class Admin::ContactsController < ApplicationController
     %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 
-  private
-
   def contact_params
-    params.require(:contact).permit(:name, :business, :title, :town, :comments, :price_point,
-                                    :created_at, :updated_at, :status, :address, :url, :is_public, :phone, :email, :deleted_at,
-                                    :paperless_billing, :state, :distribution_center_id, :mark_retail, :price_per_ounce, :town_id,
-                                    :tax_id_number, :user_id)
+    params.require(:contact).permit(
+      :name,
+      :business,
+      :title,
+      :town,
+      :comments,
+      :price_point,
+      :created_at,
+      :updated_at,
+      :status,
+      :address,
+      :url,
+      :is_public,
+      :phone,
+      :email,
+      :deleted_at,
+      :paperless_billing,
+      :state,
+      :distribution_center_id,
+      :mark_retail,
+      :price_per_ounce,
+      :town_id,
+      :tax_id_number,
+      :user_id
+    )
   end
 end

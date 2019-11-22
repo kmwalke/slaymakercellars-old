@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
   before_action :logged_in_as_admin?
 
-  def get_xero_item_codes
+  def xero_item_codes
     if xero
       xero.Item.all.map(&:code)
     else
@@ -24,7 +24,7 @@ class Admin::ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product         = Product.new
-    @xero_item_codes = get_xero_item_codes
+    @xero_item_codes = xero_item_codes
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,7 +35,7 @@ class Admin::ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product         = Product.find(params[:id])
-    @xero_item_codes = get_xero_item_codes
+    @xero_item_codes = xero_item_codes
   end
 
   # POST /products
@@ -85,6 +85,17 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :desc, :photo_content_type, :photo_file_size, :position, :category, :is_public, :in_production, :xero_item_code, :photo)
+    params.require(:product).permit(
+      :name,
+      :desc,
+      :photo_content_type,
+      :photo_file_size,
+      :position,
+      :category,
+      :is_public,
+      :in_production,
+      :xero_item_code,
+      :photo
+    )
   end
 end

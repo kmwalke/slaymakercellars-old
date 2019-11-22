@@ -11,14 +11,12 @@ class Contact < ActiveRecord::Base
   validate :retail_price
 
   def retail_price
-    if mark_retail && price_per_ounce.nil?
-      errors.add(:price_per_ounce, "must be a dollar value if 'Mark Retail Price' is checked")
-    end
+    return unless mark_retail && price_per_ounce.nil?
+
+    errors.add(:price_per_ounce, "must be a dollar value if 'Mark Retail Price' is checked")
   end
 
-  def self.STATUSES
-    ['Current', 'Target', 'Misc.']
-  end
+  STATUSES = %w[Current Target Misc.].freeze
 
   def self.target_contacts
     where("status='Target' and deleted_at is null").order 'business ASC'
@@ -38,10 +36,9 @@ class Contact < ActiveRecord::Base
     else
       all
     end
-   end
+  end
 
   def self.urgent_contacts
-    # Contact.all.map{|c| c.unresolved_notes? ? c : nil}.compact
     Contact.where(id: Note.where(deleted_at: nil).uniq.pluck(:contact_id))
   end
 

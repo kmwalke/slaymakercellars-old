@@ -171,7 +171,7 @@ describe 'Admin::Orders' do
 
   it 'views all orders by a contact' do
     login_as_admin
-    order    = FactoryBot.create(:order)
+    order = FactoryBot.create(:order)
     visit admin_orders_path
 
     click_link order.contact.business
@@ -225,8 +225,6 @@ describe 'Admin::Orders' do
       expect(current_path).to eq(admin_order_path(order))
 
       expect(page).to have_content('Invoice Status: DRAFT')
-    else
-      #      expect(1).to eq(2)
     end
   end
 
@@ -249,7 +247,7 @@ describe 'Admin::Orders' do
 
   it 'fulfills line items' do
     login_as_admin
-    p = FactoryBot.create(:product)
+    p     = FactoryBot.create(:product)
     order = FactoryBot.create(:order)
     order.line_items.append FactoryBot.create(:line_item, product: p, size: LineItem.SIZES.last)
 

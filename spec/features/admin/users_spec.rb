@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Admin::Users' do
   it 'opens Admin::Users' do
-    user = login_as_admin
+    login_as_admin
     visit admin_users_path
 
     expect(current_path).to eq(admin_users_path)
@@ -10,7 +10,8 @@ describe 'Admin::Users' do
   end
 
   it 'creates an user' do
-    user = login_as_admin
+    login_as_admin
+
     user = FactoryBot.create(:user)
     visit admin_users_path
 
@@ -26,7 +27,8 @@ describe 'Admin::Users' do
   end
 
   it 'updates an user' do
-    user     = login_as_admin
+    login_as_admin
+
     user     = FactoryBot.create(:user)
     user_id  = user.id
     new_name = "new #{user.name}"
@@ -43,7 +45,7 @@ describe 'Admin::Users' do
   end
 
   it 'archives an user' do
-    user    = login_as_admin
+    login_as_admin
     user    = FactoryBot.create(:user)
     user_id = user.id
     visit admin_users_path
@@ -56,8 +58,7 @@ describe 'Admin::Users' do
   end
 
   it 'denies login to archived user' do
-    user    = FactoryBot.create(:user, admin: true, deleted_at: DateTime.now)
-    user_id = user.id
+    user = FactoryBot.create(:user, admin: true, deleted_at: DateTime.now)
     visit login_path
 
     fill_in 'Email', with: user.email
@@ -70,7 +71,7 @@ describe 'Admin::Users' do
   end
 
   it 'unarchives an user' do
-    user = login_as_admin
+    login_as_admin
     user2    = FactoryBot.create(:user, admin: true, deleted_at: DateTime.now)
     user2_id = user2.id
 

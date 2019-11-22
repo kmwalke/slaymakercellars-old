@@ -3,14 +3,6 @@ AllCops:
   - 'db/schema.rb'
   - 'config/environments/*'
   - 'bin/*'
-  - 'app/controllers/admin/orders_controller.rb'
-  - 'app/controllers/admin_controller.rb'
-  - 'config/initializers/mail.rb'
-  - 'spec/features/admin/contacts_spec.rb'
-  - 'spec/features/admin/fulfillment_spec.rb'
-  - 'spec/features/admin/orders_spec.rb'
-  - 'spec/features/admin/users_spec.rb'
-  - 'spec/features/user/users_spec.rb'
 
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -35,6 +27,7 @@ Metrics/BlockLength:
   - 'spec/features/*'
   - 'spec/features/*/*'
   - 'Guardfile'
+  - 'config/routes.rb'
 
 Metrics/CyclomaticComplexity:
   Max: 10

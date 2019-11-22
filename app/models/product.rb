@@ -17,10 +17,8 @@ class Product < ActiveRecord::Base
   #    :path => "app/assets/attachments/:class/:id/:style/:basename.:extension",
   #    :bucket => "kwac"
 
-  validates_attachment :photo, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'] }
+  validates_attachment :photo, content_type: { content_type: %w[image/jpg image/jpeg image/png image/gif] }
   validates_presence_of :xero_item_code
 
-  def self.TYPES
-    ['Year Round', 'Seasonal', 'Reserve', 'Miscellaneous']
-  end
+  TYPES = ['Year Round', 'Seasonal', 'Reserve', 'Miscellaneous'].freeze
 end
