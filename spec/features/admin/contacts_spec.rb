@@ -11,7 +11,7 @@ describe 'Admin::Contacts' do
 
   it 'creates a contact' do
     login_as_admin
-    contact    = FactoryBot.create(:contact)
+    contact = FactoryBot.create(:contact)
     visit admin_contacts_path
 
     first(:link, 'New Contact').click
@@ -83,7 +83,7 @@ describe 'Admin::Contacts' do
 
   it 'marks a misc a contact' do
     login_as_admin
-    contact    = FactoryBot.create(:contact)
+    contact = FactoryBot.create(:contact)
     visit admin_contacts_path
 
     click_link contact.name
@@ -99,7 +99,7 @@ describe 'Admin::Contacts' do
 
   it 'marks a target a contact' do
     login_as_admin
-    contact    = FactoryBot.create(:contact)
+    contact = FactoryBot.create(:contact)
     visit admin_contacts_path
 
     click_link contact.name
@@ -156,7 +156,7 @@ describe 'Admin::Contacts' do
 
   it 'repeats the last order' do
     login_as_admin
-    contact = FactoryBot.create(:contact)
+    contact   = FactoryBot.create(:contact)
     old_order = FactoryBot.create(:order, contact_id: contact.id)
     new_id    = old_order.id + 1
     visit edit_admin_contact_path(contact)

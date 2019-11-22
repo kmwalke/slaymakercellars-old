@@ -62,7 +62,6 @@ class Admin::OrdersController < ApplicationController
           if line_item.product.nil?
             flash[:notice] = 'Please select a cheese in your Line Items.  Your invoice was NOT saved.'
             redirect_to admin_order_path(@order)
-            return
           end
           invoice.add_line_item(
             item_code: line_item.product.xero_item_code,
@@ -77,9 +76,9 @@ class Admin::OrdersController < ApplicationController
       saved = invoice.save
 
       if saved
+        flash[:notice]    = 'A new invoice was created in Xero'
         @order.invoice_id = invoice.invoice_id
         @order.save
-        flash[:notice]    = 'A new invoice was created in Xero'
       else
         flash[:notice] = "#{invoice.inspect}An error occurred.  Your invoice was NOT saved."
       end
@@ -94,7 +93,11 @@ class Admin::OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to admin_orders_path, notice: "Order was successfully delivered. <br /><br /> <a href=\"/admin/orders/#{@order.id}\">View Order</a>".html_safe }
+        format.html do
+          redirect_to admin_orders_path,
+                      notice: 'Order was successfully delivered. <br /><br />' +
+                              "<a href=\"/admin/orders/#{@order.id}\">View Order</a>".html_safe
+        end
       else
         format.html { redirect_to admin_orders_path, notice: 'Error' }
       end
@@ -163,7 +166,11 @@ class Admin::OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         OrderMailer.new_order(@order).deliver_now
-        format.html { redirect_to edit_admin_order_path(@order), notice: 'Order was successfully created. <br /><br /> <a href="/admin/orders/new">Add Another Order</a>'.html_safe }
+        format.html do
+          redirect_to edit_admin_order_path(@order),
+                      notice: 'Order was successfully created. <br /><br />' +
+                              ' <a href="/admin/orders/new">Add Another Order</a>'.html_safe
+        end
         format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render action: 'new' }
@@ -213,6 +220,16 @@ class Admin::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:contact_business, :delivery_date, :distribution_center_id, :customer_po, :invoice_id, :comments, :created_by_id, :updated_by_id, line_items_attributes: [:fulfilled, :units, :size, :product_id, :id, :_destroy])
+    params.require(:order).permit(
+      :contact_business,
+      :delivery_date,
+      :distribution_center_id,
+      :customer_po,
+      :invoice_id,
+      :comments,
+      :created_by_id,
+      :updated_by_id,
+      line_items_attributes: [:fulfilled, :units, :size, :product_id, :id, :_destroy]
+    )
   end
 end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'User::Users' do
   it 'updates an user' do
-    user = login
+    user     = login
     user_id  = user.id
     new_name = "new #{user.name}"
     visit user_orders_path
