@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     category  = params[:category] || 'Year Round'
     @products = Product.where(category: category, is_public: true).order(:name)
     @title    = "#{category} Cheeses"
-    @active   = params[:category] || Product.TYPES[0]
+    @active   = params[:category] || Product::TYPES[0]
 
     respond_to do |format|
       format.html # index.html.erb

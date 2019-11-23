@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :category %><br />
-    <%= select(:product, :category, Product.TYPES) %>
+    <%= select(:product, :category, Product::TYPES) %>
   </div>
   <div class="actions">
     <%= f.submit :disable_with => "Loading..." %>

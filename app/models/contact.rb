@@ -2,7 +2,7 @@ class Contact < ActiveRecord::Base
   has_many :orders, dependent: :destroy
   has_many :notes # , :order => 'created_at desc'
   belongs_to :town
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :distribution_center
   belongs_to :updated_by, class_name: 'User'
   accepts_nested_attributes_for :orders, reject_if: :all_blank, allow_destroy: true
