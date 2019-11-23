@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'User::Orders' do
   it 'opens User::Orders' do

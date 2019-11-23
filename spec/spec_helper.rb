@@ -93,3 +93,30 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 end
+
+# Set this to true to test Xero integration in the dev environment
+# Don't forget to change it in Application Controller, too
+def testing_xero
+  false
+end
+
+def login
+  user = FactoryBot.create(:user)
+  FactoryBot.create(:contact, user: user)
+  visit admin_path
+  fill_in 'Email', with: user.email
+  fill_in 'Password', with: user.password
+  click_button 'Log In'
+
+  user
+end
+
+def login_as_admin
+  user = FactoryBot.create(:user, admin: true)
+  visit admin_path
+  fill_in 'Email', with: user.email
+  fill_in 'Password', with: user.password
+  click_button 'Log In'
+
+  user
+end
