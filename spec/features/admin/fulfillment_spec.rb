@@ -33,7 +33,7 @@ describe 'Admin::Fulfillment' do
     login_as_admin
     p     = FactoryBot.create(:product)
     order = FactoryBot.create(:order)
-    order.line_items.append FactoryBot.create(:line_item, product: p, size: LineItem.SIZES.last, fulfilled: true)
+    order.line_items.append FactoryBot.create(:line_item, product: p, size: LineItem::SIZES.last, fulfilled: true)
 
     visit admin_fulfillment_path
     expect(page).not_to have_content('1.0')

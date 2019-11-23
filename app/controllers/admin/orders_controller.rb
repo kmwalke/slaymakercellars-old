@@ -67,7 +67,7 @@ class Admin::OrdersController < ApplicationController
             item_code: line_item.product.xero_item_code,
             description: line_item.units.to_s + 'x ' + line_item.size + ' ' + line_item.product.name,
             quantity: 1,
-            account_code: LineItem.ACCOUNT_CODES[line_item.size],
+            account_code: LineItem::ACCOUNT_CODES[line_item.size],
             unit_amount: rails_contact.price_point
           )
         end

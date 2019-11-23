@@ -1,6 +1,5 @@
 class Order < ActiveRecord::Base
   belongs_to :contact
-  belongs_to :distribution_center
   has_many :line_items, dependent: :destroy
   belongs_to :created_by, class_name: 'User'
   belongs_to :updated_by, class_name: 'User'
@@ -46,7 +45,7 @@ class Order < ActiveRecord::Base
 
       Product.where(in_production: true).each do |product|
         result[day][product.name] = {}
-        LineItem.SIZES.each do |size|
+        LineItem::SIZES.each do |size|
           total = 0
 
           orders.each do |order|
