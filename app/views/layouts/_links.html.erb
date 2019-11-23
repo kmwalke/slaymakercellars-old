@@ -6,8 +6,7 @@
     <%= link_to(image_tag('mail.png'), 'mailto:kent@slaymakercellars.com', :class => "img", :title => "Email") %>
   </div>
 
-    
-  <div class="links" style="display:none">
+  <div class="links">
     <ul class="menu">
       <li>
         <%= link_to "Home", root_path, :class => active("home") %>
@@ -18,7 +17,7 @@
           <li>
             <span>Cheese Types</span>
             <ul>
-              <% Product.TYPES.each do |type| -%>
+              <% Product::TYPES.each do |type| -%>
                 <li>
                   <%= link_to type, products_path({:category => type}) %>
                 </li>

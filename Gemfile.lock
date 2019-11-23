@@ -360,6 +360,7 @@ DEPENDENCIES
   newrelic_rpm
   paperclip
   pg
+  pry
   puma
   railroady
   rails (= 6.0.1)
