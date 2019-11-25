@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Products' do
   it 'renders products page' do
     visit root_path
-    click_link 'Cheese'
+    click_link 'Seasonal'
     expect(current_path).to eq(products_path)
   end
 

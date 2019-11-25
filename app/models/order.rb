@@ -1,10 +1,10 @@
 class Order < ActiveRecord::Base
   belongs_to :contact
-  has_many :line_items, dependent: :destroy
+  has_many :line_items, dependent: :destroy, inverse_of: :order
   belongs_to :created_by, class_name: 'User'
   belongs_to :updated_by, class_name: 'User'
   accepts_nested_attributes_for :line_items,
-                                reject_if: proc { |attributes| attributes['units'].blank? },
+                                # reject_if: proc { |attributes| attributes['units'].blank? },
                                 allow_destroy: true
 
   validates_presence_of :contact_id, :delivery_date

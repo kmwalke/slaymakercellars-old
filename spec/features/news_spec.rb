@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'News' do
   it 'renders news page' do
     visit root_path
-    click_link 'News'
+    click_link 'Media Coverage'
     expect(current_path).to eq(articles_path)
   end
 
