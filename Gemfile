@@ -18,6 +18,7 @@ gem 'momentjs-rails'
 gem 'newrelic_rpm'
 gem 'paperclip'
 gem 'pg'
+gem 'pry'
 gem 'puma'
 gem 'rails4-autocomplete'
 gem 'simple_form'
@@ -28,10 +29,6 @@ gem 'turbolinks'
 gem 'will_paginate'
 gem 'xeroizer'
 
-gem 'rspec-rails', group: [:test, :development]
-
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'coffee-rails'
   gem 'sass-rails'
@@ -40,6 +37,7 @@ end
 
 group :development, :test do
   gem 'railroady'
+  gem 'rspec-rails'
   gem 'rubocop'
 end
 

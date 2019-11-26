@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'Admin::Products' do
   it 'opens Admin::Products' do

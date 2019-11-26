@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'Admin::Contacts' do
   it 'opens Admin::Contacts' do
@@ -20,6 +20,7 @@ describe 'Admin::Contacts' do
     fill_in 'Name', with: contact.name
     fill_in 'Business', with: contact.business
     fill_in 'Price point', with: '14.0'
+    select contact.town.name, from: 'contact_town_id'
     check 'Mark with retail price'
     fill_in 'Price per ounce', with: '1.75'
 

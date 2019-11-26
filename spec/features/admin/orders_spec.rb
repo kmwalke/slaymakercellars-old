@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'Admin::Orders' do
   it 'opens Admin::Orders' do
@@ -249,7 +249,7 @@ describe 'Admin::Orders' do
     login_as_admin
     p     = FactoryBot.create(:product)
     order = FactoryBot.create(:order)
-    order.line_items.append FactoryBot.create(:line_item, product: p, size: LineItem.SIZES.last)
+    order.line_items.append FactoryBot.create(:line_item, product: p, size: LineItem::SIZES.last)
 
     visit edit_admin_order_path(order)
     check 'order[line_items_attributes][0][fulfilled]'

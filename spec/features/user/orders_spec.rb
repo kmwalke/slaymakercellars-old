@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'User::Orders' do
   it 'opens User::Orders' do
@@ -113,8 +113,8 @@ describe 'User::Orders' do
     FactoryBot.create(:line_item, order_id: order.id)
 
     click_button 'Save'
-    expect(current_path).to eq(edit_user_order_path(order.id + 1))
     expect(order.line_items.count).to eq 2
+    expect(current_path).to eq(edit_user_order_path(order.id + 1))
     expect(page).to have_content('created')
   end
 

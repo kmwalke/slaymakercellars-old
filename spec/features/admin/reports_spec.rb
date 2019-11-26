@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'Admin::Reports' do
   it 'opens Admin::Reports' do

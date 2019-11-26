@@ -1,23 +1,23 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'Products' do
   it 'renders products page' do
     visit root_path
-    click_link 'Cheese'
+    click_link 'Seasonal'
     expect(current_path).to eq(products_path)
   end
 
   it 'renders products categories' do
     products = []
-    (0...Product.TYPES.count).each do |i|
-      products[i] = FactoryBot.create(:product, category: Product.TYPES[i])
+    (0...Product::TYPES.count).each do |i|
+      products[i] = FactoryBot.create(:product, category: Product::TYPES[i])
 
       visit products_path
-      first(:link, Product.TYPES[i]).click
+      first(:link, Product::TYPES[i]).click
 
-      expect(page).to have_content(Product.TYPES[i])
+      expect(page).to have_content(Product::TYPES[i])
     end
-    expect(Product.count).to eq(Product.TYPES.count)
+    expect(Product.count).to eq(Product::TYPES.count)
   end
 
   it 'shows products in production' do

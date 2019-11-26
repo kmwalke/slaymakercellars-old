@@ -9,7 +9,7 @@
 
 <div class='sort'>
   <h1>Cheeses</h1>
-  <% Product.TYPES.each do |type| -%>
+  <% Product::TYPES.each do |type| -%>
     <div class="link">
       <%= link_to type, products_path({:category => type}), :class => active_sort(type, @active) %>
       <span class="arrow">

@@ -80,6 +80,7 @@ class User::OrdersController < ApplicationController
   def create
     @order            = Order.create(order_params)
     @order.created_by = current_user
+    @order.updated_by = current_user
 
     respond_to do |format|
       if @order.save
