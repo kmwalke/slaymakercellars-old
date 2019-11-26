@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
                   '4K7UZDW2WUR1DG6PRSPE88ND0JO8WP',
                   "#{Rails.root}/xero/privatekey.pem"
                 )
-              else
-                nil
+                # else
+                # nil
                 # Xeroizer::PrivateApplication.new(
                 #   'OKSGYSBMFCIPQVK6DPPCD8PRIWSIQ0',
                 #   'IQFZ9B1N5WJYMB5CHHAU8ADN6NUA1V',
