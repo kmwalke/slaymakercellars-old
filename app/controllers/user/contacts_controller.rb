@@ -1,14 +1,11 @@
 class User::ContactsController < ApplicationController
   before_action :logged_in?
 
-  # GET /contacts/1/edit
   def edit
     @contact = current_user.contact
     @notes   = @contact.notes.order('created_at desc')
   end
 
-  # PUT /contacts/1
-  # PUT /contacts/1.json
   def update
     @contact = current_user.contact
 

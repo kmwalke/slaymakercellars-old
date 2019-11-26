@@ -1,34 +1,27 @@
 class Admin::ArticlesController < ApplicationController
   before_action :logged_in_as_admin?
-  # GET /articles
-  # GET /articles.json
   def index
     @articles = Article.order('date desc')
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @articles }
     end
   end
 
-  # GET /articles/new
-  # GET /articles/new.json
   def new
     @article = Article.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @article }
     end
   end
 
-  # GET /articles/1/edit
   def edit
     @article = Article.find(params[:id])
   end
 
-  # POST /articles
-  # POST /articles.json
   def create
     @article = Article.create(article_params)
 
@@ -43,8 +36,6 @@ class Admin::ArticlesController < ApplicationController
     end
   end
 
-  # PUT /articles/1
-  # PUT /articles/1.json
   def update
     @article = Article.find(params[:id])
 
@@ -59,8 +50,6 @@ class Admin::ArticlesController < ApplicationController
     end
   end
 
-  # DELETE /articles/1
-  # DELETE /articles/1.json
   def destroy
     @article = Article.find(params[:id])
     @article.destroy

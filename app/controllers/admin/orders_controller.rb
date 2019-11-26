@@ -5,8 +5,6 @@ class Admin::OrdersController < ApplicationController
     'https://go.xero.com/AccountsReceivable/Edit.aspx?InvoiceID='
   end
 
-  # GET /orders
-  # GET /orders.json
   def index
     @show = params[:show] || 'active'
     if Rails.env.production? || testing_xero
@@ -29,10 +27,7 @@ class Admin::OrdersController < ApplicationController
       @title  = "Orders by #{contact.business}"
     end
 
-    #    @orders = @orders.paginate(:per_page => 20, :page => params[:page])
-
     respond_to do |format|
-      format.html # index.html.erb
       format.json { render json: @contacts }
     end
   end
@@ -117,8 +112,6 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
-  # GET /orders/1
-  # GET /orders/1.json
   def show
     @order             = Order.find(params[:id])
     @xero_invoice_link = xero_invoice_link
@@ -127,19 +120,16 @@ class Admin::OrdersController < ApplicationController
     redirect_to(edit_admin_order_path(@order.id)) && return if @order.fullfilled_on.nil? && @order.invoice_id.nil?
   end
 
-  # GET /orders/new
-  # GET /orders/new.json
   def new
     @order            = Order.new
     @contact_business = params[:contact]
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @order }
     end
   end
 
-  # GET /orders/1/edit
   def edit
     @order = Order.find(params[:id])
 
@@ -157,8 +147,6 @@ class Admin::OrdersController < ApplicationController
     @invoice           = xero.Invoice.find(@order.invoice_id) if @order.invoice_id
   end
 
-  # POST /orders
-  # POST /orders.json
   def create
     @order            = Order.create(order_params)
     @order.created_by = current_user
@@ -180,8 +168,6 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
-  # PUT /orders/1
-  # PUT /orders/1.json
   def update
     @order            = Order.find(params[:id])
     @order.updated_by = current_user
@@ -206,8 +192,6 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
-  # DELETE /orders/1
-  # DELETE /orders/1.json
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
@@ -222,15 +206,8 @@ class Admin::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(
-      :contact_business,
-      :delivery_date,
-      :distribution_center_id,
-      :customer_po,
-      :invoice_id,
-      :comments,
-      :created_by_id,
-      :updated_by_id,
-      line_items_attributes: [:fulfilled, :units, :size, :product_id, :id, :_destroy]
+      :contact_business, :delivery_date, :distribution_center_id, :customer_po, :invoice_id, :comments, :created_by_id,
+      :updated_by_id, line_items_attributes: [:fulfilled, :units, :size, :product_id, :id, :_destroy]
     )
   end
 end

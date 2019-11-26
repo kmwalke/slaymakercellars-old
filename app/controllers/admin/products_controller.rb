@@ -9,37 +9,30 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  # GET /products
-  # GET /products.json
   def index
     @products = Product.order('category DESC, name')
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @products }
     end
   end
 
-  # GET /products/new
-  # GET /products/new.json
   def new
     @product         = Product.new
     @xero_item_codes = xero_item_codes
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @product }
     end
   end
 
-  # GET /products/1/edit
   def edit
     @product         = Product.find(params[:id])
     @xero_item_codes = xero_item_codes
   end
 
-  # POST /products
-  # POST /products.json
   def create
     @product = Product.create(product_params)
 
@@ -54,8 +47,6 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  # PUT /products/1
-  # PUT /products/1.json
   def update
     @product = Product.find(params[:id])
 
@@ -70,8 +61,6 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
     @product = Product.find(params[:id])
     @product.destroy

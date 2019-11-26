@@ -1,46 +1,37 @@
 class Admin::DistributionCentersController < ApplicationController
   before_action :logged_in_as_admin?
 
-  # GET /distribution_centers
-  # GET /distribution_centers.json
   def index
     @distribution_centers = DistributionCenter.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @distribution_centers }
     end
   end
 
-  # GET /distribution_centers/1
-  # GET /distribution_centers/1.json
   def show
     @distribution_center = DistributionCenter.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @distribution_center }
     end
   end
 
-  # GET /distribution_centers/new
-  # GET /distribution_centers/new.json
   def new
     @distribution_center = DistributionCenter.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @distribution_center }
     end
   end
 
-  # GET /distribution_centers/1/edit
   def edit
     @distribution_center = DistributionCenter.find(params[:id])
   end
 
-  # POST /distribution_centers
-  # POST /distribution_centers.json
   def create
     @distribution_center = DistributionCenter.create(distribution_center_params)
 
@@ -58,8 +49,6 @@ class Admin::DistributionCentersController < ApplicationController
     end
   end
 
-  # PUT /distribution_centers/1
-  # PUT /distribution_centers/1.json
   def update
     @distribution_center = DistributionCenter.find(params[:id])
 
@@ -77,8 +66,6 @@ class Admin::DistributionCentersController < ApplicationController
     end
   end
 
-  # DELETE /distribution_centers/1
-  # DELETE /distribution_centers/1.json
   def destroy
     @distribution_center = DistributionCenter.find(params[:id])
     @distribution_center.destroy

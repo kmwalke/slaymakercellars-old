@@ -7,7 +7,7 @@ class Admin::NotesController < ApplicationController
     @user_id    = current_user.id
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @note }
     end
   end

@@ -6,8 +6,6 @@ class User::OrdersController < ApplicationController
     'https://go.xero.com/AccountsReceivable/Edit.aspx?InvoiceID='
   end
 
-  # GET /orders
-  # GET /orders.json
   def index
     if current_user.contact
       @show = params[:show] || 'active'
@@ -32,35 +30,28 @@ class User::OrdersController < ApplicationController
       @title  = 'Your account has not been set up'
     end
 
-    #    @orders = @orders.paginate(:per_page => 20, :page => params[:page])
-
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @orders }
     end
   end
 
-  # GET /orders/1
-  # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
 
     redirect_to edit_user_order_path(@order) unless @order.fullfilled_on
   end
 
-  # GET /orders/new
-  # GET /orders/new.json
   def new
     @order            = Order.new
     @contact_business = current_user.contact.business
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @order }
     end
   end
 
-  # GET /orders/1/edit
   def edit
     @order     = Order.find(params[:id])
     @order_ids = Order.where(fullfilled_on: nil).order('delivery_date ASC').map(&:id)
@@ -75,8 +66,6 @@ class User::OrdersController < ApplicationController
     @invoice           = xero.Invoice.find(@order.invoice_id) if @order.invoice_id
   end
 
-  # POST /orders
-  # POST /orders.json
   def create
     @order            = Order.create(order_params)
     @order.created_by = current_user
@@ -98,8 +87,6 @@ class User::OrdersController < ApplicationController
     end
   end
 
-  # PUT /orders/1
-  # PUT /orders/1.json
   def update
     @order            = Order.find(params[:id])
     @order.updated_by = current_user
@@ -124,8 +111,6 @@ class User::OrdersController < ApplicationController
     end
   end
 
-  # DELETE /orders/1
-  # DELETE /orders/1.json
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
