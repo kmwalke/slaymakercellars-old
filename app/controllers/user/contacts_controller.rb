@@ -12,10 +12,8 @@ class User::ContactsController < ApplicationController
     respond_to do |format|
       if @contact.update!(contact_params)
         format.html { redirect_to edit_user_contact_path(@contact), notice: 'Contact was successfully updated.' }
-        format.json { head :ok }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
   end

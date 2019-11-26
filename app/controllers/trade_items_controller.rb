@@ -4,7 +4,6 @@ class TradeItemsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @trade_items }
     end
   end
 end

@@ -4,7 +4,6 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @articles }
     end
   end
 
@@ -13,7 +12,6 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @article }
     end
   end
 end

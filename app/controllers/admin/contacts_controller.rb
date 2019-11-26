@@ -9,7 +9,6 @@ class Admin::ContactsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @contacts }
     end
   end
 
@@ -24,7 +23,6 @@ class Admin::ContactsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @contact }
     end
   end
 
@@ -40,10 +38,8 @@ class Admin::ContactsController < ApplicationController
     respond_to do |format|
       if @contact.save
         format.html { redirect_to edit_admin_contact_path(@contact.id), notice: 'Contact was successfully created.' }
-        format.json { render json: @contact, status: :created, location: @contact }
       else
         format.html { render action: 'new' }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,10 +51,8 @@ class Admin::ContactsController < ApplicationController
     respond_to do |format|
       if @contact.update!(contact_params)
         format.html { redirect_to edit_admin_contact_path(@contact), notice: 'Contact was successfully updated.' }
-        format.json { head :ok }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
   end

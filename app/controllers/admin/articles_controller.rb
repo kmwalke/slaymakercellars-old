@@ -5,7 +5,6 @@ class Admin::ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @articles }
     end
   end
 
@@ -14,7 +13,6 @@ class Admin::ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @article }
     end
   end
 
@@ -28,10 +26,8 @@ class Admin::ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         format.html { redirect_to admin_articles_path, notice: 'Article was successfully created.' }
-        format.json { render json: articles_path, status: :created, location: @article }
       else
         format.html { render action: 'new' }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,10 +38,8 @@ class Admin::ArticlesController < ApplicationController
     respond_to do |format|
       if @article.update!(article_params)
         format.html { redirect_to admin_articles_path, notice: 'Article was successfully updated.' }
-        format.json { head :ok }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,7 +50,6 @@ class Admin::ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to admin_articles_url }
-      format.json { head :ok }
     end
   end
 

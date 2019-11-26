@@ -5,7 +5,6 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @accounts }
     end
   end
 end

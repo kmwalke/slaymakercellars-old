@@ -29,7 +29,6 @@ class Admin::OrdersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @contacts }
     end
   end
 
@@ -127,7 +126,6 @@ class Admin::OrdersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @order }
     end
   end
 
@@ -161,10 +159,8 @@ class Admin::OrdersController < ApplicationController
                       notice: 'Order was successfully created. <br /><br />' +
                               ' <a href="/admin/orders/new">Add Another Order</a>'.html_safe
         end
-        format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render action: 'new' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -184,11 +180,9 @@ class Admin::OrdersController < ApplicationController
           format.html { redirect_to admin_orders_url }
         else
           format.html { redirect_to edit_admin_order_path(@order), notice: 'Order was successfully updated.' }
-          format.json { head :ok }
         end
       else
         format.html { render action: 'edit' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -199,7 +193,6 @@ class Admin::OrdersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to admin_orders_url }
-      format.json { head :ok }
     end
   end
 
