@@ -18,16 +18,35 @@ class Contact < ActiveRecord::Base
 
   STATUSES = %w[Current Target Misc.].freeze
 
-  def self.target_contacts
-    where("status='Target' and deleted_at is null").order 'business ASC'
-  end
+  scope :target_contacts, -> { where("status='Target' and deleted_at is null").order 'business ASC' }
 
-  def self.misc_contacts
-    where("status='Misc.' and deleted_at is null").order 'business ASC'
-  end
+  scope :misc_contacts, -> { where("status='Misc.' and deleted_at is null").order 'business ASC' }
 
-  def self.current_contacts
-    where("status='Current' and deleted_at is null").order 'business ASC'
+  scope :current_contacts, -> { where("status='Current' and deleted_at is null").order 'business ASC' }
+
+  scope :urgent_contacts, -> { where(id: Note.where(deleted_at: nil).uniq.pluck(:contact_id)) }
+
+  def self.display(show, search_string)
+    case show
+    when 'target'
+      contacts = Contact.target_contacts
+      title    = 'Target Contacts'
+    when 'misc'
+      contacts = Contact.misc_contacts
+      title    = 'Misc. Contacts'
+    when 'urgent'
+      contacts = Contact.urgent_contacts
+      title    = 'Urgent Contacts'
+    when 'inactive'
+      contacts = Contact.where('deleted_at is not null').search(search_string)
+      title    = 'Deleted Contacts'
+    else
+      show     = 'active'
+      contacts = Contact.current_contacts.search(search_string)
+      title    = 'Active Contacts'
+    end
+
+    [show, contacts, title]
   end
 
   def self.search(search)
@@ -36,10 +55,6 @@ class Contact < ActiveRecord::Base
     else
       all
     end
-  end
-
-  def self.urgent_contacts
-    Contact.where(id: Note.where(deleted_at: nil).uniq.pluck(:contact_id))
   end
 
   def unresolved_notes?
