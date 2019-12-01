@@ -1,8 +1,6 @@
 class Admin::OrdersController < ApplicationController
   before_action :logged_in_as_admin?
 
-  include XeroInvoice
-
   def index
     @invoices       = xero.Invoice.all if Rails.env.production? || testing_xero
     @orders, @title = Order.display(params[:show] || 'active')
@@ -16,9 +14,7 @@ class Admin::OrdersController < ApplicationController
     @order        = Order.find(params[:id])
     rails_contact = @order.contact
     if Rails.env.production? || testing_xero
-      xero_contact = xero.Contact.first(where: { name: rails_contact.business })
-
-      xero_contact = xero.Contact.build(name: rails_contact.business) if xero_contact.nil?
+      xero_contact = FindOrCreateXeroContact.new(rails_contact.business)
 
       invoice = xero.Invoice.build(
         type: 'ACCREC',
