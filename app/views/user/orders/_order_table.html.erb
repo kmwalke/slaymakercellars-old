@@ -29,6 +29,6 @@
     <% if order.fulfilled? -%>
       <td></td><td></td>
     <% else -%>
-      <td><%= link_to 'Void', user_order_path(order), confirm: 'Are you sure?', method: :delete, :id => "void_#{order.id}" %></td>
+      <td><%= link_to 'Void', user_order_path(order), confirm: 'Are you sure?', method: :delete, id: "void_#{order.id}" %></td>
     <% end -%>
   </tr>

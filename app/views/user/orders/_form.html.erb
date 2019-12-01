@@ -13,17 +13,17 @@
 
   <div class="field">
     <% if @contact_business -%>
-		  <%= f.hidden_field :contact_business, :value => @contact_business %>
-	  <% else -%>
-		  <%= f.hidden_field :contact_business %>
-	  <% end -%>
+      <%= f.hidden_field :contact_business, value: @contact_business %>
+    <% else -%>
+      <%= f.hidden_field :contact_business %>
+    <% end -%>
   </div>
   <div class="field">
     <%= f.label :delivery_date, "Delivery Date (DD-MM-YYYY)" %>
     <% if @order.delivery_date -%>
-      <%= f.text_field :delivery_date, :class => "datepicker", :value => @order.delivery_date.strftime("%d-%m-%Y") %>
+      <%= f.text_field :delivery_date, class: "datepicker", value: @order.delivery_date.strftime("%d-%m-%Y") %>
     <% else -%>
-      <%= f.text_field :delivery_date, :class => "datepicker" %>
+      <%= f.text_field :delivery_date, class: "datepicker" %>
     <% end -%>
     <span class="note">Please give us at least 2 business days to process your order, Thank you.</span>
   </div>
@@ -36,14 +36,14 @@
   <h3>Line Items</h3>
   <div id="line_items">
     <%= f.fields_for :line_items do |line_item| %>
-      <%= render 'line_item_fields', :f => line_item %>
-	  <% end -%>
-	  <div class="links">
-		  <%= link_to_add_association 'add line item', f, :line_items %>
-	  </div>
+      <%= render 'line_item_fields', f: line_item %>
+    <% end -%>
+    <div class="links">
+      <%= link_to_add_association 'add line item', f, :line_items %>
+    </div>
   </div>
 
   <div class="field">
     <%= f.label :comments %><br />
-    <%= f.text_area :comments, :rows => 15, :cols => 50 %>
+    <%= f.text_area :comments, rows: 15, cols: 50 %>
   </div>
