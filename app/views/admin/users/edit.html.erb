@@ -8,11 +8,13 @@
       <%= link_to 'Restore User', undestroy_admin_user_path(@user), confirm: 'Are you sure?' %>
     <% end -%>
   </p>
+
   <p>
     <% if @user.contact -%>
       Linked Contact: <%= link_to(@user.contact.business, edit_admin_contact_path(@user.contact)) %>
     <% end -%>
   </p>
+
   <%= render partial: 'form', locals: {f: f} %>
 <% end -%>
 

@@ -10,20 +10,22 @@
   </div>
 <% end %>
 
-
 <div class="column">
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
+
   <div class="field">
     <%= f.label :report_type %>
     <%= select(:report, :report_type, Report::REPORT_TYPES) %>
   </div>
+
   <div class="field">
     <%= f.check_box :totals? %>
     <%= f.label :totals?, "Show only total numbers" %>
   </div>
+
   <div class="field">
     <%= f.label :start_date %>
     <% if @report.start_date -%>
@@ -32,6 +34,7 @@
       <%= f.text_field :start_date, class: "datepicker" %>
     <% end -%>
   </div>
+
   <div class="field">
     <%= f.label :end_date %>
     <% if @report.end_date -%>
@@ -40,6 +43,7 @@
       <%= f.text_field :end_date, class: "datepicker" %>
     <% end -%>
   </div>
+
   <div class="actions">
     <%= f.submit disable_with: "Loading..." %> |
     <%= link_to 'Back', admin_reports_path %>
