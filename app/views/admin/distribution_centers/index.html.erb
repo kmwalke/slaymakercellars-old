@@ -1,6 +1,6 @@
 <h1>Distribution Centers</h1>
 
-<table class="crud admin" cellpadding="0px" cellspacing="0px">
+<table class="crud">
   <tr class="title">
     <th>Name</th>
     <th>Contact Point</th>
@@ -15,7 +15,13 @@
     <td><%= link_to distribution_center.contact_point, edit_admin_distribution_center_path(distribution_center) %></td>
     <td><%= link_to distribution_center.phone, edit_admin_distribution_center_path(distribution_center) %></td>
     <td><%= link_to distribution_center.email, edit_admin_distribution_center_path(distribution_center) %></td>
-    <td><%= link_to 'X', admin_distribution_center_path(distribution_center), confirm: 'Are you sure?', method: :delete, id: "delete_#{distribution_center.id}" %></td>
+    <td>
+      <%= link_to 'X',
+                  admin_distribution_center_path(distribution_center),
+                  confirm: 'Are you sure?',
+                  method: :delete,
+                  id: "delete_#{distribution_center.id}" %>
+    </td>
   </tr>
 <% end %>
 </table>

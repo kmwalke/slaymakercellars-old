@@ -10,12 +10,12 @@
 <% if @contact.deleted_at -%>
   <%= link_to 'Activate Contact', undestroy_admin_contact_path(@contact), confirm: 'Are you sure?' %>
 <% else -%>
-  <%= link_to 'Delete Contact', admin_contact_path(@contact), confirm: 'Are you sure?', method: :delete %>&nbsp;</td>
+  <%= link_to 'Delete Contact', admin_contact_path(@contact), confirm: 'Are you sure?', method: :delete %>
 <% end -%>
 </p>
 
 <%= form_for(@contact, url: admin_contact_path(@contact)) do |f| %>
-<a name="notes"></a>
+<a id="notes"></a>
 <%= render partial: 'form', locals: {f: f} %>
 <% end -%>
 

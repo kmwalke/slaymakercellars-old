@@ -1,15 +1,13 @@
 <h3>Issues</h3>
+
 <p>
 <%= link_to 'Add Issue', new_admin_note_path(contact_id: @contact.id) %>
 </p>
+
 <div class="notes">
   <% if notes -%>
     <% notes.each do |note| -%>
-      <% if note.deleted_at -%>
-      <div class="note resolved">
-      <% else -%>
-      <div class="note">
-      <% end -%>
+      <div class="note <%= note.resolved? ? 'resolved' : '' %>">
         <span class="title"><%= note.user.name %></span>
         <span class="date"><%= humanize_date note.created_at %></span>
         <p><%= note.content %></p>
