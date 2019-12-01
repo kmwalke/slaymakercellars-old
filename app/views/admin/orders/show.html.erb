@@ -8,9 +8,8 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
 <% end -%>
 </p>
 
-
 <p>
-  <% if @order.invoice_id =%>
+  <% if @order.invoice_id -%>
     <h4>
       Xero Invoice Status: <%= @invoice.status %>
       <% if @invoice.sent_to_contact -%>
@@ -33,26 +32,25 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
   </p>
 <% end %>
 
-
 <fieldset class="column">
   <legend>Order #<%= @order.id %></legend>
 
-  <table class="crud admin" cellpadding="0px" cellspacing="0px">
+  <table class="crud">
     <tr class="title">
       <th>Quantity</th>
       <th>Size</th>
       <th>Cheese</th>
     </tr>
 
-  <% @order.line_items.each do |line_item| -%>
-    <tr class="<%= cycle "even", "odd" %>">
-      <td style="white-space: nowrap"><%=line_item.units %></td>
-      <td style="white-space: nowrap"><%=line_item.size %></td>
-      <td style="white-space: nowrap"><%=line_item.product.name %></td>
-      
-    </tr>
+    <% @order.line_items.each do |line_item| -%>
+      <tr class="<%= cycle "even", "odd" %>">
+        <td style="white-space: nowrap"><%= line_item.units %></td>
+        <td style="white-space: nowrap"><%= line_item.size %></td>
+        <td style="white-space: nowrap"><%= line_item.product.name %></td>
 
-  <% end -%>
+      </tr>
+
+    <% end -%>
   </table>
 
   <p><%= @order.comments %></p>
@@ -61,6 +59,7 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
 <fieldset class="column">
   <%= render partial: 'contact', locals: {contact: @order.contact} %>
 </fieldset>
+
 <% if @order.contact.mark_retail -%>
   <fieldset class="column">
     <%= render partial: 'calculator', locals: {contact: @order.contact} %>

@@ -13,7 +13,12 @@
   </span>
   <span class="field">
     <% f.label :product_id %>
-    <%= f.collection_select(:product_id, Product.where(in_production: true).order("name ASC"), :id, :name, {prompt: "Select Cheese"}) %>
+    <%= f.collection_select(:product_id,
+                            Product.where(in_production: true).order("name ASC"),
+                            :id,
+                            :name,
+                            {prompt: "Select Cheese"})
+    %>
   </span>
     
   <span>  

@@ -14,28 +14,22 @@
   </p>
 </div>
 
-<script language='JavaScript'>
-  function calculate() {
+<script>
+    function calculate() {
+        let price_per_ounce = document.getElementById("price_per_ounce").innerHTML;
+        let ounces = document.getElementById("ounces");
+        let retail_price_span = document.getElementById("retail_price");
 
-    var price_per_ounce = document.getElementById("price_per_ounce").innerHTML
-    var ounces = document.getElementById("ounces")
-    var retail_price_span = document.getElementById("retail_price")
+        let retail_price = Math.round((price_per_ounce * ounces.value) * 100) / 100;
+        let retail_string = retail_price + '';
+        length = (retail_string).replace('.', '').length;
 
-    var retail_price = Math.round((price_per_ounce*ounces.value)*100)/100
-    var length = 0
-    var retail_string = retail_price + ''
-    length = (retail_string).replace('.', '').length
+        if (retail_string.indexOf(".") === -1) {
+            retail_string += ".00";
+        } else if (length === 2 && retail_string.indexOf(".") !== -1) {
+            retail_string += "0";
+        }
 
-    if(retail_string.indexOf(".") == -1) {
-      retail_string += ".00"
+        retail_price_span.innerHTML = retail_string;
     }
-    else if(length == 2 && retail_string.indexOf(".") != -1) {
-      retail_string += "0"
-    }
-
-
-    retail_price_span.innerHTML = retail_string
-
-  }
-
 </script>

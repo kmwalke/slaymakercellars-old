@@ -17,6 +17,7 @@
     <p>You have no pending orders.</p>
   <% else -%>
     <div class="wide_wrapper">
+      <table class="crud">
       <%= render "table_head" %>
       <% @orders.each do |order| %>
         <%= render "order_table", order: order %>

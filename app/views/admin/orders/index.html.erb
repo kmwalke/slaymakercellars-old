@@ -1,5 +1,3 @@
-
-
 <h1><%=@title%></h1>
 
 <p>
@@ -12,17 +10,13 @@
   <%= link_to 'Late Orders', admin_orders_path({show: "late"})%>
 </p>
 
-
-
 <div class="wide_wrapper">
-
+  <table class="crud">
     <%= render "table_head" %>
     <% @orders.each do |order| -%>
       <%= render "order_table", order: order %>
     <% end -%>
     </table>
-
-
 </div>
 
 <br />
