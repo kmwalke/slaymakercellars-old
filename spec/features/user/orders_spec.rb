@@ -60,6 +60,7 @@ describe 'User::Orders' do
   it 'records users updating orders' do
     user  = login
     order = FactoryBot.create(:order, contact_id: user.contact.id, created_by: user)
+    FactoryBot.create(:user, admin: true)
 
     visit edit_user_order_path(order.id)
     new_date = order.delivery_date + 1
