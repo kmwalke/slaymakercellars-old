@@ -55,21 +55,17 @@ class User::OrdersController < ApplicationController
   end
 
   def update
-    @order            = Order.find(params[:id])
-    @order.updated_by = current_user
-    xero_invoice      = nil
-
-    xero_invoice                = xero.Invoice.first(where: { invoice_id: @order.invoice_id }) if xero
+    @order                      = Order.find(params[:id])
+    @order.updated_by           = current_user
+    xero_invoice                = nil
+    # xero_invoice                = xero.Invoice.first(where: { invoice_id: @order.invoice_id }) if xero
     params[:order][:invoice_id] = nil if xero_invoice.nil?
+    path                        = params[:save] ? user_orders_url : edit_user_order_url(@order)
 
     respond_to do |format|
       if @order.update!(order_params)
-        if params[:save]
-          OrderMailer.updated_order(@order).deliver_now
-          format.html { redirect_to user_orders_url }
-        else
-          format.html { redirect_to edit_user_order_path(@order), notice: 'Order was successfully updated.' }
-        end
+        OrderMailer.updated_order(@order).deliver_now
+        format.html { redirect_to path, notice: 'Order was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end
