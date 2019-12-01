@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @invoices       = xero.Invoice.all if Rails.env.production? || testing_xero
-    @orders, @title = Order.display(params[:show] || 'active')
+    @orders, @title = Order.display_all(params[:show] || 'active')
 
     respond_to do |format|
       format.html

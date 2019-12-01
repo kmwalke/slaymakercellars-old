@@ -2,29 +2,9 @@ class User::OrdersController < ApplicationController
   before_action :logged_in?
   before_action :only_access_self
 
-  def xero_invoice_link
-    'https://go.xero.com/AccountsReceivable/Edit.aspx?InvoiceID='
-  end
-
   def index
     if current_user.contact
-      @show = params[:show] || 'active'
-      case @show
-      when 'late'
-        @orders = current_user.contact.orders.where(
-          'fulfilled_on is null and delivery_date < ?', Date.today
-        ).order('fulfilled_on DESC')
-        @title  = 'Late Orders'
-      when 'fulfilled'
-        @orders = current_user.contact.orders.where('fulfilled_on is not null').order('fulfilled_on DESC')
-        @title  = 'Fulfilled Orders'
-      when 'active'
-        @orders = current_user.contact.orders.where(fulfilled_on: nil).order('delivery_date ASC')
-        @title  = 'Active Orders'
-      else
-        @orders = current_user.contact.orders.order('delivery_date DESC')
-        @title  = 'All Orders'
-      end
+      @orders, @title = Order.display(current_user.contact.orders, params[:show] || 'active')
     else
       @orders = nil
       @title  = 'Your account has not been set up'

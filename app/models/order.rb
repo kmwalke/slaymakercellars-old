@@ -17,14 +17,18 @@ class Order < ActiveRecord::Base
 
   scope :active, -> { where(fulfilled_on: nil).order('delivery_date asc') }
 
-  def self.display(show)
+  def self.display_all(show)
+    display(Order.all, show)
+  end
+
+  def self.display(orders, show)
     case show
     when 'late'
-      [Order.late, 'Late Orders']
+      [orders.late, 'Late Orders']
     when 'fulfilled'
-      [Order.fulfilled, 'Delivered Orders']
+      [orders.fulfilled, 'Delivered Orders']
     when 'active'
-      [Order.active, 'Active Orders']
+      [orders.active, 'Active Orders']
     else
       contact = Contact.find_by_id(show)
       [contact.orders.order('delivery_date DESC'), "Orders by #{contact.business}"]
