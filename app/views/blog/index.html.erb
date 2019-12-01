@@ -39,7 +39,7 @@
         <%= link_to "Read the full story", post['post_url'], target: "_blank" %>
       </p>
       <%= render partial: 'tags', locals: {tags: post['tags']} %>
-      <%= render partial: 'share', locals: {post => post} %>
+      <%= render partial: 'share', locals: {post: post} %>
       
     </div>  
 

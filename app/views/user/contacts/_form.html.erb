@@ -13,7 +13,7 @@
 
 
   <div class="actions">
-    <%= f.submit :disable_with => "Loading..."  %>
+    <%= f.submit disable_with: "Loading..."  %>
   </div>
   
 <div class="column">
@@ -39,14 +39,14 @@
   </div>
   <div class="field">
     <%= f.label :address, "Shipping Address" %><br />
-    <%= f.text_area :address, :cols => 30, :rows => 10  %>
+    <%= f.text_area :address, cols: 30, rows: 10  %>
   </div>
   <div class="field">
     <%= f.label :url %>
     <%= f.text_field :url %>
   </div>
   <div class="actions">
-    <%= f.submit :disable_with => "Loading..."  %>
+    <%= f.submit disable_with: "Loading..."  %>
   </div>
   <%= link_to 'Back', user_orders_path %>
 </div>

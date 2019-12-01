@@ -11,7 +11,7 @@
     </span>
     <span class="date"><%= humanize_date @article.date%></span>
     <% if @article.url&&!@article.url.empty? -%>
-      <span class="original"><%= link_to "Original Article", @article.url, :target=>"_blank" %></span>
+      <span class="original"><%= link_to "Original Article", @article.url, target: "_blank" %></span>
     <% end -%>
   </div>
   <div class="body">

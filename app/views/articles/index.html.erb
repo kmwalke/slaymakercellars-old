@@ -1,5 +1,5 @@
 
-<%= image_tag "AR_Bus.jpg", :align=> "right" %>
+<%= image_tag "AR_Bus.jpg", align: "right" %>
 <h1>KWAC News</h1>
 <p>
   Get the latest on what is happening at <strong>Kent Walker Artisan Cheese</strong>
@@ -15,7 +15,7 @@
     <tr class="<%= cycle "even", "odd" %>">
       <td>
         <% if article.url&&!article.url.empty? -%>
-          <%= link_to article.title, article.url, :target => "_blank" %>
+          <%= link_to article.title, article.url, target: "_blank" %>
         <% else -%>
           <%= link_to article.title, article %>
         <% end -%>
