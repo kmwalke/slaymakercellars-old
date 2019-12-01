@@ -8,9 +8,9 @@
   </p>
 
   <p>
-	  <%= link_to 'Active Orders', user_orders_path({:show => "active"})%> |
-	  <%= link_to 'Delivered Orders', user_orders_path({:show => "fulfilled"})%> |
-	  <%= link_to 'Late Orders', user_orders_path({:show => "late"})%>
+    <%= link_to 'Active Orders', user_orders_path({:show => "active"})%> |
+    <%= link_to 'Delivered Orders', user_orders_path({:show => "fulfilled"})%> |
+    <%= link_to 'Late Orders', user_orders_path({:show => "late"})%>
   </p>
 
   <% if @orders.empty? -%>

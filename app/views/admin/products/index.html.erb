@@ -5,12 +5,12 @@
 </p>
 
 <table class="crud admin" cellpadding="0px" cellspacing="0px">
-	<tr class="title">
-		<th>Name</th>
-		<th>Type</th>
-		<th>Available</th>
-		<th></th>
-	</tr>
+  <tr class="title">
+    <th>Name</th>
+    <th>Type</th>
+    <th>Available</th>
+    <th></th>
+  </tr>
 <% @products.each do |product| %>
   <tr class="<%= cycle "even", "odd" %>">
     <td><%= link_to product.name, edit_admin_product_path(product) %></td>

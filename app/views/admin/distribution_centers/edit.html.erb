@@ -4,9 +4,9 @@
 
 
 
-	<fieldset class="column">
-		<legend>Contact Details</legend>
-  	<%= render :partial => 'form', :locals => {:f => f} %>
+  <fieldset class="column">
+    <legend>Contact Details</legend>
+    <%= render :partial => 'form', :locals => {:f => f} %>
     <p class="actions">
       <%= f.submit :disable_with => "Loading..." %>
       <%= link_to 'Cancel', admin_distribution_centers_path %>

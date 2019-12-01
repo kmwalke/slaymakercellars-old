@@ -1,26 +1,26 @@
 <h3>Issues</h3>
 <p>
 <%= link_to 'Add Issue', new_admin_note_path(:contact_id => @contact.id) %>
-</p>	
+</p>
 <div class="notes">
   <% if notes -%>
-	  <% notes.each do |note| -%>
-		  <% if note.deleted_at -%>
-	    <div class="note resolved">
-	    <% else -%>
-	    <div class="note">
-	    <% end -%>
-	    	<span class="title"><%= note.user.name %></span>
-	    	<span class="date"><%= humanize_date note.created_at %></span>
-	    	<p><%= note.content %></p>
-	    	<% if note.resolved? -%>
-	    		<span class="resolved">Resolved on <%= humanize_date note.deleted_at %>
-			  <% else -%>
-	    		<%= link_to 'Resolve', admin_note_path(note), :class=> "resolve", method: :delete %>
-    		<% end -%>
-	    </div>
+    <% notes.each do |note| -%>
+      <% if note.deleted_at -%>
+      <div class="note resolved">
+      <% else -%>
+      <div class="note">
+      <% end -%>
+        <span class="title"><%= note.user.name %></span>
+        <span class="date"><%= humanize_date note.created_at %></span>
+        <p><%= note.content %></p>
+        <% if note.resolved? -%>
+          <span class="resolved">Resolved on <%= humanize_date note.deleted_at %>
+        <% else -%>
+          <%= link_to 'Resolve', admin_note_path(note), :class=> "resolve", method: :delete %>
+        <% end -%>
+      </div>
 
-	  <% end -%>
-	<% end -%>
+    <% end -%>
+  <% end -%>
 </div>
 

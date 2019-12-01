@@ -3,7 +3,7 @@ class Report < ActiveRecord::Base
 
   validates :name, uniqueness: true
 
-  REPORTTYPES = [
+  REPORT_TYPES = [
     'Orders by Item',
     'Orders by Account',
     'Orders by Salesperson'

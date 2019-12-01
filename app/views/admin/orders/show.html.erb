@@ -10,21 +10,21 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
 
 
 <p>
-	<% if @order.invoice_id =%>
-		<h4>
-		  Xero Invoice Status: <%= @invoice.status %>
-			<% if @invoice.sent_to_contact -%>
-			  & Sent
-			<% end -%>
-		</h4>
-		<%= link_to 'Open Invoice', xero_invoice_link + @order.invoice_id, :target =>"_blank" %>
-	<% end %>
+  <% if @order.invoice_id =%>
+    <h4>
+      Xero Invoice Status: <%= @invoice.status %>
+      <% if @invoice.sent_to_contact -%>
+        & Sent
+      <% end -%>
+    </h4>
+    <%= link_to 'Open Invoice', xero_invoice_link + @order.invoice_id, :target =>"_blank" %>
+  <% end %>
 </p>
 
 <% if @order.fulfilled_on -%>
 <h2>Delivered on <%= humanize_date @order.fulfilled_on%></h2>
   <p>
-	  <%= link_to 'Undeliver', unfulfill_admin_order_path(@order) %>
+    <%= link_to 'Undeliver', unfulfill_admin_order_path(@order) %>
   </p>
 <% else -%>
   <p>
@@ -38,11 +38,11 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
   <legend>Order #<%= @order.id %></legend>
 
   <table class="crud admin" cellpadding="0px" cellspacing="0px">
-	  <tr class="title">
-		  <th>Quantity</th>
-		  <th>Size</th>
-		  <th>Cheese</th>
-	  </tr>
+    <tr class="title">
+      <th>Quantity</th>
+      <th>Size</th>
+      <th>Cheese</th>
+    </tr>
 
   <% @order.line_items.each do |line_item| -%>
     <tr class="<%= cycle "even", "odd" %>">

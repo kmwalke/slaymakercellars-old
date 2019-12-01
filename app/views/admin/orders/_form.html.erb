@@ -14,10 +14,10 @@
   <div class="field">
     <%= f.label :contact_business %>
     <% if @contact_business -%>
-		  <%= f.text_field :contact_business, :value => @contact_business, data: {autocomplete_source: Contact.order(:business).map(&:business)} %>
-	  <% else -%>
-		  <%= f.text_field :contact_business, data: {autocomplete_source: Contact.order(:business).map(&:business)} %>
-	  <% end -%>
+      <%= f.text_field :contact_business, :value => @contact_business, data: {autocomplete_source: Contact.order(:business).map(&:business)} %>
+    <% else -%>
+      <%= f.text_field :contact_business, data: {autocomplete_source: Contact.order(:business).map(&:business)} %>
+    <% end -%>
   </div>
   <div class="field">
     <%= f.label :delivery_date %>
@@ -37,10 +37,10 @@
   <div id="line_items">
     <%= f.fields_for :line_items do |line_item| %>
       <%= render 'line_item_fields', :f => line_item %>
-	  <% end -%>
-	  <div class="links">
-		  <%= link_to_add_association 'add line item', f, :line_items %>
-	  </div>
+    <% end -%>
+    <div class="links">
+      <%= link_to_add_association 'add line item', f, :line_items %>
+    </div>
   </div>
 
   <div class="field">

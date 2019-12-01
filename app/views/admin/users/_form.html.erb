@@ -10,38 +10,38 @@
       </ul>
     </div>
   <% end %>
-	<p>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-	</p>
-	<p>
-		<%= f.check_box :is_public %>
-		<%= f.label :is_public, "Show on homepage" %>
-	</p>
-	<p>
-		<%= f.check_box :admin %>
-		<%= f.label :admin, "Administrator" %>
-	</p>
-	<p>
-		<%= f.label :email %>
-		<%= f.text_field :email %>
-	</p>
-	<p>
-		<%= f.label :password %>
-		<%= f.password_field :password %>
-	</p>
-	<p>
-		<%= f.label :password_confirmation %>
-		<%= f.password_field :password_confirmation %>
-	</p>
   <p>
-		<%= f.label :photo %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.check_box :is_public %>
+    <%= f.label :is_public, "Show on homepage" %>
+  </p>
+  <p>
+    <%= f.check_box :admin %>
+    <%= f.label :admin, "Administrator" %>
+  </p>
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= f.label :photo %>
     <%= f.file_field :photo %>
   </p>
-	<p>
-		<%= f.label :description %><br />
-		<%= f.text_area :description, :cols => 50, :rows => 30 %>
-	</p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :cols => 50, :rows => 30 %>
+  </p>
   <div class="actions">
     <%= f.submit :disable_with => "Loading..." %>
   </div>

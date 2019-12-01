@@ -17,30 +17,30 @@
 
   <div class="wrapper">
     <% if logged_in_as_admin? -%>
-	    <div class="admin_header">
-	      <div class="content">
-			    <%= render partial: 'layouts/admin_links' %>
+      <div class="admin_header">
+        <div class="content">
+          <%= render partial: 'layouts/admin_links' %>
         </div>
-	    </div>
-	    
+      </div>
+
     <% elsif logged_in? -%>
-	    <div class="header">
-	      <div class="content">
-      		<%= image_tag "logo.png", class: :logo %>
-			    <%= render partial: 'layouts/user_links' %>
+      <div class="header">
+        <div class="content">
+          <%= image_tag "logo.png", class: :logo %>
+          <%= render partial: 'layouts/user_links' %>
         </div>
         <div class="stripe">&nbsp;</div>
-	    </div>
-	
+      </div>
+
     <% else -%>
-	    <div class="header">
-	      <div class="content">
+      <div class="header">
+        <div class="content">
 <!--          @TODO: logo-->
-      		<%#= image_tag "logo_transparent.png", class: :logo %>
-	      	<%= render partial: 'layouts/links' %>
+          <%#= image_tag "logo_transparent.png", class: :logo %>
+          <%= render partial: 'layouts/links' %>
         </div>
         <div class="stripe">&nbsp;</div>
-	    </div>
+      </div>
     <% end -%>
 
 
