@@ -27,7 +27,7 @@
   			<% if invoice.sent_to_contact -%>
   			  <% text += " & Sent" -%>
   			<% end -%>
-  			<%= link_to text, xero_invoice_link + order.invoice_id, :target => "_blank" %>
+  			<%= link_to text, xero_invoice_link + order.invoice_id, target: "_blank" %>
   		<% else -%>
   			NONE
   		<% end -%>
@@ -35,7 +35,7 @@
   	<% if order.fulfilled? -%>
   		<td></td><td></td>
   	<% else -%>
-	    <td><%= link_to 'Deliver', fulfill_admin_order_path(order), :id => "deliver_#{order.id}"  %></td>
-  	  <td><%= link_to 'Void', admin_order_path(order), confirm: 'Are you sure?', method: :delete, :id => "void_#{order.id}" %></td>
+	    <td><%= link_to 'Deliver', fulfill_admin_order_path(order), id: "deliver_#{order.id}"  %></td>
+  	  <td><%= link_to 'Void', admin_order_path(order), confirm: 'Are you sure?', method: :delete, id: "void_#{order.id}" %></td>
 	  <% end -%>
   </tr>

@@ -8,7 +8,7 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
 <% end -%>
 </p>
 
-<%= form_for(@order, :url=>admin_order_path(@order)) do |f| %>
+<%= form_for(@order, url: admin_order_path(@order)) do |f| %>
 
 <p>
 	<% if @order.invoice_id =%>
@@ -18,7 +18,7 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
 			  & Sent
 			<% end -%>
 		</h4>
-		<%= link_to 'Open Invoice', xero_invoice_link + @order.invoice_id, :target =>"_blank" %>
+		<%= link_to 'Open Invoice', xero_invoice_link + @order.invoice_id, target: "_blank" %>
 	<% else =%>
 		<%= link_to 'Create Invoice', invoice_admin_order_path(@order) %>
     <div class="field">
@@ -35,8 +35,8 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
 
 
   <p class="actions">
-    <%= f.submit 'Update', :name => :update, :disable_with => "Loading..."  %>
-    <%= f.submit 'Save & Finish', :name => :save, :disable_with => "Loading..."  %>
+    <%= f.submit 'Update', name: :update, disable_with: "Loading..."  %>
+    <%= f.submit 'Save & Finish', name: :save, disable_with: "Loading..."  %>
 		<%= link_to 'Cancel', admin_orders_path %>
   </p>
 
@@ -44,11 +44,11 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
 
 	<fieldset class="column">
 		<legend>Order <%= @order.id %></legend>
-		<%= render :partial => 'form', :locals => {:f => f} %>
+		<%= render partial: 'form', locals: {f: f} %>
 
   <p class="actions">
-    <%= f.submit 'Update', :name => :update, :disable_with => "Loading..."  %>
-    <%= f.submit 'Save & Finish', :name => :save, :disable_with => "Loading..."  %>
+    <%= f.submit 'Update', name: :update, disable_with: "Loading..."  %>
+    <%= f.submit 'Save & Finish', name: :save, disable_with: "Loading..."  %>
 		<%= link_to 'Cancel', admin_orders_path %>
   </p>
 
@@ -56,10 +56,10 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
 
 <% end -%>
 <fieldset class="column">
-  <%= render :partial => 'contact', :locals => {:contact => @order.contact} %>
+  <%= render partial: 'contact', locals: {contact: @order.contact} %>
 </fieldset>
 <% if @order.contact.mark_retail -%>
   <fieldset class="column">
-    <%= render :partial => 'calculator', :locals => {:contact => @order.contact} %>
+    <%= render partial: 'calculator', locals: {contact: @order.contact} %>
   </fieldset>
 <% end -%>

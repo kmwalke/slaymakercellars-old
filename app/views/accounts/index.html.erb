@@ -1,9 +1,8 @@
 <h1>Where to Find Us</h1>
 
+<%= image_tag "retail.jpg", align: "right" %>
 
-<%= image_tag "retail.jpg", :align=> "right" %>
-
-<h3><%= link_to "Order Online", "https://squareup.com/store/Kwac",  :class => "last_link", :target => "_blank" %></h3>
+<h3><%= link_to "Order Online", "https://squareup.com/store/Kwac", class: "last_link", target: "_blank" %></h3>
 
 
 <ul class="states">
@@ -16,7 +15,7 @@
             <li class="town">
               <span class="town"><%= town.name %></span>
               <ul class="contacts">
-                <% town.contacts.where(:is_public => true).each do |contact| -%>
+                <% town.contacts.where(is_public: true).each do |contact| -%>
                   <li class="contact">
                     <% if contact.url == "" || contact.url == nil -%>
                       <%= contact.business %>

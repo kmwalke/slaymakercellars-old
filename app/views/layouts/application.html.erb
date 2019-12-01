@@ -3,7 +3,7 @@
 <head>
   <title>Slaymaker Cellars</title>
   <%= stylesheet_link_tag    "application"%>
-  <%= stylesheet_link_tag    "print", :media => "print" %>
+  <%= stylesheet_link_tag    "print", media: "print" %>
   <%= javascript_include_tag "application" %>
   <link rel="shortcut icon" href="/assets/favicon.ico" />
   <link href='https://fonts.googleapis.com/css?family=Neucha|Carter+One|Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -19,15 +19,15 @@
     <% if logged_in_as_admin? -%>
 	    <div class="admin_header">
 	      <div class="content">
-			    <%= render :partial => 'layouts/admin_links' %>
+			    <%= render partial: 'layouts/admin_links' %>
         </div>
 	    </div>
 	    
     <% elsif logged_in? -%>
 	    <div class="header">
 	      <div class="content">
-      		<%= image_tag "logo.png", :class => :logo %>
-			    <%= render :partial => 'layouts/user_links' %>
+      		<%= image_tag "logo.png", class: :logo %>
+			    <%= render partial: 'layouts/user_links' %>
         </div>
         <div class="stripe">&nbsp;</div>
 	    </div>
@@ -36,8 +36,8 @@
 	    <div class="header">
 	      <div class="content">
 <!--          @TODO: logo-->
-      		<%#= image_tag "logo_transparent.png", :class => :logo %>
-	      	<%= render :partial => 'layouts/links' %>
+      		<%#= image_tag "logo_transparent.png", class: :logo %>
+	      	<%= render partial: 'layouts/links' %>
         </div>
         <div class="stripe">&nbsp;</div>
 	    </div>
