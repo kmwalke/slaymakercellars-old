@@ -8,9 +8,7 @@
   <link rel="shortcut icon" href="/assets/favicon.ico"/>
   <link href='https://fonts.googleapis.com/css?family=Neucha|Carter+One|Montserrat:400,700' rel='stylesheet' type='text/css'>
   <%#= csrf_meta_tags %>
-
 </head>
-
 
 <body id="<%= params[:controller].parameterize %>">
 
@@ -42,7 +40,6 @@
     </div>
   <% end -%>
 
-
   <div class="spacer">&nbsp;</div>
   <% if logged_in? -%>
     <div class="content admin">
@@ -54,7 +51,9 @@
       <%= flash[:notice] %>
     </div>
   <% end -%>
+
   <%= yield %>
+
   </div>
 
   <% unless logged_in? -%>
@@ -70,12 +69,9 @@
         <span>PO Box 726, Idaho Springs, CO, 80452</span>
       </div>
     </div>
-
   <% end -%>
-
   </div>
 </div>
-
 
 </body>
 

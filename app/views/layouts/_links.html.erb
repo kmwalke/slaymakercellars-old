@@ -1,6 +1,13 @@
 <div class="nav_links">
   <div class="social">
-    <%= link_to(image_tag('f.png'), 'https://www.facebook.com/Slaymaker-Cellars-116480553057545', class: "img", target: "_blank", title: "Facebook") %>
+    <%= link_to(
+            image_tag('f.png'),
+            'https://www.facebook.com/Slaymaker-Cellars-116480553057545',
+            class: "img",
+            target: "_blank",
+            title: "Facebook"
+        )
+    %>
     <%#= link_to(image_tag("instagram.png"), "http://www.instagram.com/thecheesecave", class: "img", target: "_blank", title: "Instagram") %>
     <%#= link_to(image_tag("twitter.png"), "https://twitter.com/kentscheesecave?lang=en", class: "img", target: "_blank", title: "Twitter") %>
     <%= link_to(image_tag('mail.png'), 'mailto:kent@slaymakercellars.com', class: "img", title: "Email") %>
@@ -67,8 +74,6 @@
         <%= link_to "Order Online", "https://squareup.com/store/Kwac", class: "last_link", target: "_blank" %>
       </li>
     </ul>
-
-
 
     <% link_to "Recipes", accounts_path, class: active("trade_items") %>
   </div>
