@@ -1,24 +1,18 @@
 @import 'variables';
 
 a h3 {
-  
   font-family: 'Montserrat', sans-serif;
 }
-
 
 ul,li { 
   list-style-type: none;
   list-style-position:inside;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
- 
-
 
 ul.states {
-
-  
-	li.state {
+  li.state {
     text-align: center;
     list-style-type: none;
     display: inline-block;
@@ -35,35 +29,23 @@ ul.states {
     }
     
     ul.towns {
-    
       span.town {
         background: darken($orange, 10%);
         color: white;
         width: 100%;
         display: inline-block;
-      
       }
     
       li.town {
         display: block;
-        
         width: 100%;
         
         ul.contacts {
-          
-          
           li.contact {
             padding: .1em 1em;
-            
           }
-        
         }
       }
-    
     }
-    
   }
-
-  
-  
 }

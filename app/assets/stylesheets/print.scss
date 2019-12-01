@@ -1,29 +1,28 @@
 @import 'variables';
 @media print{@page {size: portrait}}
 
-
 div.header, div.admin_header {
-	display: none;
+  display: none;
 }
 
 div.print_header {
-	text-align: center;
-	width: 100%;
+  text-align: center;
+  width: 100%;
 
-	.print_header {
-		visibility: show;
-		width: 250px;
-	}
+  .print_header {
+    visibility: show;
+    width: 250px;
+  }
 }
 
 h1.title {
-	visibility: hidden;
-	display: none;
+  visibility: hidden;
+  display: none;
 }
 
 a {
-	color: black;
-	text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
 .print_button {
@@ -32,7 +31,7 @@ a {
 }
 
 .sort {
-	display: none;
+  display: none;
 }
 
 ul.cheese_list {
@@ -40,7 +39,7 @@ ul.cheese_list {
   list-style: none;
   
   li {
-		page-break-inside: avoid;
+    page-break-inside: avoid;
     display: block;
     clear: both;
     
@@ -51,8 +50,8 @@ ul.cheese_list {
     }
     
     .desc {
-    	display: inline-block;
-    	width: 60%;
+      display: inline-block;
+      width: 60%;
 
     }
     
@@ -62,7 +61,7 @@ ul.cheese_list {
 }
 
 div#footer {
-	display: none;
+  display: none;
 }
 
 table.crud {

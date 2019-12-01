@@ -1,17 +1,16 @@
 @import 'variables';
 
-
 .late {
-	color: red;
+  color: red;
 }
 
 div#line_items {
   border: 1px solid black;
-  	background: lighten($orange, 50%);
+  background: lighten($orange, 50%);
   
   .nested-fields {
-	  height: 2.5em;
-	  margin-bottom: .2em;
+    height: 2.5em;
+    margin-bottom: .2em;
   }
 }
 
@@ -20,22 +19,16 @@ div#line_items {
 }
 
 a.nav_arrow {
-  
   text-decoration: none;
   color: #888a85;
   font-size: 100px;
   font-weight: bold;
   position: absolute;
   top: 7em;
-  
-
 }
 
 a.nav_arrow:hover {
-  
   color: #000000;
-  
-
 }
 
 a.nav_arrow_left {
@@ -45,4 +38,3 @@ a.nav_arrow_left {
 a.nav_arrow_right {
   right: 5%;
 }
-

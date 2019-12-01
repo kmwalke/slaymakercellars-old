@@ -1,6 +1,5 @@
 @import 'variables';
 
-
 @mixin shadow($offset, $blur, $color) {
   box-shadow: $offset $offset $blur $color;
   -moz-box-shadow: $offset $offset $blur $color;
@@ -10,28 +9,25 @@
 .newsflash {
   margin-top: 3em;
   margin-bottom: 3em;
-  padding: 1em;
-  padding-top: 2em;
-  
+  padding: 2em 1em 1em;
+
   img {
     float: left;
     margin-right: .5em;
   }
-
 }
 
 .home_image_right {
   padding-left: 2em;
-  padding-right: 0em;
+  padding-right: 0;
   width: 30%;
 }
 
 .home_image_left {
   padding-right: 2em;
-  padding-left: 0em;
+  padding-left: 0;
   width: 30%;
 }
-
 
 .info {
   clear: both;
@@ -45,9 +41,7 @@
   a, a:visited {
     color: $yellow;
   }
-  
 
-  
   h2, h3, h4 {
     color: $yellow;
   }
@@ -56,6 +50,7 @@
     display: inline-block;
     vertical-align: top;
     width: 25%;
+
     h3 {
       font-variant: small-caps;
     }
@@ -88,7 +83,6 @@
       width: 100%;
       margin-bottom: .5em;
     }
-      
   }
   
   .order {
@@ -100,9 +94,7 @@
   }
   
   .content {
-      
     line-height: 1.2em;
   }
-
 }
 
