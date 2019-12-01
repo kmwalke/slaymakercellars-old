@@ -1,31 +1,11 @@
 class Admin::OrdersController < ApplicationController
   before_action :logged_in_as_admin?
 
-  def xero_invoice_link
-    'https://go.xero.com/AccountsReceivable/Edit.aspx?InvoiceID='
-  end
+  include XeroInvoice
 
   def index
-    @show = params[:show] || 'active'
-    if Rails.env.production? || testing_xero
-      @invoices          = xero.Invoice.all
-      @xero_invoice_link = xero_invoice_link
-    end
-    case @show
-    when 'late'
-      @orders = Order.where('fullfilled_on is null and delivery_date < ?', Date.today).order('fullfilled_on DESC')
-      @title  = 'Late Orders'
-    when 'fulfilled'
-      @orders = Order.where('fullfilled_on is not null').order('fullfilled_on DESC')
-      @title  = 'Delivered Orders'
-    when 'active'
-      @orders = Order.where(fullfilled_on: nil).order('delivery_date ASC')
-      @title  = 'Active Orders'
-    else
-      contact = Contact.find_by_id(@show)
-      @orders = contact.orders.order('delivery_date DESC')
-      @title  = "Orders by #{contact.business}"
-    end
+    @invoices       = xero.Invoice.all if Rails.env.production? || testing_xero
+    @orders, @title = Order.display(params[:show] || 'active')
 
     respond_to do |format|
       format.html
@@ -113,9 +93,8 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
-    @order             = Order.find(params[:id])
-    @xero_invoice_link = xero_invoice_link
-    @invoice           = xero.Invoice.find(@order.invoice_id) if @order.invoice_id
+    @order   = Order.find(params[:id])
+    @invoice = xero.Invoice.find(@order.invoice_id) if @order.invoice_id
 
     redirect_to(edit_admin_order_path(@order.id)) && return if @order.fullfilled_on.nil? && @order.invoice_id.nil?
   end
@@ -140,10 +119,9 @@ class Admin::OrdersController < ApplicationController
 
     next_index = 0 if next_index >= @order_ids.count
 
-    @prev_id           = @order_ids[prev_index]
-    @next_id           = @order_ids[next_index]
-    @xero_invoice_link = xero_invoice_link
-    @invoice           = xero.Invoice.find(@order.invoice_id) if @order.invoice_id
+    @prev_id = @order_ids[prev_index]
+    @next_id = @order_ids[next_index]
+    @invoice = xero.Invoice.find(@order.invoice_id) if @order.invoice_id
   end
 
   def create

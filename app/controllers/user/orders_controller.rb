@@ -58,10 +58,9 @@ class User::OrdersController < ApplicationController
 
     next_index = 0 if next_index >= @order_ids.count
 
-    @prev_id           = @order_ids[prev_index]
-    @next_id           = @order_ids[next_index]
-    @xero_invoice_link = xero_invoice_link
-    @invoice           = xero.Invoice.find(@order.invoice_id) if @order.invoice_id
+    @prev_id = @order_ids[prev_index]
+    @next_id = @order_ids[next_index]
+    @invoice = xero.Invoice.find(@order.invoice_id) if @order.invoice_id
   end
 
   def create

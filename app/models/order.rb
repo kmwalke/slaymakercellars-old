@@ -9,8 +9,30 @@ class Order < ActiveRecord::Base
 
   validates_presence_of :contact_id, :delivery_date
 
+  scope :late, lambda do
+    where('fullfilled_on is null and delivery_date < ?', Date.today).order('delivery_date asc')
+  end
+
+  scope :fulfilled, -> { where('fullfilled_on is not null').order('fullfilled_on DESC') }
+
+  scope :active, -> { where(fullfilled_on: nil).order('delivery_date asc') }
+
+  def self.display(show)
+    case show
+    when 'late'
+      [Order.late, 'Late Orders']
+    when 'fulfilled'
+      [Order.fulfilled, 'Delivered Orders']
+    when 'active'
+      [Order.active, 'Active Orders']
+    else
+      contact = Contact.find_by_id(show)
+      [contact.orders.order('delivery_date DESC'), "Orders by #{contact.business}"]
+    end
+  end
+
   def contact_business
-    contact.try(:business)
+    contact&.business
   end
 
   def contact_business=(business)
