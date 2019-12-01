@@ -96,7 +96,7 @@ class Admin::OrdersController < ApplicationController
     @order   = Order.find(params[:id])
     @invoice = xero.Invoice.find(@order.invoice_id) if @order.invoice_id
 
-    redirect_to(edit_admin_order_path(@order.id)) && return if @order.fullfilled_on.nil? && @order.invoice_id.nil?
+    redirect_to(edit_admin_order_path(@order.id)) && return if @order.fulfilled_on.nil? && @order.invoice_id.nil?
   end
 
   def new
@@ -111,9 +111,9 @@ class Admin::OrdersController < ApplicationController
   def edit
     @order = Order.find(params[:id])
 
-    redirect_to(admin_order_path(@order.id)) && return if @order.fullfilled_on || @order.invoice_id
+    redirect_to(admin_order_path(@order.id)) && return if @order.fulfilled_on || @order.invoice_id
 
-    @order_ids = Order.where(fullfilled_on: nil).order('delivery_date ASC').map(&:id)
+    @order_ids = Order.where(fulfilled_on: nil).order('delivery_date ASC').map(&:id)
     prev_index = @order_ids.find_index(@order.id) - 1
     next_index = @order_ids.find_index(@order.id) + 1
 

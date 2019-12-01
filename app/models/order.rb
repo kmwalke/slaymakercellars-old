@@ -9,13 +9,13 @@ class Order < ActiveRecord::Base
 
   validates_presence_of :contact_id, :delivery_date
 
-  scope :late, lambda do
-    where('fullfilled_on is null and delivery_date < ?', Date.today).order('delivery_date asc')
-  end
+  scope :late, lambda {
+    where('fulfilled_on is null and delivery_date < ?', Date.today).order('delivery_date asc')
+  }
 
-  scope :fulfilled, -> { where('fullfilled_on is not null').order('fullfilled_on DESC') }
+  scope :fulfilled, -> { where('fulfilled_on is not null').order('fulfilled_on DESC') }
 
-  scope :active, -> { where(fullfilled_on: nil).order('delivery_date asc') }
+  scope :active, -> { where(fulfilled_on: nil).order('delivery_date asc') }
 
   def self.display(show)
     case show
@@ -40,15 +40,15 @@ class Order < ActiveRecord::Base
   end
 
   def fulfilled?
-    fullfilled_on != nil
+    fulfilled_on != nil
   end
 
   def fulfill
-    self.fullfilled_on = Date.today
+    self.fulfilled_on = Date.today
   end
 
   def unfulfill
-    self.fullfilled_on = nil
+    self.fulfilled_on = nil
   end
 
   def self.fulfillment
@@ -59,9 +59,9 @@ class Order < ActiveRecord::Base
     week.each do |day|
       result[day] = {}
       orders      = if today
-                      Order.where('fullfilled_on is NULL AND delivery_date <= ?', Date.today)
+                      Order.where('fulfilled_on is NULL AND delivery_date <= ?', Date.today)
                     else
-                      Order.where(fullfilled_on: nil, delivery_date: day)
+                      Order.where(fulfilled_on: nil, delivery_date: day)
                     end
       today       = false
 

@@ -131,7 +131,7 @@ describe 'User::Orders' do
 
   it 'shows delivered orders' do
     user  = login
-    order = FactoryBot.create(:order, contact_id: user.contact.id, fullfilled_on: Date.yesterday)
+    order = FactoryBot.create(:order, contact_id: user.contact.id, fulfilled_on: Date.yesterday)
 
     visit user_orders_path
     click_on 'Delivered Orders'

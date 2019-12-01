@@ -1,5 +1,5 @@
 <h1><%=@order.contact.business%></h1>
-<h2><%= humanize_date @order.fullfilled_on%></h2>
+<h2><%= humanize_date @order.fulfilled_on%></h2>
 
 <p>
 	<%= link_to 'Undeliver', unfulfill_admin_order_path(@order) %>

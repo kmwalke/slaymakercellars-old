@@ -15,7 +15,7 @@
     <% end -%>
     <td class=<%= order.delivery_date<Date.today&&!order.fulfilled? ? 'late' : '' %>>
     	<% if @show == "fulfilled" -%>
-    		<%= humanize_date order.fullfilled_on %>
+    		<%= humanize_date order.fulfilled_on %>
   		<% else =%>
     		<%= humanize_date order.delivery_date %>
   		<% end =%>

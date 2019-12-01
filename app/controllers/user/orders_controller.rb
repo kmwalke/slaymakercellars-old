@@ -12,14 +12,14 @@ class User::OrdersController < ApplicationController
       case @show
       when 'late'
         @orders = current_user.contact.orders.where(
-          'fullfilled_on is null and delivery_date < ?', Date.today
-        ).order('fullfilled_on DESC')
+          'fulfilled_on is null and delivery_date < ?', Date.today
+        ).order('fulfilled_on DESC')
         @title  = 'Late Orders'
       when 'fulfilled'
-        @orders = current_user.contact.orders.where('fullfilled_on is not null').order('fullfilled_on DESC')
+        @orders = current_user.contact.orders.where('fulfilled_on is not null').order('fulfilled_on DESC')
         @title  = 'Fulfilled Orders'
       when 'active'
-        @orders = current_user.contact.orders.where(fullfilled_on: nil).order('delivery_date ASC')
+        @orders = current_user.contact.orders.where(fulfilled_on: nil).order('delivery_date ASC')
         @title  = 'Active Orders'
       else
         @orders = current_user.contact.orders.order('delivery_date DESC')
@@ -38,7 +38,7 @@ class User::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
 
-    redirect_to edit_user_order_path(@order) unless @order.fullfilled_on
+    redirect_to edit_user_order_path(@order) unless @order.fulfilled_on
   end
 
   def new
@@ -52,7 +52,7 @@ class User::OrdersController < ApplicationController
 
   def edit
     @order     = Order.find(params[:id])
-    @order_ids = Order.where(fullfilled_on: nil).order('delivery_date ASC').map(&:id)
+    @order_ids = Order.where(fulfilled_on: nil).order('delivery_date ASC').map(&:id)
     prev_index = @order_ids.find_index(@order.id) - 1
     next_index = @order_ids.find_index(@order.id) + 1
 

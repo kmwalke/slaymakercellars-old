@@ -62,9 +62,9 @@ class Contact < ActiveRecord::Base
   end
 
   def last_order
-    order = orders.order('fullfilled_on desc').first
+    order = orders.order('fulfilled_on desc').first
 
-    order.fullfilled_on || Date.today if order
+    order.fulfilled_on || Date.today if order
   end
 
   def repeat_last_order
@@ -74,10 +74,10 @@ class Contact < ActiveRecord::Base
       new_order.delivery_date = Date.today
       new_order.save
     else
-      order                   = orders.order('fullfilled_on desc').first
+      order                   = orders.order('fulfilled_on desc').first
       new_order               = order.dup
       new_order.invoice_id    = nil
-      new_order.fullfilled_on = nil
+      new_order.fulfilled_on = nil
       new_order.delivery_date = Date.today
       new_order.save
       order.line_items.each do |item|
