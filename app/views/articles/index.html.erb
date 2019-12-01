@@ -1,15 +1,18 @@
 <%= image_tag "AR_Bus.jpg", align: "right" %>
 <h1>KWAC News</h1>
+
 <p>
   Get the latest on what is happening at <strong>Kent Walker Artisan Cheese</strong>
 </p>
+
 <%= will_paginate @articles %>
 
-<table class="crud admin" cellpadding="0px" cellspacing="0px">
+<table class="crud">
   <tr class="title">
     <th>Name (Click for article)</th>
     <th>Date</th>
   </tr>
+
   <% @articles.each do |article| -%>
     <tr class="<%= cycle "even", "odd" %>">
       <td>
@@ -22,7 +25,6 @@
       <td><%= humanize_date article.date %></td>
     </tr>
   <% end -%>
-
 </table>
 
 <%= will_paginate @articles %>
