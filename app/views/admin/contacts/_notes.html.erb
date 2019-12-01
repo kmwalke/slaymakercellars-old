@@ -1,6 +1,6 @@
 <h3>Issues</h3>
 <p>
-<%= link_to 'Add Issue', new_admin_note_path(:contact_id => @contact.id) %>
+<%= link_to 'Add Issue', new_admin_note_path(contact_id: @contact.id) %>
 </p>
 <div class="notes">
   <% if notes -%>
@@ -14,7 +14,7 @@
         <span class="date"><%= humanize_date note.created_at %></span>
         <p><%= note.content %></p>
         <% if note.resolved? -%>
-          <span class="resolved">Resolved on <%= humanize_date note.deleted_at %>
+          <span class="resolved">Resolved on <%= humanize_date note.deleted_at %></span>
         <% else -%>
           <%= link_to 'Resolve', admin_note_path(note), :class=> "resolve", method: :delete %>
         <% end -%>
@@ -23,4 +23,3 @@
     <% end -%>
   <% end -%>
 </div>
-
