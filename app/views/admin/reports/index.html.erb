@@ -22,7 +22,7 @@
         <td><%= report.totals? %></td>
         <td><%= link_to 'Show', admin_report_path(report) %></td>
         <td><%= link_to 'Edit', edit_admin_report_path(report) %></td>
-        <td><%= link_to 'X', admin_report_path(report), :confirm => 'Are you sure?', :method => :delete, :id => "delete_#{report.id}" %>&nbsp;</td>
+        <td><%= link_to 'X', admin_report_path(report), confirm: 'Are you sure?', method: :delete, id: "delete_#{report.id}" %>&nbsp;</td>
       </tr>
     <% end %>
   </tbody>
