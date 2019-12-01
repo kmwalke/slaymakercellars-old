@@ -4,21 +4,9 @@ ul.order_online {
   display: block;
   li {
     a {
-      img {
-        width: 9em;
-        margin-right: 1em;
-      }
-      strong {
-        font-family: 'Carter One';
-        font-weight: normal;
-        display: block;
-        font-size: 2em;
-        line-height: 2em;
-      }
       color: $brown !important;
       background: white;
       height: 15em;
-
       display: inline-block;
       width: 40%;
       float: left;
@@ -26,6 +14,19 @@ ul.order_online {
       padding-left: 1em;
       padding-right: 1em;
       padding-bottom: 1em;
+
+      img {
+        width: 9em;
+        margin-right: 1em;
+      }
+
+      strong {
+        font-family: 'Carter One', serif;
+        font-weight: normal;
+        display: block;
+        font-size: 2em;
+        line-height: 2em;
+      }
     }
   }
 }

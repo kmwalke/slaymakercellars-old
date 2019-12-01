@@ -1,6 +1,6 @@
 <h1>New contact</h1>
 
-<%= form_for(@contact, :url => admin_contacts_path) do |f| -%>
-  <%= render :partial => 'form', :locals => {:f => f} %>
+<%= form_for(@contact, url: admin_contacts_path) do |f| -%>
+  <%= render partial: 'form', locals: {f: f} %>
 <% end -%>
 

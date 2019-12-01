@@ -1,5 +1,5 @@
 <h1>Editing State</h1>
 
-<%= form_for(@state, :url=>admin_states_path(@state)) do |f| -%>
-	<%= render :partial => 'form', :locals => {:f => f} %>
+<%= form_for(@state, url: admin_states_path(@state)) do |f| -%>
+  <%= render partial: 'form', locals: {f: f} %>
 <% end -%>

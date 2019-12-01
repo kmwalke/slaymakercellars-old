@@ -1,35 +1,33 @@
-
-
-<h1><%=@title%></h1>
+<h1><%= @title %></h1>
 
 <% if @orders -%>
   <p>
-  <%= link_to 'New Order', new_user_order_path %>
+    <%= link_to 'New Order', new_user_order_path %>
   </p>
 
   <p>
-	  <%= link_to 'Active Orders', user_orders_path({:show => "active"})%> |
-	  <%= link_to 'Delivered Orders', user_orders_path({:show => "fulfilled"})%> |
-	  <%= link_to 'Late Orders', user_orders_path({:show => "late"})%>
+    <%= link_to 'Active Orders', user_orders_path({show: "active"}) %> |
+    <%= link_to 'Delivered Orders', user_orders_path({show: "fulfilled"}) %> |
+    <%= link_to 'Late Orders', user_orders_path({show: "late"}) %>
   </p>
 
   <% if @orders.empty? -%>
     <p>You have no pending orders.</p>
   <% else -%>
     <div class="wide_wrapper">
-      <%= render "table_head" %>
-      <% @orders.each do |order| %>
-        <%= render "order_table", :order => order %>
-      <% end %>
+      <table class="crud">
+        <%= render "table_head" %>
+        <% @orders.each do |order| %>
+          <%= render "order_table", order: order %>
+        <% end %>
       </table>
-
     </div>
   <% end -%>
 <% else -%>
   <p>
-    Please contact us at <a href = "mailto:info@kentwalkercheese.com">Info@KentWalkerCheese.com</a> 
+    Please contact us at <a href="mailto:info@kentwalkercheese.com">Info@KentWalkerCheese.com</a>
     or at <a href="tel:5013014963">501-301-4963</a> to get your account set up.
   </p>
 <% end -%>
 
-<br />
+<br/>

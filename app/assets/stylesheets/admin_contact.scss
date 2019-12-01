@@ -7,67 +7,65 @@
     display: block;
     line-height: 1.2em;
   }
-  }
-div.notes {
-	border-bottom: 1px solid $brown;
-	margin-left: 1.5%;
-	margin-bottom: .25em;
-	
-	div.resolved {
-		color: grey!important;
-		background: lighten( $orange, 50%)!important;
-		
-		.date, .title {
-			color: grey!important;
-		}
-	}
-	
-	div.note {
-		position: relative;
-		display: inline-block;
-		width: 100%;
-		border-top: 1px solid $brown;
-		border-right: 1px solid $brown;
-		border-left: 1px solid $brown;
-		background: lighten( $orange, 40%);
-		margin: 0px;
-		width: 95%;
-  	padding: .5em;
-		
-		span.title, span.date {
-			color: darken($orange, 20%);
-			font-size: small;
-		}
-		
-		span.date {
-			float: right;
-		}
-		
-		p {
-			width: 80%;
-			display: inline-block;
-			font-size: .8em;
-			line-height: 1.2em;
-		}
-		
-		a.resolve {
-			text-decoration: none;
-			color: white;
-			background: $brown;
-			font-size: small;
-			padding: 2px;
-			border: 2px $brown outset;
-			vertical-align: top;
-		}
-		
-		span.resolved {
-			position: absolute;
-			font-size: small;
-			color: darken($brown, 20%);
-			top: 5px;
-			left: 50%;
-		}
-		
-		}
+}
 
+div.notes {
+  border-bottom: 1px solid $brown;
+  margin-left: 1.5%;
+  margin-bottom: .25em;
+
+  div.resolved {
+    color: grey!important;
+    background: lighten( $orange, 50%)!important;
+
+    .date, .title {
+      color: grey!important;
+    }
+  }
+
+  div.note {
+    position: relative;
+    display: inline-block;
+    border-top: 1px solid $brown;
+    border-right: 1px solid $brown;
+    border-left: 1px solid $brown;
+    background: lighten( $orange, 40%);
+    margin: 0;
+    width: 95%;
+    padding: .5em;
+
+    span.title, span.date {
+      color: darken($orange, 20%);
+      font-size: small;
+    }
+
+    span.date {
+      float: right;
+    }
+
+    p {
+      width: 80%;
+      display: inline-block;
+      font-size: .8em;
+      line-height: 1.2em;
+    }
+
+    a.resolve {
+      text-decoration: none;
+      color: white;
+      background: $brown;
+      font-size: small;
+      padding: 2px;
+      border: 2px $brown outset;
+      vertical-align: top;
+    }
+
+    span.resolved {
+      position: absolute;
+      font-size: small;
+      color: darken($brown, 20%);
+      top: 5px;
+      left: 50%;
+    }
+  }
 }

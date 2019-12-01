@@ -1,13 +1,20 @@
 <div class="nav_links">
   <div class="social">
-    <%= link_to(image_tag("f.png"), "http://www.facebook.com/pages/Kent-Walker-Artisan-Cheeses/144229549001556", :class => "img", :target => "_blank") %>
-    <%= link_to(image_tag("instagram.png"), "http://www.instagram.com/thecheesecave", :class => "img", :target => "_blank") %>
+    <%= link_to(
+            image_tag("f.png"),
+            "http://www.facebook.com/pages/Kent-Walker-Artisan-Cheeses/144229549001556",
+            class: "img",
+            target: "_blank"
+        )
+    %>
+    <%= link_to(image_tag("instagram.png"), "http://www.instagram.com/thecheesecave", class: "img", target: "_blank") %>
   </div>
+
   <div class="links">
     <% if @current_user.contact -%>
-      <%= link_to "Change Login", edit_user_user_path(@current_user), :class => active("users") %>
-      <%= link_to "Account", edit_user_contact_path(@current_user.contact), :class => active("contacts") %>
-      <%= link_to "Orders", user_orders_path, :class => active("orders") %>
+      <%= link_to "Change Login", edit_user_user_path(@current_user), class: active("users") %>
+      <%= link_to "Account", edit_user_contact_path(@current_user.contact), class: active("contacts") %>
+      <%= link_to "Orders", user_orders_path, class: active("orders") %>
     <% end -%>
     <%= link_to "Logout", logout_path %>
   </div>

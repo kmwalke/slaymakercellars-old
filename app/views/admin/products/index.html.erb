@@ -1,22 +1,22 @@
 <h1>Products</h1>
 
 <p>
-<%= link_to "New Cheese", new_admin_product_path %>
+  <%= link_to "New Cheese", new_admin_product_path %>
 </p>
 
-<table class="crud admin" cellpadding="0px" cellspacing="0px">
-	<tr class="title">
-		<th>Name</th>
-		<th>Type</th>
-		<th>Available</th>
-		<th></th>
-	</tr>
-<% @products.each do |product| %>
-  <tr class="<%= cycle "even", "odd" %>">
-    <td><%= link_to product.name, edit_admin_product_path(product) %></td>
-    <td><%= product.category %></td>
-    <td><%= product.in_production ? "Yes":"No" %></td>
-    <td><%= link_to 'X', admin_product_path(product), :confirm => 'Are you sure?', :method => :delete, :id => "delete_#{product.id}" %>&nbsp;</td>
+<table class="crud">
+  <tr class="title">
+    <th>Name</th>
+    <th>Type</th>
+    <th>Available</th>
+    <th></th>
   </tr>
-<% end %>
+  <% @products.each do |product| %>
+    <tr class="<%= cycle "even", "odd" %>">
+      <td><%= link_to product.name, edit_admin_product_path(product) %></td>
+      <td><%= product.category %></td>
+      <td><%= product.in_production ? "Yes" : "No" %></td>
+      <td><%= link_to 'X', admin_product_path(product), confirm: 'Are you sure?', method: :delete, id: "delete_#{product.id}" %>&nbsp;</td>
+    </tr>
+  <% end %>
 </table>

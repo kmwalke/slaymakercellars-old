@@ -1,20 +1,14 @@
 <h1>Editing <%= @distribution_center.name %></h1>
 
-<%= form_for(@distribution_center, :url=>admin_distribution_center_path(@distribution_center)) do |f| -%>
+<%= form_for(@distribution_center, url: admin_distribution_center_path(@distribution_center)) do |f| -%>
+  <fieldset class="column">
+    <legend>Contact Details</legend>
 
+    <%= render partial: 'form', locals: {f: f} %>
 
-
-	<fieldset class="column">
-		<legend>Contact Details</legend>
-  	<%= render :partial => 'form', :locals => {:f => f} %>
     <p class="actions">
-      <%= f.submit :disable_with => "Loading..." %>
+      <%= f.submit disable_with: "Loading..." %>
       <%= link_to 'Cancel', admin_distribution_centers_path %>
     </p>
-
-
-
-
   </fieldset>
-
 <% end -%>

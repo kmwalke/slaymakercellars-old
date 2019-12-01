@@ -1,7 +1,5 @@
 @import 'variables';
 
-
-
 @mixin rounded-corners($radius) {
   border-radius: $radius;
   -moz-border-radius: $radius;
@@ -9,10 +7,8 @@
 }
 
 body {
-  
   background-image: none;
 }
-
 
 .admin_header {
   color: $yellow;
@@ -21,14 +17,12 @@ body {
   background: -o-linear-gradient($brown, $orange); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient($brown, $orange); /* For Firefox 3.6 to 15 */
   background: linear-gradient($brown, $orange); /* Standard syntax */
-   
   height: 8em;
   text-align: center;
   padding-top: .1em;   
-  
+
   a {
-  
-  font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
   } 
 
   a, a:visited {
@@ -47,14 +41,10 @@ body {
   }
 
   .nav_links {
-    
-      
-      a, a:visited {
-        font-size: $header-font-size;
-        margin-left: .5em;
-      }
-    
-    
+    a, a:visited {
+      font-size: $header-font-size;
+      margin-left: .5em;
+    }
   }
 }
 
@@ -69,12 +59,10 @@ div.admin {
   }
 }
 
-
-
 table.crud {
   border: 1px solid black;
+  border-spacing: 0;
 
-  
   a {
     color: $orange;
   }
@@ -84,9 +72,10 @@ table.crud {
   }
   
   th {
-		background: darken($tr-bg,20);
-  	text-align: center;
-  	color: white;
+    background: darken($tr-bg,20);
+    text-align: center;
+    color: white;
+
     a {
       color: $yellow;
     }
@@ -94,7 +83,7 @@ table.crud {
   
   td {
     border-top: 1px solid black;
-	  padding: 0em 2.5em;
+    padding: 0 2.5em;
     text-align: center;
     height: 1.5em;
     white-space: nowrap;
@@ -109,8 +98,9 @@ table.crud {
   }
   
   tr:hover {
-		background: $tr-bg;
+    background: $tr-bg;
     color: white;
+
     a {
       color: white;
     }
@@ -127,24 +117,23 @@ table.crud {
 }
 
 div.c_panel {
+  a {
+    text-decoration: none;
+  }
 
-	a {
-		text-decoration: none;
-	}
-	
-	fieldset {
-		width: 25%;
-		display: inline-block;
-		height: 12em;
-		vertical-align: top;
-		border: 2px ridge #ccc;
-		margin-bottom: 2em;
-		color: black;
-		
-		legend {
-			font-weight: bold;
-			font-size: x-large;
-			border: 2px ridge #ccc;
+  fieldset {
+    width: 25%;
+    display: inline-block;
+    height: 12em;
+    vertical-align: top;
+    border: 2px ridge #ccc;
+    margin-bottom: 2em;
+    color: black;
+
+    legend {
+      font-weight: bold;
+      font-size: x-large;
+      border: 2px ridge #ccc;
       color: $yellow;
       background-color: $orange;
       background: -webkit-linear-gradient($yellow, $orange); /* For Safari 5.1 to 6.0 */
@@ -155,44 +144,36 @@ div.c_panel {
       a {
         color: white;
       }
+
       a:hover {
         color: $brown;
       }
-		}
-		
-		ul {
-			list-style: none;
-			line-height: 2em;
-			
-			li {
-			
-				a {
-					color: black;
-					border: 2px outset #ccc;
-					background: white;
-					padding: 2px;
-				}
-				
-				a:active {
-					border: 2px inset #ccc;
-				}
-				
-			}
-			
-			li.urgent {
-				a {
-					border: 2px outset #c00;
-					background: #d00;
-					color: white;
-				}
-			}
-		
-		}
+    }
 
-  
-		
-		
-		
-	}
-	
+    ul {
+      list-style: none;
+      line-height: 2em;
+
+      li {
+        a {
+          color: black;
+          border: 2px outset #ccc;
+          background: white;
+          padding: 2px;
+        }
+
+        a:active {
+          border: 2px inset #ccc;
+        }
+      }
+
+      li.urgent {
+        a {
+          border: 2px outset #c00;
+          background: #d00;
+          color: white;
+        }
+      }
+    }
+  }
 }

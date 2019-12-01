@@ -1,33 +1,32 @@
+<% if @distribution_center.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@distribution_center.errors.count, "error") %> prohibited this distribution center from being
+      saved:</h2>
 
-  <% if @distribution_center.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@distribution_center.errors.count, "error") %> prohibited this distribution center from being saved:</h2>
-
-      <ul>
+    <ul>
       <% @distribution_center.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    </ul>
   </div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :contact_point %>
-    <%= f.text_field :contact_point %>
-  </div>
+<div class="field">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
 
-  <div class="field">
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
-  </div>
+<div class="field">
+  <%= f.label :contact_point %>
+  <%= f.text_field :contact_point %>
+</div>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
+<div class="field">
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+</div>
+
+<div class="field">
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+</div>

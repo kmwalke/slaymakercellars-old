@@ -1,14 +1,13 @@
-
 <div class="field">
-  <%= f.label :name %><br />
+  <%= f.label :name %><br/>
   <%= f.text_field :name %>
 </div>
+
 <div class="field">
-  <%= f.label :state %><br />
-  <%= f.select(:state_id, State.all.collect{|t| [ t.name, t.id ]}) %><br />
+  <%= f.label :state %><br/>
+  <%= f.select(:state_id, State.all.collect { |t| [t.name, t.id] }) %><br/>
 </div>
 
-
 <div class="actions">
-  <%= f.submit :disable_with => "Loading..." %>
+  <%= f.submit disable_with: "Loading..." %>
 </div>

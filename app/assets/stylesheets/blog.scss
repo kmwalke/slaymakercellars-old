@@ -23,12 +23,9 @@ div.blog_post {
       }
     }
 
-  
-  div.post_body {  
-    padding: 1em;
-    padding-top: 0.1em;
-    
-    
+  div.post_body {
+    padding: 0.1em 1em 1em;
+
     p {
       line-height: 1.5em;
     }
@@ -36,14 +33,8 @@ div.blog_post {
     img {
       width: 25%;
     }
-    
-
-    div.tags {
-      
-    }
 
     ul.share {
-
       li {
         display: inline-block;
       
@@ -51,21 +42,16 @@ div.blog_post {
           width: 1.5em;
         }
       }
-      
     }
   }
-  
 }
 
 div.photo {
   overflow: hidden;
   
   div.photo_wrapper {
-    
-    
     div.photos {
       display: inline-block;
-      
       width: 15%;
       margin-right: 1em;
       vertical-align: top;
@@ -73,14 +59,12 @@ div.photo {
       img {
         width: 100%;
       }
-      
     }
     
     div.post_body {
       display: inline-block;
       width: 80%;
-      margin-top: 0em;
-      
+      margin-top: 0;
     }
   }
 }

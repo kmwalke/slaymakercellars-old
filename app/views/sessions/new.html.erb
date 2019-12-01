@@ -1,22 +1,22 @@
 <h1>Login</h1>
 
 <%= form_tag(sessions_path) do |f| -%>
-
   <p>
-    <%= label_tag "email" %><br />
+    <%= label_tag "email" %><br/>
     <%= text_field_tag :email, params[:email] %>
   </p>
   <p>
-    <%= label_tag "password" %><br />
+    <%= label_tag "password" %><br/>
     <%= password_field_tag :password %>
   </p>
   <p>
-    <%= submit_tag "Log In", :disable_with => "Loading..." %> |
+    <%= submit_tag "Log In", disable_with: "Loading..." %> |
     <%= link_to 'Cancel', root_path %>
   </p>
 <% end -%>
 
 <p>
-  Forgot your email or password?  Email us at <a href="mailto:info@kentwalkercheese.com" id="email">info@KentWalkerCheese.com</a> or call at 
+  Forgot your email or password? Email us at
+  <a href="mailto:info@kentwalkercheese.com" id="email">info@KentWalkerCheese.com</a> or call at
   <a href="tel:5013014963" id="phone">(501) 301-4963</a> and we will reset it for you.
 </p>

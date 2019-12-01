@@ -1,15 +1,11 @@
-<h3><%= link_to "Kent Walker Artisan Cheese", admin_path, :class => active("admin")  %></h3>
+<h3><%= link_to "Kent Walker Artisan Cheese", admin_path, class: active("admin") %></h3>
 <div class="nav_links">
-  
-  <%= link_to "Orders", admin_orders_path, :class => active("orders") %>
-  <%= link_to "Contacts", admin_contacts_path,  :class => active("contacts") %>
-  <%= link_to "News", admin_articles_path, :class => active("articles") %>
-  <%= link_to "Products", admin_products_path,  :class => active("products") %>
-  <%= link_to "Reports", admin_reports_path,  :class => active("reports") %>
-  
-  <%= link_to "Fulfillment", admin_fulfillment_path,  :class => active("fulfillment") %>
-
-  <%= link_to "Users", admin_users_path, :class => active("users") %>
-
+  <%= link_to "Orders", admin_orders_path, class: active("orders") %>
+  <%= link_to "Contacts", admin_contacts_path, class: active("contacts") %>
+  <%= link_to "News", admin_articles_path, class: active("articles") %>
+  <%= link_to "Products", admin_products_path, class: active("products") %>
+  <%= link_to "Reports", admin_reports_path, class: active("reports") %>
+  <%= link_to "Fulfillment", admin_fulfillment_path, class: active("fulfillment") %>
+  <%= link_to "Users", admin_users_path, class: active("users") %>
   <%= link_to "Logout", logout_path %>
 </div>
