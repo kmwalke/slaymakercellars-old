@@ -51,15 +51,7 @@ class User::OrdersController < ApplicationController
   end
 
   def edit
-    @order     = Order.find(params[:id])
-    @order_ids = Order.where(fulfilled_on: nil).order('delivery_date ASC').map(&:id)
-    prev_index = @order_ids.find_index(@order.id) - 1
-    next_index = @order_ids.find_index(@order.id) + 1
-
-    next_index = 0 if next_index >= @order_ids.count
-
-    @prev_id = @order_ids[prev_index]
-    @next_id = @order_ids[next_index]
+    @order   = Order.find(params[:id])
     @invoice = xero.Invoice.find(@order.invoice_id) if @order.invoice_id
   end
 

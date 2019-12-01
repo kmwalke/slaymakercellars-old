@@ -11,50 +11,43 @@ class Admin::OrdersController < ApplicationController
   end
 
   def invoice
-    @order        = Order.find(params[:id])
-    rails_contact = @order.contact
-    if Rails.env.production? || testing_xero
-      xero_contact = XeroFindOrCreateContact.new(rails_contact.business)
+    # @order        = Order.find(params[:id])
+    # rails_contact = @order.contact
+    # if Rails.env.production? || testing_xero
+    # xero_contact = XeroFindOrCreateContact.new(rails_contact.business)
+    #
+    # invoice = XeroCreateInvoice.new(xero_contact, @order.customer_po)
+    #
+    # if @order.line_items.empty?
+    #   flash[:notice] = 'Please create some Line Items.  Your invoice was NOT saved.'
+    #   redirect_to admin_order_path(@order)
+    #   return
+    # end
+    #
+    # @order.line_items.each do |line_item|
+    #   if line_item.product.nil?
+    #     flash[:notice] = 'Please select a cheese in your Line Items.  Your invoice was NOT saved.'
+    #     redirect_to admin_order_path(@order)
+    #   end
+    #   invoice.add_line_item(
+    #     item_code: line_item.product.xero_item_code,
+    #     description: line_item.units.to_s + 'x ' + line_item.size + ' ' + line_item.product.name,
+    #     quantity: 1,
+    #     account_code: LineItem::ACCOUNT_CODES[line_item.size],
+    #     unit_amount: rails_contact.price_point
+    #   )
+    # end
+    #
+    # if invoice.save
+    #   flash[:notice]    = 'A new invoice was created in Xero'
+    #   @order.invoice_id = invoice.invoice_id
+    #   @order.save
+    # else
+    #   flash[:notice] = "#{invoice.inspect}An error occurred.  Your invoice was NOT saved."
+    # end
+    # end
 
-      invoice = xero.Invoice.build(
-        type: 'ACCREC',
-        date: Date.today,
-        due_date: Date.today + 30,
-        contact: xero_contact,
-        reference: @order.customer_po
-      )
-
-      if @order.line_items.empty?
-        flash[:notice] = 'Please create some Line Items.  Your invoice was NOT saved.'
-        redirect_to admin_order_path(@order)
-        return
-      else
-        @order.line_items.each do |line_item|
-          if line_item.product.nil?
-            flash[:notice] = 'Please select a cheese in your Line Items.  Your invoice was NOT saved.'
-            redirect_to admin_order_path(@order)
-          end
-          invoice.add_line_item(
-            item_code: line_item.product.xero_item_code,
-            description: line_item.units.to_s + 'x ' + line_item.size + ' ' + line_item.product.name,
-            quantity: 1,
-            account_code: LineItem::ACCOUNT_CODES[line_item.size],
-            unit_amount: rails_contact.price_point
-          )
-        end
-      end
-
-      saved = invoice.save
-
-      if saved
-        flash[:notice]    = 'A new invoice was created in Xero'
-        @order.invoice_id = invoice.invoice_id
-        @order.save
-      else
-        flash[:notice] = "#{invoice.inspect}An error occurred.  Your invoice was NOT saved."
-      end
-    end
-
+    flash[:notice] = 'Xero integration disabled. Your invoice was NOT saved.'
     redirect_to admin_order_path(@order)
   end
 
@@ -109,14 +102,6 @@ class Admin::OrdersController < ApplicationController
 
     redirect_to(admin_order_path(@order.id)) && return if @order.fulfilled_on || @order.invoice_id
 
-    @order_ids = Order.where(fulfilled_on: nil).order('delivery_date ASC').map(&:id)
-    prev_index = @order_ids.find_index(@order.id) - 1
-    next_index = @order_ids.find_index(@order.id) + 1
-
-    next_index = 0 if next_index >= @order_ids.count
-
-    @prev_id = @order_ids[prev_index]
-    @next_id = @order_ids[next_index]
     @invoice = xero.Invoice.find(@order.invoice_id) if @order.invoice_id
   end
 
