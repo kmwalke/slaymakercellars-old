@@ -14,7 +14,7 @@ class Admin::OrdersController < ApplicationController
     @order        = Order.find(params[:id])
     rails_contact = @order.contact
     if Rails.env.production? || testing_xero
-      xero_contact = FindOrCreateXeroContact.new(rails_contact.business)
+      xero_contact = XeroFindOrCreateContact.new(rails_contact.business)
 
       invoice = xero.Invoice.build(
         type: 'ACCREC',

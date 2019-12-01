@@ -1,4 +1,4 @@
-class FindOrCreateXeroContact
+class XeroFindOrCreateContact
   def self.call(name)
     new(name).call
   end
