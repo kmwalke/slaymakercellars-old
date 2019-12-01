@@ -11,7 +11,7 @@
   <% @contacts.each do |contact| -%>
     <tr>
       <td>
-        <%= link_to contact.business, edit_admin_contact_url(contact) %> 
+        <%= link_to contact.business, edit_admin_contact_url(contact) %>
       </td>
       <td>
         <% if contact.updated_at == contact.created_at -%>
@@ -43,7 +43,7 @@
       <td>
         <%= link_to order.contact.business, edit_admin_order_url(order) %> was
       </td>
-      
+
       <% if order.fulfilled? -%>
         <td>
           delivered
@@ -58,14 +58,14 @@
         <% if order.updated_by_id -%>
           <td>
             updated
-          </td> 
+          </td>
           <td>
             <%= order.updated_by.name %>
           </td>
         <% else -%>
           <td>
             created
-          </td> 
+          </td>
           <td>
             <%= order.created_by.name %>
           </td>

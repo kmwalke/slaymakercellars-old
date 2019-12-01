@@ -4,11 +4,13 @@
     <th>Cust PO Number</th>
     <th>Business</th>
     <th>
-      <% if @show == "fulfilled" =%>
+      <% if @show == "fulfilled"
+           = %>
         Fulfilled On
-      <% else =%>
+      <% else
+           = %>
         Delivery Date
-      <% end =%>
+      <% end = %>
     </th>
     <th>Invoice Status</th>
     <th></th>

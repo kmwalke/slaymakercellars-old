@@ -1,5 +1,3 @@
-
-
 <h1>Listing Towns</h1>
 
 
@@ -14,12 +12,12 @@
     <tr class="<%= cycle "even", "odd" %>">
       <td><%= link_to town.name, edit_admin_town_path(town) %></td>
       <td><%= town.state.name %></td>
-      <td><%= link_to 'X', admin_town_path(town), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'X', admin_town_path(town), method: :delete, data: {confirm: 'Are you sure?'} %></td>
     </tr>
   <% end %>
 </table>
 
 <br>
 
-<%= link_to 'New Town', new_admin_town_path %><br />
+<%= link_to 'New Town', new_admin_town_path %><br/>
 <%= link_to 'New State', new_admin_state_path %>

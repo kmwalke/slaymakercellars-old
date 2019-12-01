@@ -9,23 +9,23 @@
     <th></th>
   </tr>
 
-<% @distribution_centers.each do |distribution_center| %>
-  <tr>
-    <td><%= link_to distribution_center.name, edit_admin_distribution_center_path(distribution_center) %></td>
-    <td><%= link_to distribution_center.contact_point, edit_admin_distribution_center_path(distribution_center) %></td>
-    <td><%= link_to distribution_center.phone, edit_admin_distribution_center_path(distribution_center) %></td>
-    <td><%= link_to distribution_center.email, edit_admin_distribution_center_path(distribution_center) %></td>
-    <td>
-      <%= link_to 'X',
-                  admin_distribution_center_path(distribution_center),
-                  confirm: 'Are you sure?',
-                  method: :delete,
-                  id: "delete_#{distribution_center.id}" %>
-    </td>
-  </tr>
-<% end %>
+  <% @distribution_centers.each do |distribution_center| %>
+    <tr>
+      <td><%= link_to distribution_center.name, edit_admin_distribution_center_path(distribution_center) %></td>
+      <td><%= link_to distribution_center.contact_point, edit_admin_distribution_center_path(distribution_center) %></td>
+      <td><%= link_to distribution_center.phone, edit_admin_distribution_center_path(distribution_center) %></td>
+      <td><%= link_to distribution_center.email, edit_admin_distribution_center_path(distribution_center) %></td>
+      <td>
+        <%= link_to 'X',
+                    admin_distribution_center_path(distribution_center),
+                    confirm: 'Are you sure?',
+                    method: :delete,
+                    id: "delete_#{distribution_center.id}" %>
+      </td>
+    </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 
 <%= link_to 'New Distribution Center', new_admin_distribution_center_path %>

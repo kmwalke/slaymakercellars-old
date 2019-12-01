@@ -1,9 +1,9 @@
 <%
   if post['excerpt']
-    desc = post['excerpt'] 
-  else 
+    desc = post['excerpt']
+  else
     desc = post['url']
-  end 
+  end
 -%>
 
 <%= link_to desc, post['url'] %>

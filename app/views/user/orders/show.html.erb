@@ -1,5 +1,5 @@
-<h1><%=@order.contact.business%></h1>
-<h2><%= humanize_date @order.fulfilled_on%></h2>
+<h1><%= @order.contact.business %></h1>
+<h2><%= humanize_date @order.fulfilled_on %></h2>
 
 <p>
   <%= link_to 'Undeliver', unfulfill_admin_order_path(@order) %>
@@ -12,15 +12,15 @@
     <th>Cheese</th>
   </tr>
 
-<% @order.line_items.each do |line_item| -%>
-  <tr class="<%= cycle "even", "odd" %>">
-    <td style="white-space: nowrap"><%=line_item.units %></td>
-    <td style="white-space: nowrap"><%=line_item.size %></td>
-    <td style="white-space: nowrap"><%=line_item.product.name %></td>
-    
-  </tr>
+  <% @order.line_items.each do |line_item| -%>
+    <tr class="<%= cycle "even", "odd" %>">
+      <td style="white-space: nowrap"><%= line_item.units %></td>
+      <td style="white-space: nowrap"><%= line_item.size %></td>
+      <td style="white-space: nowrap"><%= line_item.product.name %></td>
 
-<% end -%>
+    </tr>
+
+  <% end -%>
 </table>
 
 <p><%= @order.comments %></p>

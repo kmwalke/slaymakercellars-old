@@ -3,18 +3,18 @@
     <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
 
     <ul>
-    <% @contact.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
 
 
 <div class="actions">
-  <%= f.submit disable_with: "Loading..."  %>
+  <%= f.submit disable_with: "Loading..." %>
 </div>
-  
+
 <div class="column">
   <div class="field">
     <%= f.label :business %>
@@ -41,8 +41,8 @@
     <%= f.text_field :tax_id_number %>
   </div>
   <div class="field">
-    <%= f.label :address, "Shipping Address" %><br />
-    <%= f.text_area :address, cols: 30, rows: 10  %>
+    <%= f.label :address, "Shipping Address" %><br/>
+    <%= f.text_area :address, cols: 30, rows: 10 %>
   </div>
   <div class="field">
     <%= f.label :town %>
@@ -63,7 +63,7 @@
     <%= f.text_field :price_point %>
   </div>
   <div class="actions">
-    <%= f.submit disable_with: "Loading..."  %>
+    <%= f.submit disable_with: "Loading..." %>
   </div>
   <%= link_to 'Back', admin_contacts_path %>
 </div>
@@ -98,7 +98,7 @@
     <%= f.collection_select(:distribution_center_id, DistributionCenter.all, :id, :name) %>
   </div>
   <div class="field">
-    <%= f.label :comments %><br />
+    <%= f.label :comments %><br/>
     <%= f.text_area :comments, cols: 40, rows: 10 %>
   </div>
   <%= render partial: "notes", locals: {notes: @notes} %>

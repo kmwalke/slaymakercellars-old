@@ -12,7 +12,7 @@
         <%= link_to "Home", root_path, class: active("home") %>
       </li>
       <li>
-        <%= link_to "Cheese", "#",  class: active("products") %>
+        <%= link_to "Cheese", "#", class: active("products") %>
         <ul>
           <li>
             <span>Cheese Types</span>
@@ -30,7 +30,7 @@
         </ul>
       </li>
       <li>
-        <%= link_to "News", "#",  class: active("articles") %>
+        <%= link_to "News", "#", class: active("articles") %>
         <ul>
           <li>
             <%= link_to "Media Coverage", articles_path %>
@@ -44,32 +44,32 @@
         <%= link_to "Visit", "#", class: active("tr") %>
         <ul>
           <li>
-            <%= link_to "Directions", tr_path( anchor: "visit") %>
+            <%= link_to "Directions", tr_path(anchor: "visit") %>
           </li>
           <li>
-            <%= link_to "Hours", tr_path( anchor: "visit") %>
+            <%= link_to "Hours", tr_path(anchor: "visit") %>
           </li>
           <li>
-            <%= link_to "Food & Drink", tr_path( anchor: "menu") %>
+            <%= link_to "Food & Drink", tr_path(anchor: "menu") %>
           </li>
           <li>
             <%= link_to "Menu", image_path("food.png") %>
           </li>
           <li>
-            <%= link_to "Food Truck", tr_path( anchor: "truck") %>
+            <%= link_to "Food Truck", tr_path(anchor: "truck") %>
           </li>
           <li>
-            <%= link_to "Events", tr_path( anchor: "events") %>
+            <%= link_to "Events", tr_path(anchor: "events") %>
           </li>
         </ul>
       </li>
       <li>
-        <%= link_to "Order Online", "https://squareup.com/store/Kwac",  class: "last_link", target: "_blank" %>
+        <%= link_to "Order Online", "https://squareup.com/store/Kwac", class: "last_link", target: "_blank" %>
       </li>
     </ul>
-    
-    
 
-    <% link_to "Recipes", accounts_path,  class: active("trade_items") %>
+
+
+    <% link_to "Recipes", accounts_path, class: active("trade_items") %>
   </div>
 </div>

@@ -1,7 +1,6 @@
 <h1>Editing product</h1>
 
-
 <%= form_for(@product, url: admin_product_path(@product), html: {multipart: true}) do |f| %>
-<%= render partial: 'form', locals: {f: f} %>
+  <%= render partial: 'form', locals: {f: f} %>
 <% end -%>
 

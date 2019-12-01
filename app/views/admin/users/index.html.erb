@@ -2,12 +2,12 @@
 
 
 <p>
-  <%= link_to 'Active Users', admin_users_path({show: "active"})%> |
-  <%= link_to 'Inactive Users', admin_users_path({show: "inactive"})%>
+  <%= link_to 'Active Users', admin_users_path({show: "active"}) %> |
+  <%= link_to 'Inactive Users', admin_users_path({show: "inactive"}) %>
 </p>
 <p>
 
-<%= link_to 'New User', new_admin_user_path %>
+  <%= link_to 'New User', new_admin_user_path %>
 </p>
 <table class="crud admin" CELLSPACING="0" CELLPADING="0">
   <tr class="title">
@@ -17,15 +17,15 @@
     <th></th>
   </tr>
 
-<% @users.each do |user| %>
-  <tr class="<%= cycle "even", "odd" %>">
-    <td><%= link_to user.name, edit_admin_user_path(user) %></td>
-    <td><%= user.admin ? "Admin" : "Customer" %></td>
-    <td><%= user.contact ? link_to(user.contact.business, edit_admin_contact_path(user.contact)) : " " %></td>
-    <td><%= link_to 'X', admin_user_path(user), confirm: 'Are you sure?', method: :delete, id: "delete_#{user.id}" %>&nbsp;</td>
-  </tr>
-<% end %>
+  <% @users.each do |user| %>
+    <tr class="<%= cycle "even", "odd" %>">
+      <td><%= link_to user.name, edit_admin_user_path(user) %></td>
+      <td><%= user.admin ? "Admin" : "Customer" %></td>
+      <td><%= user.contact ? link_to(user.contact.business, edit_admin_contact_path(user.contact)) : " " %></td>
+      <td><%= link_to 'X', admin_user_path(user), confirm: 'Are you sure?', method: :delete, id: "delete_#{user.id}" %>&nbsp;</td>
+    </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 

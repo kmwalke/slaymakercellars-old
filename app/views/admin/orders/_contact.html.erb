@@ -17,7 +17,7 @@
   <% else -%>
     No
   <% end -%>
-  </strong>
+</strong>
 </p>
 
 <% if contact.phone -%>
@@ -28,7 +28,7 @@
 
 <% if contact.email -%>
   <p>
-    Email: <strong><%= link_to contact.email, "mailto:"+contact.email, target: "_blank" %></strong>
+    Email: <strong><%= link_to contact.email, "mailto:" + contact.email, target: "_blank" %></strong>
   </p>
 <% end -%>
 
