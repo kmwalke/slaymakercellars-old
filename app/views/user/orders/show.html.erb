@@ -5,7 +5,7 @@
   <%= link_to 'Undeliver', unfulfill_admin_order_path(@order) %>
 </p>
 
-<table class="crud admin" cellpadding="0px" cellspacing="0px">
+<table class="crud ">
   <tr class="title">
     <th>Quantity</th>
     <th>Size</th>
@@ -17,9 +17,7 @@
       <td style="white-space: nowrap"><%= line_item.units %></td>
       <td style="white-space: nowrap"><%= line_item.size %></td>
       <td style="white-space: nowrap"><%= line_item.product.name %></td>
-
     </tr>
-
   <% end -%>
 </table>
 

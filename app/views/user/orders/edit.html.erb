@@ -9,7 +9,6 @@
 </p>
 
 <%= form_for(@order, url: user_order_path(@order)) do |f| %>
-
   <p>
     <% if @order.invoice_id -%>
     <h4>
@@ -32,8 +31,6 @@
     <%= link_to 'Cancel', user_orders_path %>
   </p>
 
-
-
   <fieldset class="column">
     <legend>Order <%= @order.id %></legend>
     <%= render partial: 'form', locals: {f: f} %>
@@ -42,13 +39,14 @@
       <%= f.submit 'Update', name: :update, disable_with: "Loading..." %>
       <%= link_to 'Cancel', user_orders_path %>
     </p>
-
   </fieldset>
 
 <% end -%>
+
 <fieldset class="column">
   <%= render partial: 'contact', locals: {contact: @order.contact} %>
 </fieldset>
+
 <% if @order.contact.mark_retail -%>
   <fieldset class="column">
     <%= render partial: 'calculator', locals: {contact: @order.contact} %>

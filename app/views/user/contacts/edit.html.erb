@@ -1,7 +1,6 @@
 <h1>Editing <%= @contact.business %></h1>
 
 <%= form_for(@contact, url: user_contact_path(@contact)) do |f| %>
-
   <%= render partial: 'form', locals: {f: f} %>
 <% end -%>
 

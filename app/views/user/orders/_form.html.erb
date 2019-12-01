@@ -17,6 +17,7 @@
     <%= f.hidden_field :contact_business %>
   <% end -%>
 </div>
+
 <div class="field">
   <%= f.label :delivery_date, "Delivery Date (DD-MM-YYYY)" %>
   <% if @order.delivery_date -%>
@@ -33,6 +34,7 @@
 </div>
 
 <h3>Line Items</h3>
+
 <div id="line_items">
   <%= f.fields_for :line_items do |line_item| %>
     <%= render 'line_item_fields', f: line_item %>
