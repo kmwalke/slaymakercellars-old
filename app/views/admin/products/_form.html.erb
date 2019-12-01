@@ -36,13 +36,13 @@
     <%= select(:product, :category, Product::TYPES) %>
   </div>
   <div class="actions">
-    <%= f.submit :disable_with => "Loading..." %>
+    <%= f.submit disable_with: "Loading..." %>
   </div>
 </div>
 
 <div class="column">
   <div class="field">
     <%= f.label :desc %><br />
-    <%= f.text_area :desc, :cols => 50, :rows => 30 %>
+    <%= f.text_area :desc, cols: 50, rows: 30 %>
   </div>
 </div>

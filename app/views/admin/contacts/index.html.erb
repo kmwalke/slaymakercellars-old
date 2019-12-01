@@ -15,23 +15,23 @@
   </legend>
   
   <p class="main_options">
-      <%= @show == "active" ? "Active" : link_to('Active', admin_contacts_path({:show => "active"}))%> |
-      <%= @show == "target" ? "Target" : link_to('Target', admin_contacts_path({:show => "target"}))%> |
-      <%= @show == "misc" ? "Misc." : link_to('Misc.', admin_contacts_path({:show => "misc"}))%> |
-      <%= @show == "urgent" ? "Urgent" : link_to('Urgent', admin_contacts_path({:show => "urgent"}))%>
+      <%= @show == "active" ? "Active" : link_to('Active', admin_contacts_path({show: "active"}))%> |
+      <%= @show == "target" ? "Target" : link_to('Target', admin_contacts_path({show: "target"}))%> |
+      <%= @show == "misc" ? "Misc." : link_to('Misc.', admin_contacts_path({show: "misc"}))%> |
+      <%= @show == "urgent" ? "Urgent" : link_to('Urgent', admin_contacts_path({show: "urgent"}))%>
   </p>
   <hr />
   <p>
-      <%= @show == "inactive" ? "Deleted Contacts" : link_to('Deleted Contacts', admin_contacts_path({:show => "inactive"}))%>
+      <%= @show == "inactive" ? "Deleted Contacts" : link_to('Deleted Contacts', admin_contacts_path({show: "inactive"}))%>
   </p>
 </fieldset>
 
-<%= form_tag admin_contacts_path, :method => 'get' do %>
+<%= form_tag admin_contacts_path, method: 'get' do %>
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
   <p>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
+    <%= submit_tag "Search", name: nil %>
   </p>
 <% end %>
 
@@ -54,14 +54,14 @@
   <tr class="<%= cycle "even", "odd" %>">
     <td>
       <% if contact.unresolved_notes? -%>
-        <%= link_to contact.name, edit_admin_contact_path(contact), :class => "unresolved" %>
+        <%= link_to contact.name, edit_admin_contact_path(contact), class: "unresolved" %>
       <% else -%>
         <%= link_to contact.name, edit_admin_contact_path(contact) %>
       <% end -%>
     </td>
     <td>
       <% if contact.unresolved_notes? -%>
-        <%= link_to contact.business, edit_admin_contact_path(contact), :class => "unresolved" %>
+        <%= link_to contact.business, edit_admin_contact_path(contact), class: "unresolved" %>
       <% else -%>
         <%= link_to contact.business, edit_admin_contact_path(contact) %>
       <% end -%>
@@ -80,7 +80,7 @@
     </td>
     <td>
       <% unless contact.email == nil || contact.email == "" -%>
-        <%= link_to "Email", "mailto:#{contact.email}", :target => "_blank" %>
+        <%= link_to "Email", "mailto:#{contact.email}", target: "_blank" %>
       <% end -%>
     </td>
     <td nowrap>
@@ -88,7 +88,7 @@
         &nbsp;
       <% else -%>
         <% if contact.unresolved_notes? -%>
-          <%= link_to "#{time_ago_in_words contact.notes.first.created_at} ago", edit_admin_contact_path(contact), :class => "unresolved" %>
+          <%= link_to "#{time_ago_in_words contact.notes.first.created_at} ago", edit_admin_contact_path(contact), class: "unresolved" %>
         <% else -%>
           <%= time_ago_in_words contact.notes.first.created_at %> ago
         <% end -%>
@@ -96,12 +96,12 @@
     </td>
     <td nowrap>
       <% if contact.last_order -%>
-        <%= link_to "#{time_ago_in_words contact.last_order} ago", admin_orders_path({:show => contact.id}) %>
+        <%= link_to "#{time_ago_in_words contact.last_order} ago", admin_orders_path({show: contact.id}) %>
       <% else -%>
         &nbsp;
       <% end -%>
     </td>
-    <td><%= link_to 'X', admin_contact_path(contact), confirm: 'Are you sure?', method: :delete, :id => "delete_#{contact.id}" %>&nbsp;</td>
+    <td><%= link_to 'X', admin_contact_path(contact), confirm: 'Are you sure?', method: :delete, id: "delete_#{contact.id}" %>&nbsp;</td>
   </tr>
 <% end %>
 </table>
