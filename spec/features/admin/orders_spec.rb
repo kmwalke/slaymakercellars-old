@@ -228,23 +228,6 @@ describe 'Admin::Orders' do
     end
   end
 
-  it 'navigates orders' do
-    login_as_admin
-    o1   = FactoryBot.create(:order, delivery_date: Date.today)
-    o2   = FactoryBot.create(:order, delivery_date: Date.today + 2)
-    o3   = FactoryBot.create(:order, delivery_date: Date.today + 1)
-
-    visit edit_admin_order_path(o1)
-    expect(page).to have_content '<'
-    expect(page).to have_content '>'
-    click_link '>'
-    expect(current_path).to eq(edit_admin_order_path(o3.id))
-    click_link '>'
-    expect(current_path).to eq(edit_admin_order_path(o2.id))
-    click_link '>'
-    expect(current_path).to eq(edit_admin_order_path(o1.id))
-  end
-
   it 'fulfills line items' do
     login_as_admin
     p     = FactoryBot.create(:product)

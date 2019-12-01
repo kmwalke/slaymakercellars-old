@@ -139,21 +139,4 @@ describe 'User::Orders' do
     expect(page).to have_content(order.contact.business)
     expect(page).to have_content(order.id)
   end
-
-  it 'navigates orders' do
-    user = login
-    o1   = FactoryBot.create(:order, contact_id: user.contact.id, delivery_date: Date.today)
-    o2   = FactoryBot.create(:order, contact_id: user.contact.id, delivery_date: Date.today + 2)
-    o3   = FactoryBot.create(:order, contact_id: user.contact.id, delivery_date: Date.today + 1)
-
-    visit edit_user_order_path(o1)
-    expect(page).to have_content '<'
-    expect(page).to have_content '>'
-    click_link '>'
-    expect(current_path).to eq(edit_user_order_path(o3.id))
-    click_link '>'
-    expect(current_path).to eq(edit_user_order_path(o2.id))
-    click_link '>'
-    expect(current_path).to eq(edit_user_order_path(o1.id))
-  end
 end
