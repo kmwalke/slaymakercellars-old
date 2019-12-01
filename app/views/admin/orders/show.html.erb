@@ -17,7 +17,7 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
         & Sent
       <% end -%>
     </h4>
-    <%= link_to 'Open Invoice', xero_invoice_link + @order.invoice_id, :target =>"_blank" %>
+    <%= link_to 'Open Invoice', xero_invoice_link + @order.invoice_id, target: "_blank" %>
   <% end %>
 </p>
 
@@ -59,10 +59,10 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
 </fieldset>
 
 <fieldset class="column">
-  <%= render :partial => 'contact', :locals => {:contact => @order.contact} %>
+  <%= render partial: 'contact', locals: {contact: @order.contact} %>
 </fieldset>
 <% if @order.contact.mark_retail -%>
   <fieldset class="column">
-    <%= render :partial => 'calculator', :locals => {:contact => @order.contact} %>
+    <%= render partial: 'calculator', locals: {contact: @order.contact} %>
   </fieldset>
 <% end -%>

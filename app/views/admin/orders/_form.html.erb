@@ -14,7 +14,7 @@
   <div class="field">
     <%= f.label :contact_business %>
     <% if @contact_business -%>
-      <%= f.text_field :contact_business, :value => @contact_business, data: {autocomplete_source: Contact.order(:business).map(&:business)} %>
+      <%= f.text_field :contact_business, value: @contact_business, data: {autocomplete_source: Contact.order(:business).map(&:business)} %>
     <% else -%>
       <%= f.text_field :contact_business, data: {autocomplete_source: Contact.order(:business).map(&:business)} %>
     <% end -%>
@@ -22,9 +22,9 @@
   <div class="field">
     <%= f.label :delivery_date %>
     <% if @order.delivery_date -%>
-      <%= f.text_field :delivery_date, :class => "datepicker", :value => @order.delivery_date.strftime("%d-%m-%Y") %>
+      <%= f.text_field :delivery_date, class: "datepicker", value: @order.delivery_date.strftime("%d-%m-%Y") %>
     <% else -%>
-      <%= f.text_field :delivery_date, :class => "datepicker" %>
+      <%= f.text_field :delivery_date, class: "datepicker" %>
     <% end -%>
   </div>
 
@@ -36,7 +36,7 @@
   <h3>Line Items</h3>
   <div id="line_items">
     <%= f.fields_for :line_items do |line_item| %>
-      <%= render 'line_item_fields', :f => line_item %>
+      <%= render 'line_item_fields', f: line_item %>
     <% end -%>
     <div class="links">
       <%= link_to_add_association 'add line item', f, :line_items %>

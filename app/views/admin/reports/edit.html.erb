@@ -1,6 +1,6 @@
 <h1>Editing Report</h1>
 
-<%= form_for(@report, :url=>admin_report_path(@report)) do |f| %>
-  <%= render :partial => 'form', :locals => {:f => f} %>
+<%= form_for(@report, url: admin_report_path(@report)) do |f| %>
+  <%= render partial: 'form', locals: {f: f} %>
 <% end -%>
 

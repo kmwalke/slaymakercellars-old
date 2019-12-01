@@ -1,5 +1,5 @@
 <h1>Editing Town</h1>
 
-<%= form_for(@town, :url=>admin_towns_path(@town)) do |f| -%>
-  <%= render :partial => 'form', :locals => {:f => f} %>
+<%= form_for(@town, url: admin_towns_path(@town)) do |f| -%>
+  <%= render partial: 'form', locals: {f: f} %>
 <% end -%>

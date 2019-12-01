@@ -1,5 +1,5 @@
 <div class="print_header" >
-  <%= image_tag 'logo.png', :class => "print_header" %>
+  <%= image_tag 'logo.png', class: "print_header" %>
   <p class="print_contact" >
     <span>501-301-4963</span><br />
     <span>info@KentWalkerCheese.com</span><br />
@@ -11,7 +11,7 @@
   <h1>Cheeses</h1>
   <% Product::TYPES.each do |type| -%>
     <div class="link">
-      <%= link_to type, products_path({:category => type}), :class => active_sort(type, @active) %>
+      <%= link_to type, products_path({category: type}), class: active_sort(type, @active) %>
       <span class="arrow">
         >
       </span>
