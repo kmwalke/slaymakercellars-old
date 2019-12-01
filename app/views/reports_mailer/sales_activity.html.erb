@@ -1,13 +1,14 @@
 <h1>Sales Activity from this week:</h1>
 
 <h3>Contacts</h3>
-<table cellpadding=5 border=1>
+<table>
   <tr>
     <td>Name</td>
     <td>Action</td>
     <td>Salesperson</td>
     <td>Datetime</td>
   </tr>
+
   <% @contacts.each do |contact| -%>
     <tr>
       <td>
@@ -31,13 +32,14 @@
 </table>
 
 <h3>Order</h3>
-<table cellpadding=5 border=1>
+<table>
   <tr>
     <td>Name</td>
     <td>Action</td>
     <td>Salesperson</td>
     <td>Datetime</td>
   </tr>
+
   <% @orders.each do |order| -%>
     <tr>
       <td>
