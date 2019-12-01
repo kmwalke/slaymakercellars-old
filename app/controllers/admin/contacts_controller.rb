@@ -3,32 +3,12 @@ class Admin::ContactsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @show = params[:show]
-    case @show
-    when 'target'
-      @contacts = Contact.target_contacts
-      @title    = 'Target Contacts'
-    when 'misc'
-      @contacts = Contact.misc_contacts
-      @title    = 'Misc. Contacts'
-    when 'urgent'
-      @contacts = Contact.urgent_contacts
-      @title    = 'Urgent Contacts'
-    when 'inactive'
-      @contacts = Contact.where('deleted_at is not null')
-                         .search(params[:search]).order(sort_column + ' ' + sort_direction)
-      @title    = 'Deleted Contacts'
-    else
-      @show     = 'active'
-      @contacts = Contact.current_contacts.search(params[:search]).order(sort_column + ' ' + sort_direction)
-      @title    = 'Active Contacts'
-    end
+    @show, @contacts, @title = Contact.display(params[:show], params[:search])
 
-    @contacts = @contacts.paginate(per_page: 50, page: params[:page])
+    @contacts = @contacts.order(sort_column + ' ' + sort_direction).paginate(per_page: 50, page: params[:page])
 
     respond_to do |format|
       format.html
-      format.json { render json: @contacts }
     end
   end
 
@@ -43,7 +23,6 @@ class Admin::ContactsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @contact }
     end
   end
 
@@ -59,10 +38,8 @@ class Admin::ContactsController < ApplicationController
     respond_to do |format|
       if @contact.save
         format.html { redirect_to edit_admin_contact_path(@contact.id), notice: 'Contact was successfully created.' }
-        format.json { render json: @contact, status: :created, location: @contact }
       else
         format.html { render action: 'new' }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -74,10 +51,8 @@ class Admin::ContactsController < ApplicationController
     respond_to do |format|
       if @contact.update!(contact_params)
         format.html { redirect_to edit_admin_contact_path(@contact), notice: 'Contact was successfully updated.' }
-        format.json { head :ok }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -111,29 +86,9 @@ class Admin::ContactsController < ApplicationController
 
   def contact_params
     params.require(:contact).permit(
-      :name,
-      :business,
-      :title,
-      :town,
-      :comments,
-      :price_point,
-      :created_at,
-      :updated_at,
-      :status,
-      :address,
-      :url,
-      :is_public,
-      :phone,
-      :email,
-      :deleted_at,
-      :paperless_billing,
-      :state,
-      :distribution_center_id,
-      :mark_retail,
-      :price_per_ounce,
-      :town_id,
-      :tax_id_number,
-      :user_id
+      :name, :business, :title, :town, :comments, :price_point, :created_at, :updated_at, :status, :address, :url,
+      :is_public, :phone, :email, :deleted_at, :paperless_billing, :state, :distribution_center_id, :mark_retail,
+      :price_per_ounce, :town_id, :tax_id_number, :user_id
     )
   end
 end

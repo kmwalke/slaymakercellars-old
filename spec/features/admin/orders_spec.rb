@@ -105,7 +105,7 @@ describe 'Admin::Orders' do
     click_link "deliver_#{order.id}"
 
     expect(current_path).to eq(admin_orders_path)
-    expect(Order.find_by_id(order_id).fullfilled_on).not_to eq(nil)
+    expect(Order.find_by_id(order_id).fulfilled_on).not_to eq(nil)
   end
 
   it 'delivers an order from order page' do
@@ -118,12 +118,12 @@ describe 'Admin::Orders' do
     click_link 'Mark Delivered'
 
     expect(current_path).to eq(admin_orders_path)
-    expect(Order.find_by_id(order_id).fullfilled_on).not_to eq(nil)
+    expect(Order.find_by_id(order_id).fulfilled_on).not_to eq(nil)
   end
 
   it 'shows delivered orders' do
     login_as_admin
-    order    = FactoryBot.create(:order, fullfilled_on: Date.yesterday)
+    order    = FactoryBot.create(:order, fulfilled_on: Date.yesterday)
     order_id = order.id
     visit admin_orders_path
 
@@ -135,7 +135,7 @@ describe 'Admin::Orders' do
 
   it 'shows a delivered order' do
     login_as_admin
-    order    = FactoryBot.create(:order, fullfilled_on: Date.yesterday)
+    order    = FactoryBot.create(:order, fulfilled_on: Date.yesterday)
     order_id = order.id
     visit edit_admin_order_path(order_id)
 
@@ -157,7 +157,7 @@ describe 'Admin::Orders' do
 
   it 'undelivers an order' do
     login_as_admin
-    order    = FactoryBot.create(:order, fullfilled_on: Date.yesterday)
+    order    = FactoryBot.create(:order, fulfilled_on: Date.yesterday)
     order_id = order.id
 
     visit admin_orders_path
@@ -166,7 +166,7 @@ describe 'Admin::Orders' do
     click_link 'Undeliver'
 
     expect(current_path).to eq(edit_admin_order_path(order_id))
-    expect(Order.find_by_id(order_id).fullfilled_on).to eq(nil)
+    expect(Order.find_by_id(order_id).fulfilled_on).to eq(nil)
   end
 
   it 'views all orders by a contact' do
@@ -226,23 +226,6 @@ describe 'Admin::Orders' do
 
       expect(page).to have_content('Invoice Status: DRAFT')
     end
-  end
-
-  it 'navigates orders' do
-    login_as_admin
-    o1   = FactoryBot.create(:order, delivery_date: Date.today)
-    o2   = FactoryBot.create(:order, delivery_date: Date.today + 2)
-    o3   = FactoryBot.create(:order, delivery_date: Date.today + 1)
-
-    visit edit_admin_order_path(o1)
-    expect(page).to have_content '<'
-    expect(page).to have_content '>'
-    click_link '>'
-    expect(current_path).to eq(edit_admin_order_path(o3.id))
-    click_link '>'
-    expect(current_path).to eq(edit_admin_order_path(o2.id))
-    click_link '>'
-    expect(current_path).to eq(edit_admin_order_path(o1.id))
   end
 
   it 'fulfills line items' do

@@ -5,7 +5,6 @@ class Admin::TradeItemsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @trade_items }
     end
   end
 
@@ -14,7 +13,6 @@ class Admin::TradeItemsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @trade_item }
     end
   end
 
@@ -23,7 +21,6 @@ class Admin::TradeItemsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @trade_item }
     end
   end
 
@@ -37,10 +34,8 @@ class Admin::TradeItemsController < ApplicationController
     respond_to do |format|
       if @trade_item.save
         format.html { redirect_to admin_trade_items_path, notice: 'Trade item was successfully created.' }
-        format.json { render json: @trade_item, status: :created, location: @trade_item }
       else
         format.html { render action: 'new' }
-        format.json { render json: @trade_item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,10 +46,8 @@ class Admin::TradeItemsController < ApplicationController
     respond_to do |format|
       if @trade_item.update!(trade_item_params)
         format.html { redirect_to admin_trade_items_path, notice: 'Trade item was successfully updated.' }
-        format.json { head :ok }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @trade_item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -65,7 +58,6 @@ class Admin::TradeItemsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to admin_trade_items_path }
-      format.json { head :ok }
     end
   end
 

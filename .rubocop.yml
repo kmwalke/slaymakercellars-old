@@ -4,20 +4,8 @@ AllCops:
   - 'config/environments/*'
   - 'bin/*'
 
-Style/ClassAndModuleChildren:
-  Enabled: false
-
 Layout/ExtraSpacing:
   ForceEqualSignAlignment: true
-
-Style/Documentation:
-  Enabled: false
-
-Style/SymbolArray:
-  EnforcedStyle: brackets
-
-Style/FrozenStringLiteralComment:
-  EnforcedStyle: never
 
 Metrics/AbcSize:
   Max: 25
@@ -29,10 +17,12 @@ Metrics/BlockLength:
   - 'Guardfile'
   - 'config/routes.rb'
 
-Metrics/CyclomaticComplexity:
-  Max: 10
+Metrics/ClassLength:
+  Exclude:
+    - 'app/controllers/admin/orders_controller.rb'
+    - 'app/controllers/user/orders_controller.rb'
 
-Metrics/PerceivedComplexity:
+Metrics/CyclomaticComplexity:
   Max: 10
 
 Metrics/LineLength:
@@ -40,3 +30,18 @@ Metrics/LineLength:
 
 Metrics/MethodLength:
   Max: 20
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Style/SymbolArray:
+  EnforcedStyle: brackets

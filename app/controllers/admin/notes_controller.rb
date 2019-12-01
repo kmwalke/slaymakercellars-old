@@ -7,8 +7,7 @@ class Admin::NotesController < ApplicationController
     @user_id    = current_user.id
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @note }
+      format.html
     end
   end
 
@@ -19,7 +18,6 @@ class Admin::NotesController < ApplicationController
       redirect_to edit_admin_contact_path(@note.contact_id)
     else
       format.html { render action: 'new' }
-      format.json { render json: @note.errors, status: :unprocessable_entity }
     end
   end
 
@@ -30,7 +28,6 @@ class Admin::NotesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to edit_admin_contact_path(@note.contact_id) }
-      format.json { head :ok }
     end
   end
 

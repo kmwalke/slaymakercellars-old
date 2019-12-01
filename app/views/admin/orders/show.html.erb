@@ -17,12 +17,12 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
 			  & Sent
 			<% end -%>
 		</h4>
-		<%= link_to 'Open Invoice', @xero_invoice_link + @order.invoice_id, :target =>"_blank" %>
-	<% end =%>
+		<%= link_to 'Open Invoice', xero_invoice_link + @order.invoice_id, :target =>"_blank" %>
+	<% end %>
 </p>
 
-<% if @order.fullfilled_on -%>
-<h2>Delivered on <%= humanize_date @order.fullfilled_on%></h2>
+<% if @order.fulfilled_on -%>
+<h2>Delivered on <%= humanize_date @order.fulfilled_on%></h2>
   <p>
 	  <%= link_to 'Undeliver', unfulfill_admin_order_path(@order) %>
   </p>

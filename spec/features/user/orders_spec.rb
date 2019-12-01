@@ -60,6 +60,7 @@ describe 'User::Orders' do
   it 'records users updating orders' do
     user  = login
     order = FactoryBot.create(:order, contact_id: user.contact.id, created_by: user)
+    FactoryBot.create(:user, admin: true)
 
     visit edit_user_order_path(order.id)
     new_date = order.delivery_date + 1
@@ -131,29 +132,12 @@ describe 'User::Orders' do
 
   it 'shows delivered orders' do
     user  = login
-    order = FactoryBot.create(:order, contact_id: user.contact.id, fullfilled_on: Date.yesterday)
+    order = FactoryBot.create(:order, contact_id: user.contact.id, fulfilled_on: Date.yesterday)
 
     visit user_orders_path
     click_on 'Delivered Orders'
 
     expect(page).to have_content(order.contact.business)
     expect(page).to have_content(order.id)
-  end
-
-  it 'navigates orders' do
-    user = login
-    o1   = FactoryBot.create(:order, contact_id: user.contact.id, delivery_date: Date.today)
-    o2   = FactoryBot.create(:order, contact_id: user.contact.id, delivery_date: Date.today + 2)
-    o3   = FactoryBot.create(:order, contact_id: user.contact.id, delivery_date: Date.today + 1)
-
-    visit edit_user_order_path(o1)
-    expect(page).to have_content '<'
-    expect(page).to have_content '>'
-    click_link '>'
-    expect(current_path).to eq(edit_user_order_path(o3.id))
-    click_link '>'
-    expect(current_path).to eq(edit_user_order_path(o2.id))
-    click_link '>'
-    expect(current_path).to eq(edit_user_order_path(o1.id))
   end
 end

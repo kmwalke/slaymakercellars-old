@@ -1,6 +1,4 @@
 class ProductsController < ApplicationController
-  # GET /products
-  # GET /products.json
   def index
     category  = params[:category] || 'Year Round'
     @products = Product.where(category: category, is_public: true).order(:name)
@@ -8,8 +6,7 @@ class ProductsController < ApplicationController
     @active   = params[:category] || Product::TYPES[0]
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @products }
+      format.html
     end
   end
 end

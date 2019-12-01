@@ -39,10 +39,8 @@ class Admin::UsersController < ApplicationController
       if @user.update!(user_params)
         @user.save
         format.html { redirect_to admin_users_path, notice: 'User was successfully updated.' }
-        format.json { head :ok }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,7 +58,6 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to admin_users_path, notice: notice }
-      format.json { head :ok }
     end
   end
 
@@ -73,7 +70,6 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to admin_users_path, notice: notice }
-      format.json { head :ok }
     end
   end
 

@@ -3,8 +3,7 @@ class TradeItemsController < ApplicationController
     @trade_items = TradeItem.where(is_public: true)
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @trade_items }
+      format.html
     end
   end
 end

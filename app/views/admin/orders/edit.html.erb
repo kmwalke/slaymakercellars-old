@@ -1,8 +1,5 @@
 <h1>PO <%= @order.id %></h1>
 
-<%= link_to '<', edit_admin_order_path(@prev_id), :class => "nav_arrow nav_arrow_left" %>
-<%= link_to '>', edit_admin_order_path(@next_id), :class => "nav_arrow nav_arrow_right" %>
-
 <p>
 Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at %>.
 <% if @order.updated_by -%>
@@ -21,7 +18,7 @@ Created by <%= @order.created_by.name %> on <%= humanize_date @order.created_at 
 			  & Sent
 			<% end -%>
 		</h4>
-		<%= link_to 'Open Invoice', @xero_invoice_link + @order.invoice_id, :target =>"_blank" %>
+		<%= link_to 'Open Invoice', xero_invoice_link + @order.invoice_id, :target =>"_blank" %>
 	<% else =%>
 		<%= link_to 'Create Invoice', invoice_admin_order_path(@order) %>
     <div class="field">
