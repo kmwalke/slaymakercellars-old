@@ -10,7 +10,7 @@
       </li>
       <% unless @late_orders.size == 0 -%>
         <li class="urgent">
-          <%= orders_link @late_orders, "late", {:show => :late} %>
+          <%= orders_link @late_orders, "late", {show: :late} %>
         </li>
       <% end -%>
       <li>
@@ -29,7 +29,7 @@
       </li>
       <% unless @urgent_contacts.size == 0 -%>
         <li class="urgent">
-          <%= contacts_link @urgent_contacts, "", {:show => :urgent} %>
+          <%= contacts_link @urgent_contacts, "", {show: :urgent} %>
         </li>
       <% end -%>
       <li>

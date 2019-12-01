@@ -27,17 +27,17 @@
   <div class="field">
     <%= f.label :start_date %>
     <% if @report.start_date -%>
-      <%= f.text_field :start_date, :class => "datepicker", :value => @report.start_date.strftime("%d-%m-%Y") %>
+      <%= f.text_field :start_date, class: "datepicker", :value => @report.start_date.strftime("%d-%m-%Y") %>
     <% else -%>
-      <%= f.text_field :start_date, :class => "datepicker" %>
+      <%= f.text_field :start_date, class: "datepicker" %>
     <% end -%>
   </div>
   <div class="field">
     <%= f.label :end_date %>
     <% if @report.end_date -%>
-      <%= f.text_field :end_date, :class => "datepicker", :value => @report.end_date.strftime("%d-%m-%Y") %>
+      <%= f.text_field :end_date, class: "datepicker", value: @report.end_date.strftime("%d-%m-%Y") %>
     <% else -%>
-      <%= f.text_field :end_date, :class => "datepicker" %>
+      <%= f.text_field :end_date, class: "datepicker" %>
     <% end -%>
   </div>
   <div class="actions">
