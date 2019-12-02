@@ -49,6 +49,7 @@ group :test do
   gem 'capybara'
   gem 'factory_bot_rails'
   gem 'guard-rspec'
+  gem 'simplecov'
   gem 'turn', require: false
 end
 
