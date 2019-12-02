@@ -41,11 +41,8 @@
   <% end -%>
 
   <div class="spacer">&nbsp;</div>
-  <% if logged_in? -%>
-    <div class="content admin">
-  <% else -%>
-    <div class="content">
-  <% end -%>
+  <div class="content<%= logged_in? ? ' admin' : '' %>">
+
   <% if flash[:notice] -%>
     <div class="flash">
       <%= flash[:notice] %>
@@ -53,8 +50,6 @@
   <% end -%>
 
   <%= yield %>
-
-  </div>
 
   <% unless logged_in? -%>
     <div class="footer">
@@ -71,6 +66,7 @@
     </div>
   <% end -%>
   </div>
+
 </div>
 
 </body>
