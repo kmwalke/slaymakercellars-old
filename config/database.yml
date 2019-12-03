@@ -1,22 +1,16 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  host: db
+  username: postgres
+  password:
+  pool: 5
 
 development:
   <<: *default
-  database: slaymaker_cellars_dev
-  username: vstar
-  password: password1
+  database: slaymakercellars_development
+
 
 test:
   <<: *default
-  database: slaymaker_cellars_test
-  username: vstar
-  password: password1
-
-production:
-  <<: *default
-  database: slaymaker_cellars_prod
+  database: slaymakercellars_test
