@@ -45,7 +45,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   margin: 0;
-  padding: 0px;
+  padding: 0;
   height: 100%;
   width: 100%;
 }
@@ -61,7 +61,7 @@ body {
   background-attachment: scroll;
   background-size: 100% 12em;
   background-repeat: no-repeat;
-  background-color: #f0ded0;
+  background-color: $tan-light;
   height: 12em;
   position:relative;
   
@@ -247,21 +247,21 @@ a:hover {
 }
 
 .flash {
-  border: 2px solid green;
+  border: 2px solid $green;
   background: #dfd;
   padding: 5px;
   margin-bottom: 15px;
 }
   
 div#error_explanation {
-  border: 2px solid red;
+  border: 2px solid $red;
   background: #fdd;
   padding: 5px;
   margin-bottom: 15px;
 }
 
 .slideshow {
-  border: .25em solid white;
+  border: .25em solid $white;
   @include shadow(2px, 2px, 6px, black);
   position: relative;
 
@@ -278,12 +278,12 @@ div#error_explanation {
     font-size: 3.5em;
     font-weight: bold;
     text-shadow: 3px 3px $brown;
-    color: white;
+    color: $white;
     font-family: 'Neucha', cursive;
     white-space: nowrap;
 
     span {
-      color: lighten(white, 0%);
+      color: lighten($white, 0%);
       text-decoration: none;
       display: block;
     }
