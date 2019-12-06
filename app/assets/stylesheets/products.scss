@@ -20,15 +20,15 @@ $sort-font-size: 1.3em;
 
 .print_button {
   text-decoration: none;
-  color: black;
-  border: 2px outset gray;
+  color: $black;
+  border: 2px outset $grey;
   padding: 2px;
-  background: #ddd;
+  background: $grey-light;
   margin-top: 2em;
 }
 
 .print_button:active {
-  border: 2px inset gray;
+  border: 2px inset $grey;
 }
 
 ul.cheese_list {
@@ -71,7 +71,7 @@ div.sort {
       font-size: $sort_font_size;
       display: block;
       font-variant: small-caps;
-      color: white;
+      color: $white;
       background-color: $orange;
       background: -webkit-linear-gradient(left, $yellow, $orange); /* For Safari 5.1 to 6.0 */
       background: -o-linear-gradient(right, $yellow, $orange); /* For Opera 11.1 to 12.0 */
