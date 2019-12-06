@@ -60,7 +60,7 @@ div.admin {
 }
 
 table.crud {
-  border: 1px solid black;
+  border: 1px solid $black;
   border-spacing: 0;
 
   a {
@@ -68,13 +68,13 @@ table.crud {
   }
   
   a.unresolved {
-    color: red;
+    color: $red;
   }
   
   th {
     background: darken($tr-bg,20);
     text-align: center;
-    color: white;
+    color: $white;
 
     a {
       color: $yellow;
@@ -90,7 +90,7 @@ table.crud {
   }
   
   tr {
-    background: white;
+    background: $white;
   }
 
   tr.odd {
@@ -99,10 +99,10 @@ table.crud {
   
   tr:hover {
     background: $tr-bg;
-    color: white;
+    color: $white;
 
     a {
-      color: white;
+      color: $white;
     }
   }
 }
@@ -112,7 +112,7 @@ table.crud {
   float: left;
   margin-right: 2%;
   margin-bottom: 5em;
-  border: 1px solid black;
+  border: 1px solid $black;
   padding: .2em;
 }
 
@@ -126,14 +126,14 @@ div.c_panel {
     display: inline-block;
     height: 12em;
     vertical-align: top;
-    border: 2px ridge #ccc;
+    border: 2px ridge $grey-light;
     margin-bottom: 2em;
-    color: black;
+    color: $black;
 
     legend {
       font-weight: bold;
       font-size: x-large;
-      border: 2px ridge #ccc;
+      border: 2px ridge $grey-light;
       color: $yellow;
       background-color: $orange;
       background: -webkit-linear-gradient($yellow, $orange); /* For Safari 5.1 to 6.0 */
@@ -142,7 +142,7 @@ div.c_panel {
       background: linear-gradient($yellow, $orange); /* Standard syntax */
       
       a {
-        color: white;
+        color: $white;
       }
 
       a:hover {
@@ -156,14 +156,14 @@ div.c_panel {
 
       li {
         a {
-          color: black;
-          border: 2px outset #ccc;
-          background: white;
+          color: $black;
+          border: 2px outset $grey-light;
+          background: $white;
           padding: 2px;
         }
 
         a:active {
-          border: 2px inset #ccc;
+          border: 2px inset $grey-light;
         }
       }
 
@@ -171,7 +171,7 @@ div.c_panel {
         a {
           border: 2px outset #c00;
           background: #d00;
-          color: white;
+          color: $white;
         }
       }
     }

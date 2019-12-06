@@ -11,12 +11,12 @@ div.blog_post {
       padding-left: 1em;
       padding-top: 0.5em;
       padding-bottom: 0.5em;
-      margin-top: 0px;
+      margin-top: 0;
       border-bottom: 1px solid darken($bg-color, 15%);
         
       span.datetime {
         size: small;
-        color: #555753;
+        color: $grey-dark;
         line-height: 1em;
         display: block;
         margin-bottom: .5em;
