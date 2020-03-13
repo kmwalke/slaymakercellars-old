@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bundle install
+bundle check || bundle install
 
 psql -h $DB_HOST -d $DB_DEV -U $DB_USERNAME -c 'SELECT id FROM users LIMIT 1'
 
