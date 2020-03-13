@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 ruby '2.7.0'
 
-gem 'rails', '6.0.1'
+gem 'rails', '6.0.2.1'
 
 gem 'bcrypt'
 gem 'bootsnap'
