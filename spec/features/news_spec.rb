@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'News' do
+describe 'News', skip: 'links disabled' do
   it 'renders news page' do
     visit root_path
     click_link 'Media Coverage'
