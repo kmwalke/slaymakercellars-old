@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Accounts' do
+describe 'Accounts', skip: 'links disabled' do
   it 'renders account page' do
     visit root_path
     click_link 'Where'
