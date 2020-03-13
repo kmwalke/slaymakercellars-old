@@ -24,9 +24,6 @@ jobs:
       - *default_docker_ruby_executor
     steps:
       - checkout
-      - run:
-          name: Install bundler
-          command: bundle update --bundler
       # Which version of bundler?
       - run:
           name: Which bundler?
