@@ -1,16 +1,23 @@
 FROM ruby:2.6.5
+LABEL maintainer="kentslaymaker@gmail.com"
 
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+# Allow for install of the node version we use in production
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
 
-RUN mkdir /slaymakercellars
-WORKDIR /slaymakercellars
+# Include postgresql-client so we can run rake db:structure:load from the rails container
+RUN apt-get update && apt-get install -y \
+  build-essential \
+  nodejs \
+  yarn \
+  postgresql-client
 
-RUN gem install bundler
-COPY Gemfile /slaymakercellars/Gemfile
-COPY Gemfile.lock /slaymakercellars/Gemfile.lock
-RUN bundle install
+RUN mkdir -p /app
+WORKDIR /app
 
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+ENV BUNDLE_PATH /gems
+
+COPY . ./
+
+RUN npm install && npm ls && gem install bundler
+
 EXPOSE 3000

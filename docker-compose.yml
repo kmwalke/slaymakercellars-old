@@ -1,15 +1,31 @@
-version: '3'
+version: '3.4'
+
 services:
-  db:
-    image: postgres
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
   web:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: script/start-dev.sh
     volumes:
-      - .:/slaymakercellars
+      - .:/app
+      - smc-gems:/gems
+      - /app/node_modules
     ports:
       - "3000:3000"
-    depends_on:
+    links:
       - db
+    environment:
+      DB_DEV: smc-development
+      DB_HOST: db
+      DB_TEST: smc-test
+      DB_USERNAME: postgres
+
+  db:
+    image: postgres:11.5
+    volumes:
+      - smc-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+
+volumes:
+  smc-data:
+  smc-gems:
