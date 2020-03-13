@@ -1,9 +1,0 @@
-fieldset.view_select {
-  width: 20em;
-  line-height: .5em;
-  background: #fff; }
-  fieldset.view_select legend {
-    background: white;
-    line-height: 1em;
-    border: 1px solid black;
-    padding: 5px; }
