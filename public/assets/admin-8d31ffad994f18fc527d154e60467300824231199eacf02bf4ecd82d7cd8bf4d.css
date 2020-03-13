@@ -1,0 +1,119 @@
+body {
+  background-image: none; }
+
+.admin_header {
+  color: #e4c805;
+  background-color: #552729;
+  background: -webkit-linear-gradient(#552729, #cb691e);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#552729, #cb691e);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#552729, #cb691e);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#552729, #cb691e);
+  /* Standard syntax */
+  height: 8em;
+  text-align: center;
+  padding-top: .1em; }
+  .admin_header a {
+    font-family: 'Montserrat', sans-serif; }
+  .admin_header a, .admin_header a:visited {
+    text-decoration: none;
+    font-variant: small-caps;
+    color: #e4c805; }
+  .admin_header a:hover {
+    text-decoration: underline; }
+  .admin_header a.active {
+    text-decoration: underline;
+    color: white; }
+  .admin_header .nav_links a, .admin_header .nav_links a:visited {
+    font-size: 30px;
+    margin-left: .5em; }
+
+div.wide_wrapper {
+  overflow-x: auto;
+  width: 100%; }
+
+div.admin h1, div.admin h2, div.admin h3, div.admin h4, div.admin h5 {
+  font-family: 'Montserrat', sans-serif; }
+
+table.crud {
+  border: 1px solid black;
+  border-spacing: 0; }
+  table.crud a {
+    color: #cb691e; }
+  table.crud a.unresolved {
+    color: red; }
+  table.crud th {
+    background: #402a02;
+    text-align: center;
+    color: white; }
+    table.crud th a {
+      color: #e4c805; }
+  table.crud td {
+    border-top: 1px solid black;
+    padding: 0 2.5em;
+    text-align: center;
+    height: 1.5em;
+    white-space: nowrap; }
+  table.crud tr {
+    background: white; }
+  table.crud tr.odd {
+    background: #fde0aa; }
+  table.crud tr:hover {
+    background: #A46C04;
+    color: white; }
+    table.crud tr:hover a {
+      color: white; }
+
+.column {
+  width: 45%;
+  float: left;
+  margin-right: 2%;
+  margin-bottom: 5em;
+  border: 1px solid black;
+  padding: .2em; }
+
+div.c_panel a {
+  text-decoration: none; }
+
+div.c_panel fieldset {
+  width: 25%;
+  display: inline-block;
+  height: 12em;
+  vertical-align: top;
+  border: 2px ridge #ccc;
+  margin-bottom: 2em;
+  color: black; }
+  div.c_panel fieldset legend {
+    font-weight: bold;
+    font-size: x-large;
+    border: 2px ridge #ccc;
+    color: #e4c805;
+    background-color: #cb691e;
+    background: -webkit-linear-gradient(#e4c805, #cb691e);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#e4c805, #cb691e);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#e4c805, #cb691e);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#e4c805, #cb691e);
+    /* Standard syntax */ }
+    div.c_panel fieldset legend a {
+      color: white; }
+    div.c_panel fieldset legend a:hover {
+      color: #552729; }
+  div.c_panel fieldset ul {
+    list-style: none;
+    line-height: 2em; }
+    div.c_panel fieldset ul li a {
+      color: black;
+      border: 2px outset #ccc;
+      background: white;
+      padding: 2px; }
+    div.c_panel fieldset ul li a:active {
+      border: 2px inset #ccc; }
+    div.c_panel fieldset ul li.urgent a {
+      border: 2px outset #c00;
+      background: #d00;
+      color: white; }

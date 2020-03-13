@@ -1,0 +1,22 @@
+ul.order_online {
+  display: block; }
+  ul.order_online li a {
+    color: #552729 !important;
+    background: white;
+    height: 15em;
+    display: inline-block;
+    width: 40%;
+    float: left;
+    margin-right: 7%;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em; }
+    ul.order_online li a img {
+      width: 9em;
+      margin-right: 1em; }
+    ul.order_online li a strong {
+      font-family: 'Carter One', serif;
+      font-weight: normal;
+      display: block;
+      font-size: 2em;
+      line-height: 2em; }
